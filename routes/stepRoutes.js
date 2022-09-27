@@ -1,9 +1,9 @@
-// GET getAllStepByTaskId
-// GET getStep
+const express = require("express");
 
-// step
-// {
-//   id: 1,
-//   name: "step 1",
-//   "completed": true
-// }
+const router = express.Router();
+
+router.route("/").get().post();
+
+router.route("/:id").get().put().delete();
+
+module.exports = router;

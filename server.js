@@ -16,9 +16,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes/
+const userRoutes = require("./routes/userRoutes");
 const taskRoutes = require("./routes/taskRoutes");
+const stepRoutes = require("./routes/stepRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
 
+app.use("/api/users", userRoutes);
 app.use("/api/tasks", taskRoutes);
+app.use("/api/steps", stepRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 // db
 const db = require("./config/dbConfig");
