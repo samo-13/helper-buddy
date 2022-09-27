@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 // Web server
-const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const morgan = require("morgan");
 
@@ -15,15 +14,6 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  "/styles",
-  sassMiddleware({
-    source: __dirname + "/styles",
-    destination: __dirname + "/public/styles",
-    isSass: false, // false => scss, true => sass
-  })
-);
-app.use(express.static("public"));
 
 // routes/
 const taskRoutes = require("./routes/taskRoutes");
