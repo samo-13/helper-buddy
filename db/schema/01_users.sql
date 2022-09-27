@@ -1,6 +1,9 @@
 -- Drop and recreate Users table (Example)
 
 DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS tasks CASCADE;
+DROP TABLE IF EXISTS steps CASCADE;
+DROP TABLE IF EXISTS notifications CASCADE;
 
 
 CREATE TABLE users (
@@ -22,15 +25,17 @@ CREATE TABLE steps (
   task_id INTEGER REFERENCES tasks(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   title VARCHAR(255) NOT NULL,
+  message text,
   started_at TIMESTAMP,
   completed_at TIMESTAMP
 );
 
 CREATE TABLE notifications (
   id SERIAL PRIMARY KEY NOT NULL,
-  task_id INTEGER REFRENCES tasks(id) ON DELETE CASCADE,
+  task_id INTEGER REFERENCES tasks(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  message VARCHAR(255) NOT NULL,
+  read BOOLEAN,
+  message TEXT,
   created_at TIMESTAMP
 );
 

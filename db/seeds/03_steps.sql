@@ -1,12 +1,3 @@
--- Users table seeds here (Example)
-INSERT INTO users (name, email, password) VALUES ('Alice', 'alice@gmail.com', 'alicepassword123');
-INSERT INTO users (name, email, password) VALUES ('Roger', 'roger@gmail.com', 'rogerpassword123');
-INSERT INTO users (name, email, password) VALUES ('Chen', 'chen@gmail.com', 'chenpassword123');
-
-INSERT INTO tasks (title) VALUES ('Clean the bathroom');
-INSERT INTO tasks (title) VALUES ('Do the laundry');
-INSERT INTO tasks (title) VALUES ('Wash the dishes');
-
 INSERT INTO steps (task_id, title, message) VALUES ("1", "Let's get everything we need:", 'Glass cleaner? Toilet cleaner? Toilet brush? Rubber gloves? Cloths or paper towel? Broom? Garbage bags?');
 INSERT INTO steps (task_id, title, message) VALUES ("1", "Let's see that beautiful face!", 'Spray and wipe the mirror.');
 INSERT INTO steps (task_id, title, message) VALUES ("1", "Clean the counter and the sink.", 'Try putting everything from the countertop into the sink, so you can spray and wipe the countertops. Then put everything back, and spray and wipe the sink.');
@@ -39,13 +30,4 @@ INSERT INTO steps (task_id, title, message) VALUES ("3", "Time to start scrubbin
 INSERT INTO steps (task_id, title, message) VALUES ("3", "Time to dry.", "Dry your dishes with a clean towel. Or, let them dry on the rack.");
 INSERT INTO steps (task_id, title, message) VALUES ("3", "Put those dishes away!", 'Put your beautifully clean and dry dishes back where they live.');
 INSERT INTO steps (task_id, title, message) VALUES ("2", "All done!", 'You did it! This task is DONE! Amazing job!');
-
-
-
-
-
-
-
-
-
 
