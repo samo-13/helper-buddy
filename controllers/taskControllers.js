@@ -51,15 +51,15 @@ const deleteTask = asyncHandler(async (req, res) => {
 });
 
 const getAllStepsByTaskId = asyncHandler(async (req, res) => {
-  const { task_id } = parseInt(req.params.id);
-  const steps = await db.query(`SELECT name, description, id FROM steps WHERE task_id = ${id}`);
-    if (err) {
-      throw err
-    }
-    res.status(200).json(results.rows)
+  const {id} = (req.params);
+  console.log("id", id);
+  const steps = await db.query(
+    "SELECT task_id, name, description FROM steps WHERE task_id = $1",
+   [id]);
+    res.json(steps.rows);
     console.log("steps", steps);
-    console.log("task id",task_id)
-    return steps;
+    console.log("task id",id)
+    return res.rows;
   });
 
 module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask, getAllStepsByTaskId };

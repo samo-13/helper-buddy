@@ -23,6 +23,7 @@ const notificationRoutes = require("./routes/notificationRoutes");
 
 app.use("/api/users", userRoutes);
 app.use("/api/tasks", taskRoutes);
+app.use("/api/tasks/steps", taskRoutes);
 app.use("/api/steps", stepRoutes);
 app.use("/api/notifications", notificationRoutes);
 
