@@ -1,13 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import { TbUserCircle } from 'react-icons/tb';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <img src="client/src/user-icon.png" alt="user-icon" />
-        <h1>User Name</h1>
+        <h1><TbUserCircle /> User Name</h1>
         <p>
           Helper Buddy!
         </p>
