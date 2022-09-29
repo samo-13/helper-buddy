@@ -16,7 +16,7 @@ CREATE TABLE users (
 CREATE TABLE tasks (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  title VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
   started_at TIMESTAMP,
   completed_at TIMESTAMP
 );
@@ -25,7 +25,7 @@ CREATE TABLE steps (
   id SERIAL PRIMARY KEY NOT NULL,
   task_id INTEGER REFERENCES tasks(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  title VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
   description VARCHAR(255),
   started_at TIMESTAMP,
   completed_at TIMESTAMP
@@ -34,6 +34,7 @@ CREATE TABLE steps (
 CREATE TABLE notifications (
   id SERIAL PRIMARY KEY NOT NULL,
   task_id INTEGER REFERENCES tasks(id) ON DELETE CASCADE,
+  step_id INTEGER REFERENCES steps(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   read BOOLEAN,
   message TEXT,
