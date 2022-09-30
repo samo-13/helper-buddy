@@ -23,8 +23,10 @@ const getTask = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   const task = await db.query(`SELECT * FROM tasks WHERE id = ${id}`);
-
-  res.json(task.rows[0]);
+  const steps = await db.query(
+    "SELECT task_id, name, description,completed_at FROM steps WHERE task_id = $1",
+   [id]);
+   res.json({task: task.rows[0], steps: steps.rows});
 });
 
 const updateTask = asyncHandler(async (req, res) => {
@@ -50,4 +52,17 @@ const deleteTask = asyncHandler(async (req, res) => {
   res.json({ message: `Task#${deletedTask.rows[0].id} deleted` });
 });
 
-module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask };
+// const getAllStepsByTaskId = asyncHandler(async (req, res) => {
+//   const {id} = (req.params);
+//   console.log("id", id);
+  
+//   });
+
+
+//move to src>client:
+  // newTaskObject = Object.fromEntries(steps.rows)
+  // return newTaskObject;
+ 
+
+
+module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask, getAllStepsByTaskId };
