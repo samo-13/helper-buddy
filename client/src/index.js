@@ -2,10 +2,10 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
-import Blogs from "./pages/Blogs";
-import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
-import Navbar from ".Navigation";
+import Navbar from "./Navigation";
+import ActiveTasks from "./pages/ActiveTasks"
+import Task from "./pages/Task"
 
 export default function App() {
   return (
