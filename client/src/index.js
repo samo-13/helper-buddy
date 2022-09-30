@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import NoPage from "./pages/NoPage";
-import Navbar from "./Navigation";
 import ActiveTasks from "./pages/ActiveTasks"
 import Task from "./pages/Task"
 

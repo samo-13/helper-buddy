@@ -29,6 +29,14 @@ app.use("/api/notifications", notificationRoutes);
 // db
 const db = require("./config/dbConfig");
 
+// ------------------------------------------------
+// added to test react/server connection (SM)
+app.post("/post", (req, res) => {
+  console.log("Connected to React");
+  res.redirect("/");
+});
+// ------------------------------------------------
+
 db.connect()
   .then(() => {
     console.log("connected to database");
