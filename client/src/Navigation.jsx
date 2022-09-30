@@ -1,18 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineHome } from "react-icons/ai"
 
 function Navbar() {
   return (
     <nav>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">< AiOutlineHome /></Link>
         </li>
         <li>
-          <Link to="/ActiveTasks">Example 1</Link>
+          <Link to="/ActiveTasks">In Progress Tasks</Link>
         </li>
         <li>
-          <Link to="/Task">Example 2</Link>
+          <Link to="/Task">Task</Link>
         </li>
       </ul>
     </nav>

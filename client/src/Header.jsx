@@ -1,15 +1,14 @@
 import React from "react";
 import { TbUserCircle } from 'react-icons/tb';
 
-function Home() {
+function Header() {
   return (
       <div className="App">
         <header className="App-header">
-           <h2>Helper Buddy!</h2>
-           <h3>Tasks go here...</h3>
+          <h1><TbUserCircle /> Bob Smith</h1>
         </header>
       </div>
     );
   }
 
-export default Home;
+export default Header;
