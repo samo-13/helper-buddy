@@ -32,7 +32,7 @@ const db = require("./config/dbConfig");
 // ------------------------------------------------
 // added to test react/server connection (SM)
 app.post("/post", (req, res) => {
-  console.log("Connected to React");
+  console.log("You are connected to React!");
   res.redirect("/");
 });
 // ------------------------------------------------
