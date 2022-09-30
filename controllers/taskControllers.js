@@ -50,6 +50,12 @@ const deleteTask = asyncHandler(async (req, res) => {
   res.json({ message: `Task#${deletedTask.rows[0].id} deleted` });
 });
 
+
+// taskBuilder = function(array) {
+//   const newTask = array.reduce((o, key) => ({...o, [key.name]: key.description}), {})
+//   return newTask;  
+// }
+
 const getAllStepsByTaskId = asyncHandler(async (req, res) => {
   const {id} = (req.params);
   console.log("id", id);
@@ -57,9 +63,15 @@ const getAllStepsByTaskId = asyncHandler(async (req, res) => {
     "SELECT task_id, name, description FROM steps WHERE task_id = $1",
    [id]);
     res.json(steps.rows);
-    console.log("steps", steps);
-    console.log("task id",id)
-    return res.rows;
+    // console.log("steps", steps.rows);
+    // console.log("task id",id)
+    newTaskObject = Object.fromEntries(steps.rows)
+    // return res.rows;
+    // console.log(newTaskObject)
+    return newTaskObject;
   });
+
+ 
+
 
 module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask, getAllStepsByTaskId };
