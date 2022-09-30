@@ -16,13 +16,15 @@ INSERT INTO steps (task_id, name) VALUES ($1, $2);
 --startNewStep
 INSERT INTO steps (user_id, task_id, started_at) VALUES ($1, $2, current_timestamp);
 --getAllStepsByTaskId(task_id) >> loop through steps to complete a task
-SELECT name FROM steps WHERE task_id = $1;
+SELECT name, description, id FROM steps WHERE task_id = $1;
 --getAllStepsByUser(user_id, task_id)
 SELECT * FROM steps WHERE user_id = $1;
 --updateStep(column, value, task_id)
 UPDATE steps SET $1 = $2 WHERE id = $3;
---deleteTaskById(id)
-DELETE FROM tasks WHERE id = $1;
+--finishStep(step_id, user_id)
+UPDATE steps set completed_at = current_timestamp WHERE step_id = $1
+--deleteStepById(id)
+DELETE FROM steps WHERE id = $1;
 
 --createNewUser
 INSERT INTO users (name, email, password) VALUES ($1, $2, $3);
