@@ -7,9 +7,11 @@ function Home() {
            <h2>Helper Buddy!</h2>
            <h3>Tasks go here...</h3>
         </header>
-        <form action="../../post" method="post">
-          <button type="submit">Connected?</button>
-        </form>
+        <div>
+          <form action="../../post" method="post">
+            <button type="submit">Connected?</button>
+          </form>
+        </div>
       </div>
     );
   }
