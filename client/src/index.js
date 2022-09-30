@@ -10,7 +10,6 @@ import Task from "./pages/Task"
 export default function App() {
   return (
     <Router>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
