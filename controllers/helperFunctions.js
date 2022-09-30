@@ -30,10 +30,15 @@ let steps = [
 ]
 
 
-  //build task object
-  taskBuilder = function(array) {
-  const newTask = array.reduce((o, key) => ({...o, [key.name]: key.description}), {})
-  return newTask;  
-}
+const getAllStepsByTaskId = asyncHandler(async (req, res) => {
+  const {id} = (req.params);
+  console.log("id", id);
+  const steps = await db.query(
+    "SELECT task_id, name, description,completed_at FROM steps WHERE task_id = $1",
+   [id]);
+    res.json(steps.rows);
+    newTaskObject = Object.fromEntries(steps.rows)
+    return newTaskObject;
+  });
 
-  console.log(taskBuilder(steps))
+avgCompletionTime = function()
