@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
 import './freshTaskItem.scss';
+import './Layout.scss'
 
 function Home() {
   const [tasks, setTasks] = useState([])
@@ -16,7 +17,7 @@ function Home() {
   }, [])
 
   return (
-      <div className="App">
+      <div className="App" id='home'>
         <header className="App-header">
            <h2>Helper Buddy!</h2>
            <div class="btn-group">
@@ -29,11 +30,6 @@ function Home() {
 
            ))}
         </header>
-        <div>
-          <form action="../../post" method="post">
-            <button type="submit">Connected?</button>
-          </form>
-        </div>
       </div>
     );
   }
