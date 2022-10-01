@@ -19,6 +19,10 @@ function Home() {
       <div className="App">
         <header className="App-header">
            <h2>Helper Buddy!</h2>
+           <div class="btn-group">
+            <button>Start Fresh</button>
+            <button>In-Progress</button>
+          </div>
 
            {tasks.map(task => (
            <h3 class='freshTask'>{task.name}</h3>
