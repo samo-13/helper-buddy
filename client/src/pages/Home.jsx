@@ -26,7 +26,6 @@ function Home() {
             <button type="submit">Connected?</button>
           </form>
         </div>
-
       </div>
     );
   }
