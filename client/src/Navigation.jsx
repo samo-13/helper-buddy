@@ -7,13 +7,7 @@ function Navbar() {
     <nav>
       <ul>
         <li>
-          <Link to="/">< AiOutlineHome /></Link>
-        </li>
-        <li>
-          <Link to="/ActiveTasks">In Progress Tasks</Link>
-        </li>
-        <li>
-          <Link to="/Task">Task</Link>
+          <Link class="icon" to="/">< AiOutlineHome /></Link>
         </li>
       </ul>
     </nav>
