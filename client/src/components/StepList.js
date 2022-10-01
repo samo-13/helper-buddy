@@ -1,6 +1,5 @@
 import React from "react";
-import StepList from "../components/StepList";
-
+import Step from "../components/Step";
 
 const props = {
   task: {
@@ -104,20 +103,19 @@ const props = {
   ]
   }
 
-function Home() {
-  return (
-      <div className="App">
-        <header className="App-header">
-           <h2>Helper Buddy!</h2>
-           
-        </header>
-        <div>
-          <form action="../../post" method="post">
-            <button type="submit">Connected?</button>
-          </form>
-        </div>
-      </div>
-    );
-  }
 
-export default Home;
+export default function StepList(props) {
+
+  const steps = props.steps.map((step) => (
+    <Step
+      key={step.id}
+      task_id={step.task_id}
+      name={step.name}
+      description={step.description}
+    />
+  ));
+  return <ul>{steps}</ul>;
+}
+
+
+//you need to get mentor help with thi

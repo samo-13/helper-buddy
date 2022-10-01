@@ -21,4 +21,4 @@ export default function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("root")); // should change this!! use createRoot() (SM)
+ReactDOM.render(<App />, document.createRoute("root")); // should change this!! use createRoot() (SM)

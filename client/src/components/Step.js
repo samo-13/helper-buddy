@@ -1,6 +1,5 @@
 import React from "react";
-import StepList from "../components/StepList";
-
+import "../components/StepList.scss"
 
 const props = {
   task: {
@@ -104,20 +103,13 @@ const props = {
   ]
   }
 
-function Home() {
-  return (
-      <div className="App">
-        <header className="App-header">
-           <h2>Helper Buddy!</h2>
-           
-        </header>
-        <div>
-          <form action="../../post" method="post">
-            <button type="submit">Connected?</button>
-          </form>
-        </div>
-      </div>
-    );
-  }
 
-export default Home;
+export default function Step(props) {
+  return (
+    <li> onClick ={()=> props.setStep(props.step_name)}
+     <div> I am a step component </div>
+       <h2 className="text--regular">{props.step_name}</h2> 
+       <h3 className="text--light">{props.steps.description}</h3>
+     </li>
+   );
+ }

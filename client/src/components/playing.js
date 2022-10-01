@@ -1,6 +1,3 @@
-import React from "react";
-import StepList from "../components/StepList";
-
 
 const props = {
   task: {
@@ -103,21 +100,14 @@ const props = {
   }
   ]
   }
+  const steps = function(props)  {
+    newArr = props.steps.map((step) => {
+    console.log(step.task_id)
+    console.log(step.name)
+  }) 
+  return newArr;
+}
 
-function Home() {
-  return (
-      <div className="App">
-        <header className="App-header">
-           <h2>Helper Buddy!</h2>
-           
-        </header>
-        <div>
-          <form action="../../post" method="post">
-            <button type="submit">Connected?</button>
-          </form>
-        </div>
-      </div>
-    );
-  }
+  console.log("steps", newArr(props));
 
-export default Home;
+  

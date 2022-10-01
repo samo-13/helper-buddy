@@ -1,6 +1,7 @@
 import './styles/App.css';
 import { TbUserCircle } from 'react-icons/tb';
 
+
 function App() {
   return (
     <div className="App">
@@ -9,17 +10,12 @@ function App() {
         <p>
           Helper Buddy!
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+     
     </div>
   );
 }
 
 export default App;
+
+
