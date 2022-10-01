@@ -5,11 +5,7 @@ import { AiOutlineHome } from "react-icons/ai"
 function Navbar() {
   return (
     <nav>
-      <ul>
-        <li>
-          <Link class="icon" to="/">< AiOutlineHome /></Link>
-        </li>
-      </ul>
+      <Link class="icon" to="/">< AiOutlineHome /></Link>
     </nav>
   );
 }

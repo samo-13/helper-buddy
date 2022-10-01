@@ -1,3 +1,13 @@
+$font-family: 'Poppins', sans-serif;
+$background-color: #F7F0E6;
+$font-color: black;
+
+.layout{
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
 #home {
   background-color: #F1FF4A;
 }

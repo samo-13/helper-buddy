@@ -17,9 +17,9 @@ function Home() {
   }, [])
 
   return (
-      <div className="App" id='home'>
+      <div class="layout" id='home'>
         <header className="App-header">
-           <h2>Helper Buddy!</h2>
+           <h2>Welcome message!</h2>
            <div class="btn-group">
             <button>Start Fresh</button>
             <button>In-Progress</button>
