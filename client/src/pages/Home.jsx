@@ -4,6 +4,7 @@ import axios from 'axios';
 // import './freshTaskItem.scss';
 // import './Layout.scss'
 import './Home.scss';
+import Task from '../components/Task';
 
 // function Home() {
 //   // const [tasks, setTasks] = useState([])
@@ -66,7 +67,7 @@ const Home = () => {
 
       <section className='home__list'>
         {tasks.map(task => (
-          <h3 class='freshTask'>{task.name}</h3>
+          <Task key={task.id} {...task} />
         ))}
       </section>
     </div>

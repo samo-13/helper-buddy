@@ -6,9 +6,9 @@ import './Navigation.scss';
 function Navbar() {
   return (
     <nav>
-      <div className='container'>
-        <Link className='icon' to='/'>
-          <AiOutlineHome className='icon__home'/>
+      <div className='nav__container'>
+        <Link className='nav__icon' to='/'>
+          <AiOutlineHome className='nav__icon--home' />
         </Link>
         <Link to='/archive'>Archived Tasks</Link>
         <button>Log out</button>
