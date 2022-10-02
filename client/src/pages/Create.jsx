@@ -16,6 +16,10 @@ const Create = () => {
             <p>Task Name</p>
             <input name="name" />
           </label>
+          <label>
+            <p>Step</p>
+            <input name="description" />
+          </label>
         </fieldset>
         <button class='button' type="submit">Create</button>
       </form>
