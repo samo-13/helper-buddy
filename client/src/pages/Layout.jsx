@@ -1,16 +1,25 @@
-import React from "react";
+// import React from "react";
 import { Outlet } from "react-router-dom"; // look this up
-import Navbar from "../Navigation";
-import Header from "../Header"
+import Navbar from "../components/Navigation";
+import Header from "../components/Header"
 import './Layout.scss';
 
 const Layout = () => {
   return (
-    <span>
-      <Navbar />
-      <Header />
-      <Outlet />
-    </span>
+    <>
+      <Navbar/>
+
+      <div className="container">
+        <Header />
+        <Outlet />
+      </div>
+    </>
+
+    // <span>
+    //   <Navbar />
+    //   <Header />
+    //   <Outlet />
+    // </span>
   );
 };
 

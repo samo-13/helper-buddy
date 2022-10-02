@@ -1,22 +1,29 @@
-$font-family: 'Poppins', sans-serif;
-$background-color: #F7F0E6;
-$font-color: black;
+// $font-family: 'Poppins', sans-serif;
+// $background-color: #F7F0E6;
+// $font-color: black;
 
-.layout{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+// .layout{
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// }
 
-#home {
-  background-color: #F1FF4A;
-}
+// #home {
+//   background-color: #F1FF4A;
+// }
 
-.icon {
-  color: purple;
-}
+// .icon {
+//   color: purple;
+// }
 
-.icon:hover {
-  background-color: red
+// .icon:hover {
+//   background-color: red
+// }
+
+.container {
+  background-color: #F7F0E6;
+  margin: auto;
+  width: 100%;
+  max-width: 600px;
 }

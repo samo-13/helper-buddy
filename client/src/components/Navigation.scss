@@ -1,0 +1,24 @@
+nav {
+  background-color: pink;
+
+  .container {
+    background-color: lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+  }
+
+  a {
+    display: flex;
+    text-decoration: none;
+    color: #000000;
+
+    * {
+      align-items: center;
+    }
+  }
+}
