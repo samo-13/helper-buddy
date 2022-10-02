@@ -1,4 +1,4 @@
-import classNames from 'classnames';o
+import classNames from 'classnames';
 import './Button.scss';
 
 const Button = ({ onChange, value, children, selected }) => {
