@@ -1,0 +1,39 @@
+.nav,
+.nav__links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+
+  background-color: #f7f0e6;
+  border-bottom: 5px rgb(108, 191, 74) dotted;
+  padding: 16px 25px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+
+  a {
+    display: flex;
+    color: #000000;
+    margin-right: 40px;
+    text-decoration: none;
+
+    * {
+      align-items: center;
+    }
+
+    &.active {
+      font-weight: 700;
+    }
+  }
+
+  button {
+    width: fit-content !important;
+    padding: 0 15px;
+  }
+}
