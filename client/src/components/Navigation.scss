@@ -1,11 +1,15 @@
-nav {
+.nav,
+.nav__links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav {
   position: sticky;
   top: 0;
   z-index: 99;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background-color: #f7f0e6;
   border-bottom: 5px rgb(108, 191, 74) dotted;
   padding: 8px 25px;
@@ -16,7 +20,7 @@ nav {
   a {
     display: flex;
     color: #000000;
-    padding: 0 15px;
+    margin-right: 40px;
     text-decoration: none;
 
     * {
