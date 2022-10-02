@@ -1,0 +1,19 @@
+.taskbox {
+  position: relative;
+  border: 1px #000000 solid;
+  height: 140px;
+  line-height: 2rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  span {
+    position: absolute;
+    font-weight: 700;
+    right: 2.8%;
+    top: 5%;
+  }
+}

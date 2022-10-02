@@ -65,7 +65,6 @@ const Home = () => {
       <section className='home__welcome-message'>
         <h2>Welcome message!</h2>
       </section>
-
       <section className='home__button-group'>
         <Button onChange={setList} value={list} selected={list === FRESH}>
           Start Fresh
@@ -73,10 +72,7 @@ const Home = () => {
         <Button onChange={setList} value={list} selected={list === ACTIVE}>
           In-Progress
         </Button>
-        {/* <button onClick={() => setActive(false)}>Start Fresh</button>
-        <button onClick={() => setActive(true)}>In-Progress</button> */}
       </section>
-
       <section className='home__list'>
         {list === ACTIVE && <ActiveTasks />}
         {list === FRESH && <FreshTasks tasks={tasks} />}
