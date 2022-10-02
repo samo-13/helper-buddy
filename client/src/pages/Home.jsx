@@ -4,7 +4,8 @@ import axios from 'axios';
 // import './freshTaskItem.scss';
 // import './Layout.scss'
 import './Home.scss';
-import Task from '../components/Task';
+import ActiveTasks from '../components/ActiveTasks';
+import FreshTasks from '../components/FreshTasks';
 
 // function Home() {
 //   // const [tasks, setTasks] = useState([])
@@ -42,6 +43,7 @@ import Task from '../components/Task';
 
 const Home = () => {
   const [tasks, setTasks] = useState([]);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     Promise.all([axios.get('/api/tasks')])
@@ -61,14 +63,13 @@ const Home = () => {
       </section>
 
       <section className='home__button-group'>
-        <button>Start Fresh</button>
-        <button>In-Progress</button>
+        <button onClick={() => setActive(false)}>Start Fresh</button>
+        <button onClick={() => setActive(true)}>In-Progress</button>
       </section>
 
       <section className='home__list'>
-        {tasks.map(task => (
-          <Task key={task.id} {...task} />
-        ))}
+        {active && <ActiveTasks />}
+        {!active && <FreshTasks tasks={tasks} />}
       </section>
     </div>
   );

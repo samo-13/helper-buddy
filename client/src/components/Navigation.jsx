@@ -6,13 +6,11 @@ import './Navigation.scss';
 function Navbar() {
   return (
     <nav>
-      <div className='nav__container'>
-        <Link className='nav__icon' to='/'>
-          <AiOutlineHome className='nav__icon--home' />
-        </Link>
-        <Link to='/archive'>Archived Tasks</Link>
-        <button>Log out</button>
-      </div>
+      <Link className='nav__icon' to='/'>
+        <AiOutlineHome className='nav__icon--home' />
+      </Link>
+      <Link to='/archive'>Archived Tasks</Link>
+      <button>Log out</button>
     </nav>
   );
 }
