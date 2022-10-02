@@ -1,0 +1,11 @@
+.button {
+  background-color: #ffffff;
+  border: 0;
+  cursor: pointer;
+  height: 35px;
+  width: 170px;
+
+  &--selected {
+    border: 1px #000000 solid;
+  }
+}
