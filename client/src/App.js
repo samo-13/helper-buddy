@@ -1,8 +1,9 @@
 import './styles/App.css';
 import { TbUserCircle } from 'react-icons/tb';
-
+import  StepList from "../components/StepList";
 
 function App() {
+  
   return (
     <div className="App">
       <header className="App-header">

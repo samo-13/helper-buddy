@@ -104,14 +104,13 @@ const props = {
   }
 
 
-export default function StepList(props) {
+export default function StepList({props}) {
 
-  const steps = props.steps.map((step) => (
+  const steps = props.steps.map((step) => ( //something isn't right here
     <Step
-      key={step.id}
-      task_id={step.task_id}
-      name={step.name}
-      description={step.description}
+      task_id={props.task_id}
+      name={props.name}
+      description={props.description}
     />
   ));
   return <ul>{steps}</ul>;

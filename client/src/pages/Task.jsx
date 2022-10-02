@@ -1,4 +1,7 @@
 import React from "react";
+import { Outlet } from "react-router-dom"; // look this up
+import Navbar from "../Navigation";
+import Header from "../Header"
 import StepList from "../components/StepList";
 
 
@@ -104,12 +107,21 @@ const props = {
   ]
   }
 
-function Task() {
-  return (
-    <h1>
-    <StepList />
-</h1>
-  );
-}
+export default function Task() {
+    return (
+      <div className="App">
+        <header className="App-header">
+           <h2>Task List!</h2>
+           <h3><StepList props={props}/></h3>
+        </header>
+        <div>
+          <form action="../../post" method="post">
+            <button type="submit">Connected?</button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
-export default Task;
+
+

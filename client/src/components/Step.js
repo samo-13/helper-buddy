@@ -106,10 +106,11 @@ const props = {
 
 export default function Step(props) {
   return (
-    <li> onClick ={()=> props.setStep(props.step_name)}
-     <div> I am a step component </div>
-       <h2 className="text--regular">{props.step_name}</h2> 
-       <h3 className="text--light">{props.steps.description}</h3>
+    <li>
+     <div> I am a step component 
+       <h2>{props.name}</h2> 
+       <h3>{props.description}</h3>
+       </div>
      </li>
    );
  }
