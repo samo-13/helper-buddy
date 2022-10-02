@@ -26,6 +26,10 @@
     * {
       align-items: center;
     }
+
+    &.active {
+      font-weight: 700;
+    }
   }
 
   button {
