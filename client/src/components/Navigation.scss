@@ -1,11 +1,9 @@
 nav {
-  background-color: pink;
-
   .container {
-    background-color: lightgrey;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 5px rgb(108, 191, 74) dotted;
     padding: 0.5rem 0;
     width: 100%;
     max-width: 600px;
