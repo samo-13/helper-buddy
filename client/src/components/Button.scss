@@ -6,6 +6,8 @@
   width: 170px;
 
   &--selected {
-    border: 1px #000000 solid;
+    border: 2px #000000 solid;
+    box-shadow: 3px 3px;
+    color: black;
   }
 }
