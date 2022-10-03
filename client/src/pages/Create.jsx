@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+// styles
 import './Create.scss';
 import '../components/Button.scss';
 
@@ -7,22 +9,38 @@ const Create = () => {
     alert('You have created a new task.')
   }
 
+  const [inputField, setInputField] = useState([
+    { step: '' },
+  ]);
+
+  const addStepField = () => {
+    setInputField([...inputField, { step: '' }])
+  }
+
   return (
     <div className="wrapper">
       <h1>Create your own custom task!</h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <fieldset>
-          <label>
-            <p>Task Name</p>
-            <input name="name" />
-          </label>
-          <label>
-            <p>Step</p>
-            <input name="description" />
-          </label>
+          <div className="task">
+            <label>
+              Task Name
+              <input name="task-name" />
+            </label>
+          </div>
+
+          <div className="step">
+            <label>
+              Step
+            </label>
+            <input name="step-description" />
+          </div>
         </fieldset>
-        <button class='button' type="submit">Add Step</button>
-        <button class='button' type="submit">Create</button>
+        <div className="step-buttons">
+          <button onClick={addStepField} className="step-button">+</button>
+          <button className="step-button">-</button>
+        </div>
+          <button className='button' onClick={handleSubmit} type="submit">Create</button>
       </form>
     </div>
   )
