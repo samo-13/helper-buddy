@@ -1,0 +1,40 @@
+// $font-family: 'Poppins', sans-serif;
+// $background-color: #F7F0E6;
+// $font-color: black;
+
+// .layout{
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// #home {
+//   background-color: #F1FF4A;
+// }
+
+// .icon {
+//   color: purple;
+// }
+
+// .icon:hover {
+//   background-color: red
+// }
+
+.layout {
+  &__container {
+    background-color: #f7f0e6;
+    min-height: calc(100vh - 3.5rem);
+    height: 100%;
+    padding: 25px;
+    margin: auto;
+    width: 100%;
+    max-width: 600px;
+
+    // box shadow
+    -moz-box-shadow: 2px 61px 100px -59px rgba(0, 0, 0, 0.38);
+    -webkit-box-shadow: 2px 61px 100px -59px rgba(0, 0, 0, 0.38);
+    -ms-box-shadow: 2px 61px 100px -59px rgba(0, 0, 0, 0.38);
+    box-shadow: 2px 61px 100px -59px rgba(0, 0, 0, 0.38);
+  }
+}

@@ -55,14 +55,14 @@ const deleteTask = asyncHandler(async (req, res) => {
 // const getAllStepsByTaskId = asyncHandler(async (req, res) => {
 //   const {id} = (req.params);
 //   console.log("id", id);
-  
+
 //   });
 
 
 //move to src>client:
   // newTaskObject = Object.fromEntries(steps.rows)
   // return newTaskObject;
- 
 
 
-module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask, getAllStepsByTaskId };
+
+module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask };

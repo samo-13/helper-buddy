@@ -104,17 +104,20 @@ const props = {
   }
 
 
-export default function StepList({props}) {
-
-  const steps = props.steps.map((step) => ( //something isn't right here
+const StepList = ({ steps }) => {
+  return (
+    <div>
+  {steps.map(step => ( //something isn't right here
     <Step
-      task_id={props.task_id}
-      name={props.name}
-      description={props.description}
-    />
-  ));
-  return <ul>{steps}</ul>;
-}
+      task_id={step.task_id}
+      name={step.name}
+      description={step.description} />
+      ))}
+</div>
+  );
+};
+
+export default StepList;
 
 
 //you need to get mentor help with thi

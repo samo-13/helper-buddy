@@ -1,5 +1,6 @@
 import React from "react";
 import "../components/StepList.scss"
+import FreshTaskItem from "./FreshTaskItem";
 
 const props = {
   task: {
@@ -104,7 +105,7 @@ const props = {
   }
 
 
-export default function Step(props) {
+const Step = ({props}) => {
   return (
     <li>
      <div> I am a step component 
@@ -114,3 +115,5 @@ export default function Step(props) {
      </li>
    );
  }
+
+ export default Step;
