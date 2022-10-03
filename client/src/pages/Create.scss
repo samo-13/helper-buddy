@@ -13,12 +13,16 @@ form {
   background-color: pink;
 }
 
+input {
+  position: relative;
+  box-sizing: border-box;
+  width: 90%;
+  height: 2rem;
+}
+
 .wrapper fieldset {
   position: relative;
   border: none;
-  margin-bottom: 1rem;
-  padding-left: 2rem;
-  padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
