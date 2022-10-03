@@ -1,7 +1,8 @@
 import './Create.scss';
+import StepList from '../components/StepList';
 
 
-export default function Task() {
+export default function Task({props}) {
     return (
       <div className="App">
         <header className="App-header">

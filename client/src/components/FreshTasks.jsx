@@ -1,15 +1,15 @@
-// import FreshTaskItem from '../components/FreshTaskItem';
+import FreshTaskItem from './freshTaskItem';
 
-// const FreshTasks = ({ tasks }) => {
-//   return (
-//     <div>
-//       {tasks.map(task => (
-//         <FreshTaskItem key={task.id} {...task} />
-//       ))}
-//     </div>
-//   );
-// };
+const FreshTasks = ({ tasks }) => {
+  return (
+    <div>
+      {tasks.map(task => (
+        <FreshTaskItem key={task.id} {...task} />
+      ))}
+    </div>
+  );
+};
 
-// export default FreshTasks;
+export default FreshTasks;
 
 // remove this comment

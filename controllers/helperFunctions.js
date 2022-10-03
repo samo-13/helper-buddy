@@ -41,4 +41,21 @@ const getAllStepsByTaskId = asyncHandler(async (req, res) => {
     return newTaskObject;
   });
 
-avgCompletionTime = function()
+const avgStepTime = asyncHandler(async (req, res) => {
+  const {id} = (req.params);
+  const avg = await db.query(
+    "SELECT avg(completed_at - started_at) as average_time FROM steps WHERE id = $1",
+    [id]);
+    res.json({ message: `Average time: ${avg}` })
+})
+
+//can we get rid of this?
+const avgTaskTime = asyncHandler(async (req, res) => { 
+  const {id} = (req.params);
+  const avg = await db.query(
+    "SELECT avg(completed_at - started_at) as average_time FROM tasks WHERE id = $1",
+    [id]);
+    res.json({ message: `Average time: ${avg}` })
+})
+
+export default { avgTaskTime, avgStepTime };

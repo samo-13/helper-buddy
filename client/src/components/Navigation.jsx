@@ -13,6 +13,7 @@ function Navbar() {
         </NavLink>
         <NavLink to='/create'>Create Task</NavLink>
         <NavLink to='/archive'>Archived Tasks</NavLink>
+        <NavLink to='/task'>Task</NavLink>
       </section>
       <Button className='nav__button'>Log out</Button>
     </nav>

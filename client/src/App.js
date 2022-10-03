@@ -6,6 +6,7 @@ import Layout from './pages/Layout';
 import Home from './pages/Home';
 import Create from './pages/Create';
 import Archive from './pages/Archive';
+import Task from './pages/Task';
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
             <Route index element={<Home />}></Route>
             <Route path='create' element={<Create />}></Route>
             <Route path='archive' element={<Archive />}></Route>
+            {/* <Route path='task' element={<Task />}></Route> */}
           </Route>
         </Routes>
       </BrowserRouter>
