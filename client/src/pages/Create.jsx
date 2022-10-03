@@ -21,6 +21,7 @@ const Create = () => {
             <input name="description" />
           </label>
         </fieldset>
+        <button class='button' type="submit">Add Step</button>
         <button class='button' type="submit">Create</button>
       </form>
     </div>
