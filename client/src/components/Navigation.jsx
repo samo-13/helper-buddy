@@ -11,7 +11,6 @@ function Navbar() {
         <NavLink to='/'>
           <AiOutlineHome className='nav__icon--home' />
         </NavLink>
-        <NavLink to='/task'>Task</NavLink>
         <NavLink to='/create'>Create Task</NavLink>
         <NavLink to='/archive'>Archived Tasks</NavLink>
       </section>
