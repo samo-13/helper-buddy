@@ -1,7 +1,7 @@
 // --------------------------------------------------------------------------------------------------
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
-import { createTask, getTask, updateTask } from '/Users/sarahmoss/helper-buddy/routes/taskRoutes.js';
+// import { createTask, getTask, updateTask } from '/Users/sarahmoss/helper-buddy/routes/taskRoutes.js';
 
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // --------------------------------------------------------------------------------------------------
@@ -22,48 +22,65 @@ import './Layout.scss';
 
 const Create = () => {
 
-  const [tasks, setTasks] = useState([]);
-  const [steps, setSteps] = useState();
+  // const [task, setTask] = useState([]);
+  // const [steps, setSteps] = useState();
+  const [taskInput, setTaskInput] = useState([{ taskName: "" }]);
+  const [stepInputList, setStepInputList] = useState([{ stepName: "", stepDescription: "" }]);
+
+
+  // need to have step form add steps with appropriate task id
 
   const HandleSubmit = event => {
-    createTask('Test task name')
+    alert(`Create Task!`)
   }
 
   const AddStepField = event => {
-    alert('Another step field should be added!')
+    alert(`Another step field should be added!`)
   }
 
-  // console.log('STATE:', state);
+// handle click event of the + step button
+const handleAddClick = () => {
+  setStepInputList([...stepInputList, { stepName: "", stepDescription: "" }]);
+};
 
   return (
     <div className="wrapper">
       <h2>Create your own custom task!</h2>
 
       <form>
-        <fieldset>
+
           <div className="task">
-            <label>
-              Task Name
-            </label>
-            <input name="name" />
+            <label>Task Name</label>
+            <input name="taskName" />
+          </div>
+      </form>
+
+          { stepInputList.map((x, i) => {
+            return (
+      <form>
+          <div className="step">
+            <label>Step</label>
+            <br></br>
+            <input name="stepName" placeholder='Add step name!'/>
+            <input name="stepDescription" placeholder='Add step description!'/>
           </div>
 
-          <div className="step">
-            <label>
-              Step
-            </label>
-            <br></br>
-            <input name="step-description" />
-          </div>
-        </fieldset>
 
         <div className="step-buttons">
-          <button onClick={AddStepField} className="step-button">+</button>
+          <button onClick={handleAddClick} className="step-button">+</button>
           <button className="step-button">-</button>
         </div>
           <button className='button' onClick={HandleSubmit} type="submit">Create</button>
       </form>
+            );
+          })}
+
+      <div style={{ marginTop: 30 }}>{JSON.stringify(taskInput)}</div>
+      <div style={{ marginTop: 30 }}>{JSON.stringify(stepInputList)}</div>
+
     </div>
+
+
   )
 }
 
