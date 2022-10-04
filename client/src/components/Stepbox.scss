@@ -1,11 +1,22 @@
 .stepbox {
-  position: relative;
-  border: 1px #000000 solid;
+  color: #321d00;
+  position: 1em;
+  background:#ffffff80;
+  border-radius: 25px;
   height: fit-content;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:1em;
+  margin-bottom:1em;
   line-height: 2rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 3px 3px;
+  padding: .9rem;
+  box-shadow: #c8c2ba 3px 3px;
+  text-align: center;
+  
+  .expanded_step {
+    color: #494847;
+  }
 
   &:last-of-type {
     margin-bottom: 0;

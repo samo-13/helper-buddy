@@ -9,29 +9,37 @@ import Card from 'react-bootstrap/Card';
 const StepItem = ({ name, description }) => {
 
   const [open, setOpen]=useState(false);
-  if (!open) {
-    return (
+
+  const closedStep = 
+    (
       <div className='stepbox' onClick={()=>setOpen(true)}>
         <h3>{name}</h3>
         </div>
-        )
+        );
+ 
+  const openStep = (
+      <div className='stepbox' 
+      onClick={()=>setOpen(false)}
+      >
+        <h3>{name}</h3>
+        <h4 className='expanded_step'>{description}</h4>
+        <button onClick={()=>console.log("button!")}>Done!</button>
+    </div>
+        );
+  
+  if (!open) {
+    return (closedStep)
         } else {
-          return (
-        <div className='stepbox' 
-        onClick={()=>setOpen(false)}
-        >
-          <h3>{name}</h3>
-          <h4>{description}</h4>
-          <button onClick={()=>console.log("button!")}>Button!</button>
-      </div>
-          )
+    return (openStep)
       }
-      }
+    }
+      
 
   // return (
 //     <Card style={{ width: '18rem' }}>
 //       {open ? 
       
+
 //       <Card.Body
 //       onClick={()=>setOpen(true)}
 //       className="normal-card"
@@ -59,4 +67,4 @@ const StepItem = ({ name, description }) => {
 
 
 
-export default StepItem;
+export default StepItem
