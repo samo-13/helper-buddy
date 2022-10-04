@@ -1,7 +1,7 @@
 .stepbox {
   position: relative;
   border: 1px #000000 solid;
-  height: 140px;
+  height: fit-content;
   line-height: 2rem;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -17,4 +17,22 @@
     right: 2.8%;
     top: 5%;
   }
+
+  &:last-of-type {
+    margin-bottom: 0;
 }
+
+
+  // .stepbox.h3 {
+  //   width: 200px;
+  // border: 1px #000000 solid;
+  //   height:fit-content;
+  //   display: grid;
+  //   place-items: end center ;
+  //   margin: 10px;
+  // }
+
+ 
+}
+
+
