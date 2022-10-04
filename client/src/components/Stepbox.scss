@@ -13,9 +13,32 @@
   padding: .9rem;
   box-shadow: #c8c2ba 3px 3px;
   text-align: center;
+
+  .button {
+    background-color:#526e8d;
+    border-style:inset;
+    font-size: 1.5em;
+    color: #ffffff;
+    // box-shadow:#526e8d50 -3px -3px;
+    border-radius: 30px;
+    width: fit-content;
+    height: fit-content;
+    padding: .5rem;
+  }
+
+  .button:hover {background-color: #3e8e41}
+
+  .button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
   
   .expanded_step {
     color: #494847;
+  }
+  .done {
+    background:blue;
   }
 
   &:last-of-type {

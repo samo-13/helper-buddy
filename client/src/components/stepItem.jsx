@@ -1,44 +1,34 @@
-import './Stepbox.scss';
+import "./Stepbox.scss";
 
-import {useState} from 'react';
-
-import Card from 'react-bootstrap/Card';
-
-
+import { useState } from "react";
 
 const StepItem = ({ name, description }) => {
+  const [open, setOpen] = useState(false);
 
-  const [open, setOpen]=useState(false);
-
-  const closedStep = 
-    (
-      <div className='stepbox' onClick={()=>setOpen(true)}>
-        <h3>{name}</h3>
-        </div>
-        );
- 
-  const openStep = (
-      <div className='stepbox' 
-      onClick={()=>setOpen(false)}
-      >
-        <h3>{name}</h3>
-        <h4 className='expanded_step'>{description}</h4>
-        <button onClick={()=>console.log("button!")}>Done!</button>
+  const closedStep = (
+    <div className="stepbox" onClick={() => setOpen(true)}>
+      <h3>{name}</h3>
     </div>
-        );
-  
-  if (!open) {
-    return (closedStep)
-        } else {
-    return (openStep)
-      }
-    }
-      
+  );
 
-  // return (
+  const openStep = (
+    <div className="stepbox" onClick={() => setOpen(false)}>
+      <h3>{name}</h3>
+      <h4 className="expanded_step">{description}</h4>
+      <button className='button' onClick={() => console.log("done")}>Done!</button>
+    </div>
+  );
+
+  if (!open) {
+    return closedStep;
+  } else {
+    return openStep;
+  }
+};
+
+// return (
 //     <Card style={{ width: '18rem' }}>
-//       {open ? 
-      
+//       {open ?
 
 //       <Card.Body
 //       onClick={()=>setOpen(true)}
@@ -64,7 +54,4 @@ const StepItem = ({ name, description }) => {
 //   )
 // };
 
-
-
-
-export default StepItem
+export default StepItem;
