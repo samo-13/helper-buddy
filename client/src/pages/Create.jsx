@@ -53,27 +53,27 @@ const handleAddClick = () => {
             <label>Task Name</label>
             <input name="taskName" />
           </div>
-      </form>
 
-          { stepInputList.map((x, i) => {
-            return (
-      <form>
-          <div className="step">
-            <label>Step</label>
-            <br></br>
-            <input name="stepName" placeholder='Add step name!'/>
-            <input name="stepDescription" placeholder='Add step description!'/>
+      { stepInputList.map((x, i) => {
+      return (
+        <div className="step-box">
+            <div className="step">
+              <label>Step</label>
+              <br></br>
+              <input name="stepName" placeholder='Add step name!'/>
+              <input name="stepDescription" placeholder='Add step description!'/>
+            </div>
+
+
+          <div className="step-buttons">
+            <button onClick={handleAddClick} className="step-button">+</button>
+            <button className="step-button">-</button>
           </div>
-
-
-        <div className="step-buttons">
-          <button onClick={handleAddClick} className="step-button">+</button>
-          <button className="step-button">-</button>
         </div>
-          <button className='button' onClick={HandleSubmit} type="submit">Create</button>
-      </form>
-            );
-          })}
+      );
+    })}
+      <button className='button' onClick={HandleSubmit} type="submit">Create</button>
+    </form>
 
       <div style={{ marginTop: 30 }}>{JSON.stringify(taskInput)}</div>
       <div style={{ marginTop: 30 }}>{JSON.stringify(stepInputList)}</div>
