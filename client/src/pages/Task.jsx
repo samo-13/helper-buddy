@@ -2,7 +2,6 @@ import axios from 'axios';
 import { motion, useCycle, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import StepList from '../components/StepList';
-import StepItem from '../components/StepItem';
 
 const Task = () => {
   const { id } = useParams();
@@ -21,7 +20,8 @@ const Task = () => {
       });
   }, [id]);
 
-  return <div>{task && <StepList {...task} />}</div>;
+
+  return <div>{task && <StepItem {...task} />}</div>;
 };
 
 export default Task;
