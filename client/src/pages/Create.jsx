@@ -26,96 +26,50 @@ const Create = () => {
   // const [task, setTask] = useState([]);
   // const [steps, setSteps] = useState();
 
-  const [taskInput, setTaskInput] = useState([
-    { taskName: "" }
-  ]);
+  // const [taskInput, setTaskInput] = useState([
+  //   { taskName: "" }
+  // ]);
 
-  // values // input.taskName
+  // // values // input.taskName
 
-  const [stepInputFields, setStepInputFields] = useState([
-    { stepName: "", stepDescription: "" }
-  ]);
+  // const [stepInputFields, setStepInputFields] = useState([
+  //   { stepName: "", stepDescription: "" }
+  // ]);
 
-  // values // input.stepName // input.stepDescription
+  // // values // input.stepName // input.stepDescription
 
-  // submit button on the form as a whole
-  const HandleSubmit = event => {
-    alert(`Create Task!`)
-  }
+  // // submit button on the form as a whole
+  // const HandleSubmit = event => {
+  //   alert(`Create Task!`)
+  // }
 
-  // handle click event of the + step button
-  const handleAddClick = event => {
-    setStepInputFields([...stepInputFields, { stepName: "", stepDescription: "" }]);
-  };
+  // // handle click event of the + step button
+  // const handleAddClick = event => {
+  //   setStepInputFields([...stepInputFields, { stepName: "", stepDescription: "" }]);
+  // };
 
-  // when the + button is clicked, create an object push it to the stepInputFields state to create a new input field
-  const addStepFields = () => {
-    let newStepField = { stepName: "", stepDescription: "" }
-    // set this newStepField inside the stepInputFields state
-    setStepInputFields([...stepInputFields, newStepField]) // also setting the existing stepInputFields using the spread operator
-  }
+  // // when the + button is clicked, create an object push it to the stepInputFields state to create a new input field
+  // const addStepFields = () => {
+  //   let newStepField = { stepName: "", stepDescription: "" }
+  //   // set this newStepField inside the stepInputFields state
+  //   setStepInputFields([...stepInputFields, newStepField]) // also setting the existing stepInputFields using the spread operator
+  // }
 
-  // runs when you type something in the input fields
+  // // runs when you type something in the input fields
 
-  const handleFormChange = (index, event) => { // index = index of the array and event = the data typed in the input field
-    // set the states in the stepInputFields state
-    let data = [...stepInputFields]; // store stepInputFields state into a variable called data using the spread operator.
-    data[index][event.target.stepName] = event.target.stepDescription; // target the index of the data variable using the index parameter + the name of the property
-    setStepInputFields(data); // store this data back inside the stepInputFields array using the setStepInputFields method
-  }
+  // const handleFormChange = (index, event) => { // index = index of the array and event = the data typed in the input field
+  //   // set the states in the stepInputFields state
+  //   let data = [...stepInputFields]; // store stepInputFields state into a variable called data using the spread operator.
+  //   data[index][event.target.stepName] = event.target.stepDescription; // target the index of the data variable using the index parameter + the name of the property
+  //   setStepInputFields(data); // store this data back inside the stepInputFields array using the setStepInputFields method
+  // }
 
 
   return (
+
     <div className="wrapper">
-      <Form />
       <h2>Create your own custom task!</h2>
-
-      <form>
-
-          <div className="task">
-            <label>Task Name</label>
-            <input
-              name="taskName"
-            />
-          </div>
-
-      { stepInputFields.map((input, index) => {
-      return (
-
-        <div className="step-box">
-            <div className="step">
-              <label>Step</label>
-              <br></br>
-              <div key={index}>
-              <input
-                name="stepName"
-                placeholder='Add step name!'
-                value={input.stepName}
-                onChange={event => handleFormChange(index, event)}
-              />
-              <input
-                name="stepDescription"
-                placeholder='Add step description!'
-                value={input.stepDescription}
-                onChange={event => handleFormChange(index, event)}
-              />
-            </div>
-            </div>
-
-          <div className="step-buttons">
-            <button onClick={addStepFields} className="step-button">+</button>
-            <button className="step-button">-</button>
-          </div>
-        </div>
-
-      );
-    })}
-      <button className='button' onClick={HandleSubmit} type="submit">Create</button>
-    </form>
-
-      <div style={{ marginTop: 30 }}>{JSON.stringify(taskInput)}</div>
-      <div style={{ marginTop: 30 }}>{JSON.stringify(stepInputFields)}</div>
-
+      <Form />
     </div>
   )
 }

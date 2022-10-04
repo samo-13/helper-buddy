@@ -14,6 +14,6 @@ router.route("/").get(getAllTasks).post(createTask);
 
 router.route("/:id").get(getTask).put(updateTask).delete(deleteTask);
 
-// router.route("/:id/steps").get(getAllStepsByTaskId).post(createTask);
+router.route("/:id/steps").get(getAllStepsByTaskId).post(createTask);
 
 module.exports = router;
