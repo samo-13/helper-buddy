@@ -15,8 +15,8 @@ class Form extends React.Component {
     }));
   }
 
-  removeStep = (event) => { // sets the state with ... of the previous state’s steps array with a new blank step object added on the end. This should re-render our component, and the form will iterate over the new length of the array, to give us a new pair of inputs.
-      alert("Remove step")
+  removeStep = () => {
+    alert('Remove Step!!')
     };
 
   handleSubmit = (event) => { // stops form from automatically reloading the page
