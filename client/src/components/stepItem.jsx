@@ -2,8 +2,8 @@ import "./Stepbox.scss";
 
 import { useState } from "react";
 
-const StepItem = ({ name, description }) => {
-  const [open, setOpen] = useState(false);
+
+
 
   const closedStep = (
     <div className="stepbox" onClick={() => setOpen(true)}>
