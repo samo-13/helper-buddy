@@ -1,6 +1,7 @@
 // --------------------------------------------------------------------------------------------------
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
+import { Form } from '../components/CreateForm.jsx'
 // import { createTask, getTask, updateTask } from '/Users/sarahmoss/helper-buddy/routes/taskRoutes.js'; // this gives an error bc it's outside src
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // --------------------------------------------------------------------------------------------------
@@ -66,6 +67,7 @@ const Create = () => {
 
   return (
     <div className="wrapper">
+      <Form />
       <h2>Create your own custom task!</h2>
 
       <form>
@@ -99,7 +101,6 @@ const Create = () => {
               />
             </div>
             </div>
-
 
           <div className="step-buttons">
             <button onClick={addStepFields} className="step-button">+</button>
