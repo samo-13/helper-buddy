@@ -29,7 +29,7 @@ const Create = () => {
     createTask('Test task name')
   }
 
-  const addStepField = event => {
+  const AddStepField = event => {
     alert('Another step field should be added!')
   }
 
@@ -58,7 +58,7 @@ const Create = () => {
         </fieldset>
 
         <div className="step-buttons">
-          <button onClick={addStepField} className="step-button">+</button>
+          <button onClick={AddStepField} className="step-button">+</button>
           <button className="step-button">-</button>
         </div>
           <button className='button' onClick={HandleSubmit} type="submit">Create</button>
