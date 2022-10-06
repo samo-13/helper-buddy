@@ -8,7 +8,7 @@ const StepList = ({steps}) => {
     <div >
       {steps.map(step => (
         <div>
-       <StepItem {...step} />
+       <StepItem {...step} key={step.id} />
        {/* <button onClick={()=>console.log("button!")}>Button!</button> */}
        </div>
       ))}
