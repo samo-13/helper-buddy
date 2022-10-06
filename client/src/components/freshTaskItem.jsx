@@ -20,10 +20,11 @@ const FreshTaskItem = (task) => {
   
 
   const handleClick = async () => {
+    console.log("taskname", task.task.name)
     try {
       const { newTask } = await axios.post(`/api/tasks/new`, {
-        name: task.task.name,
-        steps: task.steps
+        name: JSON.stringify(task.task.name),
+        steps: JSON.stringify(task.steps)
       });
       console.log("name", task.task.name)
       console.log("newTask", (newTask, null, 4));
