@@ -16,8 +16,15 @@ import React, { useState, useEffect } from 'react';
 
 // --------------------------------------------------------------------------------------------------
 
-
 const Form = () => {
+  const [taskState, setTaskState] = useState({
+    name: ''
+  })
+
+  const handleTaskChange = (event) => setTaskState({
+    ...taskState,
+    [event.target.name]: [event.target.value],
+  });
 
   const blankStep = { name: '', description: '' };
 
@@ -31,13 +38,16 @@ const Form = () => {
 
   return (
     <form>
-      <label htmlFor="task">Task Name</label>
-      <input type="text" name="task" id="task" />
+      <label
+        htmlFor="task">Task Name
+      </label>
       <input
-        type="button"
-        value="Add Step"
-        onClick={addStep}
-        />
+        type="text"
+        name="task"
+        id="task"
+        value={taskState.name}
+        onChange={handleTaskChange}
+      />
 
       {
         stepState.map((value, index) => {
@@ -65,7 +75,15 @@ const Form = () => {
           )
         })
       }
-      <input type="submit" value="Submit" />
+      <input
+        type="button"
+        value="Add Step"
+        onClick={addStep}
+      />
+      <input
+        type="submit"
+        value="Submit"
+      />
     </form>
   );
 };
