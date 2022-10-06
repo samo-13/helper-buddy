@@ -22,11 +22,6 @@ const Form = () => {
     name: ''
   });
 
-  const handleTaskChange = (event) => setTaskState({
-    ...taskState,
-    [event.target.name]: [event.target.value],
-  });
-
   const blankStep = { name: '', description: '' };
 
   const [stepState, setStepState] = useState([
@@ -37,6 +32,18 @@ const Form = () => {
     setStepState([...stepState, {...blankStep}]);
   }
 
+  const handleTaskChange = (event) => setTaskState({
+    ...taskState,
+    [event.target.name]: [event.target.value],
+  });
+
+  const handleStepChange = (event) => {
+    const updatedSteps = [...stepState]; // clone our stepState to keep renders pure
+    // with the exact step and property we can set the value with event.target.value
+    updatedSteps[event.target.dataset.index][event.target.className] = event.target.value // use the index data attribute to locate the index of the particular set of step inputs -- then use className to see if it's the name or description that was changed
+    setStepState(updatedSteps) // update state with the updated array of steps
+  };
+
   return (
     <form>
       <label
@@ -44,7 +51,7 @@ const Form = () => {
       </label>
       <input
         type="text"
-        name="task"
+        name="name"
         id="task"
         value={taskState.name}
         onChange={handleTaskChange}
@@ -63,6 +70,8 @@ const Form = () => {
                 data-index={index}
                 id={stepNameId}
                 className="name"
+                value={stepState[index].name}
+                onChange={handleStepChange}
               />
               <label htmlFor={descriptionId}>Description</label>
               <input
@@ -71,6 +80,8 @@ const Form = () => {
                 data-index={index}
                 id={descriptionId}
                 className="description"
+                value={stepState[index].description}
+                onChange={handleStepChange}
                 />
               </div>
           )
