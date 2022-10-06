@@ -3,7 +3,8 @@ import "./Taskbox.scss";
 
 const FreshTaskItem = ({ task }) => {
   return (
-    <div className="taskbox">
+    // add onClick = {action} here
+    <div className="taskbox" > 
       <Link to={`/task/${task.id}`}>
         <span>-- Steps</span>
         <h3>{task.name}</h3>

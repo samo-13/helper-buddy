@@ -1,8 +1,7 @@
-import axios from 'axios';
-import { motion, useCycle, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import StepList from '../components/StepList';
-
+import axios from "axios";
+import { motion, useCycle, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import StepList from "../components/StepList";
 
 const Task = () => {
   const { id } = useParams();
@@ -11,13 +10,14 @@ const Task = () => {
   useEffect(() => {
     axios
       .get(`/api/tasks/templates/${id}`)
-      .then(res => {
+      .then((res) => {
         const task = res.data[0];
-        const id = res.data[0]
-        setTask(task)
-        console.log(task)
+        const id = res.data[0];
+        setTask(task);
+        const steps = task.steps;
+        // createTask(steps);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }, [id]);

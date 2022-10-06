@@ -17,7 +17,6 @@ const Home = () => {
   useEffect(() => {
     Promise.all([axios.get('/api/tasks/templates/')])
       .then(response => {
-        
         const tasks = response[0].data;
         console.log("tasks", tasks)
         setTasks(tasks);

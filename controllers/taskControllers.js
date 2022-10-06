@@ -28,9 +28,6 @@ const getTask = asyncHandler(async (req, res) => {
   const steps = await db.query(
     "SELECT task_id, name, description,completed_at FROM steps WHERE task_id = $1",
    [id]);
-  //  const newTask = await db.query(
-  //   "INSERT INTO tasks (name) VALUES($1) RETURNING *",
-  //   [taskName]);
    res.json({task: task.rows[0], steps: steps.rows});
 });
 
