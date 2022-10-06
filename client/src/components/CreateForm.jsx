@@ -19,15 +19,25 @@ import React, { useState, useEffect } from 'react';
 
 const Form = () => {
 
+  const blankStep = { name: '', description: '' };
+
   const [stepState, setStepState] = useState([
-    { name: '', description: ''},
+    {...blankStep}
   ]);
+
+  const addStep = () => {
+    setStepState([...stepState, {...blankStep}]);
+  }
 
   return (
     <form>
       <label htmlFor="task">Task Name</label>
       <input type="text" name="task" id="task" />
-      <input type="button" value="Add Step" />
+      <input
+        type="button"
+        value="Add Step"
+        onClick={addStep}
+        />
 
       {
         stepState.map((value, index) => {
