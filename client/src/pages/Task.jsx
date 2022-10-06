@@ -12,12 +12,10 @@ const Task = () => {
     axios
       .get(`/api/tasks/templates/${id}`)
       .then(res => {
-        const task = res.data;
-
-        console.log(task[0].task.id);
-        const filteredTasks = task.filter(t => t.task.id == id)
-      
-        setTask(filteredTasks[0])
+        const task = res.data[0];
+        const id = res.data[0]
+        setTask(task)
+        console.log(task)
       })
       .catch(err => {
         console.log(err);

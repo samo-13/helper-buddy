@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import "./Taskbox.scss";
 
-const FreshTaskItem = ({ id, name }) => {
+const FreshTaskItem = ({ task }) => {
   return (
     <div className="taskbox">
-      <Link to={`/task/${id}`}>
+      <Link to={`/task/${task.id}`}>
         <span>-- Steps</span>
-        <h3>{name}</h3>
+        <h3>{task.name}</h3>
         <h4>Average time to complete:</h4>
       </Link>
     </div>
