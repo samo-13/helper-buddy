@@ -1,39 +1,48 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./Taskbox.scss";
 
 const newTaskFromClick = document.querySelectorAll("start-task");
-console.log("newtaskfromclicK", newTaskFromClick);
 
 newTaskFromClick.forEach((task) => {
   task.addEventListener("submit", (e) => {
     e.preventDefault();
     const taskData = new taskData(e.target);
+    console.log(taskData);
   });
-  // axios
-  //     .post(e.target.action)
-  //     .then(res => {
-  //       console.log(res)
-  //     })
-  //     .catch(console.error);
 });
 
-const FreshTaskItem = ({ task }) => {
+const FreshTaskItem = (task) => {
+  // const [newTask, setNewTask] = useState();
+  const [err, setErr] = useState("");
+  // console.log("itemtask", task.steps)
+  
+
+  const handleClick = async () => {
+    try {
+      const { newTask } = await axios.post(`/api/tasks/new`, {
+        name: task.task.name,
+        steps: task.steps
+      });
+      console.log("name", task.task.name)
+      console.log("newTask", (newTask, null, 4));
+    } catch (err) {
+      setErr(err.message);
+    }
+  };
+
   return (
-    // add onClick = {action} here
     <div className="taskbox">
-      {/* here's where the submit button goes */}
-      {/* also add preview button with link to `task/${task.id}` */}
-      {/* make this link just the text */}
-      <h3>{task.name}</h3>
-      <Link to={`/task/${task.id}`}>
-        <button type="submit" class="start-task">
+      <h3>{task.task.name}</h3>
+      {/* this link should point to a template task? but getTask is using template */}
+      <Link to={`task/${task.task.id}`}>
+        <button type="click" class="start-task" onClick={handleClick}>
           start
         </button>
         <button type="click" class="preview-task">
           preview
         </button>
-
       </Link>
       <h4>Average time to complete:</h4>
     </div>

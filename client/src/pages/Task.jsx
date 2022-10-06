@@ -22,7 +22,7 @@ const Task = () => {
         console.log(err);
       });
   }, [id]);
-
+   console.log("...task", {...task})
   return <div>{task && <StepList {...task} />}</div>;
 };
 

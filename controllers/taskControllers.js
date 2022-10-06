@@ -1,16 +1,14 @@
 const db = require("../config/dbConfig");
+const taskInfo = require("../config/taskInfo.json")
 const asyncHandler = require("express-async-handler");
 
 const getAllTasks = asyncHandler(async (req, res) => {
-  const tasks = await db.query("SELECT * FROM tasks");
-
+  const tasks = await taskInfo.query("SELECT * FROM tasks");
   res.json(tasks.rows);
 });
 
 const createTask = asyncHandler(async (req, res) => {
   const { name, steps } = req.body;
-
-
   const newTask = await db.query(
     "INSERT INTO tasks (name, steps) VALUES($1, $2) RETURNING *",
     [name, steps]
@@ -21,8 +19,8 @@ const createTask = asyncHandler(async (req, res) => {
 
 const getTask = asyncHandler(async (req, res) => {
   const { id } = req.params;
-
-  const task = await db.query(`SELECT * FROM tasks WHERE id = ${id}`);
+// here i'm trying to send the getTask request to JSON, not db
+  const task = await taskInfo.query(`SELECT * FROM tasks WHERE id = ${id}`);
   taskName = task.name;
   console.log(taskName)
   const steps = await db.query(

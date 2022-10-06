@@ -18,7 +18,7 @@ const Home = () => {
     Promise.all([axios.get('/api/tasks/templates/')])
       .then(response => {
         const tasks = response[0].data;
-        console.log("tasks", tasks)
+        console.log("hometasks", tasks)
         setTasks(tasks);
       })
       .catch(err => {
