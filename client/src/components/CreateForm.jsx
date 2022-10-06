@@ -28,9 +28,36 @@ const Form = () => {
       <label htmlFor="task">Task Name</label>
       <input type="text" name="task" id="task" />
       <input type="button" value="Add Step" />
+
+      {
+        stepState.map((value, index) => {
+          const stepNameId = `name-${index}`;
+          const descriptionId = `description-${index}`;
+          return (
+            <div key={`step-${index}`}>
+              <label htmlFor={stepNameId}>{`Step #${index + 1}`}</label>
+              <input
+                type="text"
+                name={stepNameId}
+                data-index={index}
+                id={stepNameId}
+                className="name"
+              />
+              <label htmlFor={descriptionId}>Description</label>
+              <input
+                type="text"
+                name={descriptionId}
+                data-index={index}
+                id={descriptionId}
+                className="description"
+                />
+              </div>
+          )
+        })
+      }
       <input type="submit" value="Submit" />
     </form>
   );
 };
 
-export { Form };
+export default Form;
