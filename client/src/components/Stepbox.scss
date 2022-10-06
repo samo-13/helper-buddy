@@ -1,0 +1,72 @@
+.stepbox {
+  color: #321d00;
+  position: 1em;
+  background:#ffffff80;
+  border-radius: 25px;
+  height: fit-content;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:1em;
+  margin-bottom:1em;
+  line-height: 2rem;
+  padding: .9rem;
+  box-shadow: #c8c2ba 3px 3px;
+  text-align: center;
+
+  .button {
+    background-color:#526e8d;
+    border-style:inset;
+    font-size: 1.5em;
+    color: #ffffff;
+    // box-shadow:#526e8d50 -3px -3px;
+    border-radius: 30px;
+    width: fit-content;
+    height: fit-content;
+    padding: .5rem;
+  }
+
+  .button:hover {background-color: #3e8e41}
+
+  .button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+  
+  .expanded_step {
+    color: #494847;
+  }
+  .done {
+    background:blue;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  span {
+    position: absolute;
+    font-weight: 700;
+    right: 2.8%;
+    top: 5%;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+}
+
+
+  // .stepbox.h3 {
+  //   width: 200px;
+  // border: 1px #000000 solid;
+  //   height:fit-content;
+  //   display: grid;
+  //   place-items: end center ;
+  //   margin: 10px;
+  // }
+
+ 
+}
+
+

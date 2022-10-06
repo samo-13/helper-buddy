@@ -1,7 +1,5 @@
-// import React from "react";
-import { Outlet } from 'react-router-dom'; // look this up
+import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navigation';
-import Header from '../components/Header';
 import './Layout.scss';
 
 const Layout = () => {
@@ -10,16 +8,9 @@ const Layout = () => {
       <Navbar />
 
       <div className='layout__container'>
-        <Header />
         <Outlet />
       </div>
     </>
-
-    // <span>
-    //   <Navbar />
-    //   <Header />
-    //   <Outlet />
-    // </span>
   );
 };
 

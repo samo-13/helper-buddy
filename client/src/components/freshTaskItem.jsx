@@ -1,11 +1,15 @@
-import './Taskbox.scss';
+import { Link } from "react-router-dom";
+import "./Taskbox.scss";
 
-const FreshTaskItem = ({ name }) => {
+const FreshTaskItem = ({ task }) => {
   return (
-    <div className='taskbox'>
-      <span>-- Steps</span>
-      <h3>{name}</h3>
-      <h4>Average time to complete:</h4>
+    // add onClick = {action} here
+    <div className="taskbox" > 
+      <Link to={`/task/${task.id}`}>
+        <span>-- Steps</span>
+        <h3>{task.name}</h3>
+        <h4>Average time to complete:</h4>
+      </Link>
     </div>
   );
 };
