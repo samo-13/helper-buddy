@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import StepList from '../components/StepList';
-=======
 import axios from "axios";
 import { motion, useCycle, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import StepList from "../components/StepList";
->>>>>>> megan/more-task
 
 const Task = () => {
   const { id } = useParams();

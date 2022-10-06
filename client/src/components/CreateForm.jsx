@@ -17,9 +17,10 @@ import React, { useState, useEffect } from 'react';
 // --------------------------------------------------------------------------------------------------
 
 const Form = () => {
+
   const [taskState, setTaskState] = useState({
     name: ''
-  })
+  });
 
   const handleTaskChange = (event) => setTaskState({
     ...taskState,
@@ -32,7 +33,7 @@ const Form = () => {
     {...blankStep}
   ]);
 
-  const addStep = () => {
+  const addStep = () => { // sets the state with ... of the previous state’s steps array, and a new blankStep object is added on the end
     setStepState([...stepState, {...blankStep}]);
   }
 
@@ -76,7 +77,7 @@ const Form = () => {
         })
       }
       <input
-        type="button"
+        type="button" // type button on input element doesn't submit the form so we don't need a prevent default
         value="Add Step"
         onClick={addStep}
       />
