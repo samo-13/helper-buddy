@@ -12,3 +12,10 @@ const getAllStepsByTaskId = asyncHandler(async (req, res) => {
     newTaskObject = Object.fromEntries(steps.rows)
     return newTaskObject;
   });
+
+  const getAllSteps = asyncHandler(async (req, res) => {
+    const steps = await db.query("SELECT * FROM steps");
+    res.json(steps.rows);
+  });
+
+  module.exports = { getAllStepsByTaskId, getAllSteps };

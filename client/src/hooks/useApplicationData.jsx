@@ -5,7 +5,7 @@ export default function useApplicationData() {
 
   const [state, setState] = useState({ // maintain the same structure.
     tasks: [],
-    steps: {},
+    steps: [],
   });
 
   useEffect(() => {
