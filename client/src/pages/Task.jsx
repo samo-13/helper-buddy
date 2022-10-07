@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { motion, useCycle, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";

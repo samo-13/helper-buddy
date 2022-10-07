@@ -1,4 +1,4 @@
---createNewTask
+--createTask
 INSERT INTO tasks (name) VALUES ($1)
 --startNewTask
 INSERT INTO tasks (user_id, name, started_at) VALUES ($1, $2, current_timestamp);
