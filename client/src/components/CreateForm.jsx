@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import useApplicationData from '../hooks/useApplicationData';
+import { getTasks, getSteps } from '../helpers/selectors'
 
 // https://www.geeksforgeeks.org/reactjs-htmlfor-attribute/#:~:text=React%20provides%20us%20some%20in,for%20the%20given%20HTML%20elements
 
@@ -17,6 +19,11 @@ import React, { useState, useEffect } from 'react';
 // --------------------------------------------------------------------------------------------------
 
 const Form = () => {
+
+  const {
+    state,
+    createTask
+  } = useApplicationData();
 
   const [taskState, setTaskState] = useState({
     name: ''
@@ -43,6 +50,9 @@ const Form = () => {
     updatedSteps[event.target.dataset.index][event.target.className] = event.target.value // use the index data attribute to locate the index of the particular set of step inputs -- then use className to see if it's the name or description that was changed
     setStepState(updatedSteps) // update state with the updated array of steps
   };
+
+  const tasks = getTasks(state)
+  console.log('TASKS FROM CREATE FORM:', tasks)
 
   return (
     <form>

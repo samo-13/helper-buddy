@@ -10,8 +10,8 @@ export default function useApplicationData() {
 
   useEffect(() => {
     Promise.all([
-      axios.get('http://localhost:8008/api/tasks'),
-      axios.get('http://localhost:8008/api/steps')
+      axios.get('http://localhost:8080/api/tasks'),
+      axios.get('http://localhost:8080/api/steps')
     ]).then((all) => {
       setState(prev => ({...prev, tasks: all[0].data, steps: all[1].data }));
     })
