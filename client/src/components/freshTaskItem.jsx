@@ -9,25 +9,27 @@ newTaskFromClick.forEach((task) => {
   task.addEventListener("submit", (e) => {
     e.preventDefault();
     const taskData = new taskData(e.target);
-    console.log(taskData);
+    console.log("taskData", taskData);
   });
 });
 
 const FreshTaskItem = (task) => {
-  // const [newTask, setNewTask] = useState();
+  const [newTask, setNewTask] = useState("");
   const [err, setErr] = useState("");
   // console.log("itemtask", task.steps)
   
 
   const handleClick = async () => {
-    console.log("taskname", task.task.name)
     try {
       const { newTask } = await axios.post(`/api/tasks/new`, {
         name: JSON.stringify(task.task.name),
         steps: JSON.stringify(task.steps)
       });
-      console.log("name", task.task.name)
-      console.log("newTask", (newTask, null, 4));
+      console.log("newTaskName", newTask.name)
+      console.log("newTaskid",(newTask.task.id));
+      setNewTask(newTask)
+      //put then here to redirect instead of using link
+
     } catch (err) {
       setErr(err.message);
     }
@@ -35,10 +37,12 @@ const FreshTaskItem = (task) => {
 
   return (
     <div className="taskbox">
-      <h3>{task.task.name}</h3>
-      {/* this link should point to a template task? but getTask is using template */}
+      <div className="name">
+      {task.task.name}
+      </div>
       <Link to={`task/${task.task.id}`}>
-        <button type="click" class="start-task" onClick={handleClick}>
+        {/* does the newTask initiated here get paassed anywhere? */}
+        <button type="click" class="start-task" className='button-start' onClick={handleClick}>
           start
         </button>
         <button type="click" class="preview-task">

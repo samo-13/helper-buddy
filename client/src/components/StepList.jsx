@@ -4,11 +4,12 @@ import StepItem from "./StepItem";
 
 
 const StepList = ({steps}) => {
+  console.log("steps!!!", steps)
   return (
     <div >
       {steps.map(step => (
         <div>
-       <StepItem {...step} key={step.id} />
+       <StepItem {...step}/>
        {/* <button onClick={()=>console.log("button!")}>Button!</button> */}
        </div>
       ))}
@@ -17,3 +18,4 @@ const StepList = ({steps}) => {
 };
 
 export default StepList;
+

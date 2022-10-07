@@ -13,17 +13,17 @@ const createTask = asyncHandler(async (req, res) => {
     "INSERT INTO tasks (name, steps) VALUES($1, $2) RETURNING *",
     [name, steps]
   );
-
   res.json(newTask.rows[0]);
 });
 
 const getTask = asyncHandler(async (req, res) => {
   const { id } = req.params;
 // here i'm trying to send the getTask request to JSON, not db
-  const task = await taskInfo.query(`SELECT * FROM tasks WHERE id = ${id}`);
+  const task = await db.query(`SELECT task FROM tasks WHERE id = ${id}`);
   taskName = task.name;
   console.log(taskName)
-  const steps = await db.query(
+
+  const steps = await taskInfo.query(
     "SELECT task_id, name, description,completed_at FROM steps WHERE task_id = $1",
    [id]);
    res.json({task: task.rows[0], steps: steps.rows});

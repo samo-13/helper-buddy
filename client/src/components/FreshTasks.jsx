@@ -5,7 +5,8 @@ const FreshTasks = ({ tasks }) => {
   return (
     <div>
       {tasks.map(task => (
-        <FreshTaskItem key={task.id} steps={steps} {...task} />
+        //is here where we should be finding the index of the task?
+        <FreshTaskItem {...task} />
       ))}
     </div>
   );
