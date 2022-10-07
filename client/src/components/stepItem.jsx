@@ -21,7 +21,7 @@ const StepItem = ({ ...step }) => {
   
 
   //this needs to go in the click handler
-  useEffect(() => {
+  // useEffect(() => {
     
     //how does this get routed? also need to figure out how to write query that takes step id as index
   //   axios.put(`/api/task/${task.id}`, {
@@ -32,16 +32,16 @@ const StepItem = ({ ...step }) => {
   //     });
   // });
 
-  const handleClick = async () => {
-    const time = Date.now();
-    axios.put(`/api/task/${task.id}`, {
+  // const handleClick = async () => {
+  //   const time = Date.now();
+  //   axios.put(`/api/task/${task.id}`, {
   
-      completed_at: JSON.stringify(time)
-    })
+  //     completed_at: JSON.stringify(time)
+  //   })
    
-  .catch((err) => {
-    console.log(err)
-  });
+  // .catch((err) => {
+  //   console.log(err)
+  // });
 
   
 
@@ -57,7 +57,7 @@ const StepItem = ({ ...step }) => {
       <h3>{step.name}</h3>
       <h4 className="expanded_step">{step.description}</h4>
       {/* onClick={{handleClick} */}
-      <button type="submit" className='button' onClick={clickHandler}>Done!</button>
+      <button type="submit" className='button' onClick={console.log(task)}>Done!</button>
     </div>
   );
 
