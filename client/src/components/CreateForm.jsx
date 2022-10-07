@@ -19,13 +19,13 @@ import { createTask } from '../hooks/useApplicationData';
 
 // --------------------------------------------------------------------------------------------------
 
-const Form = (props) => {
+const Form = () => {
 
   // --------------------------------------------------------------------------------------------------
 
   const {
-    state
-    // createTask
+    state,
+    createTask
   } = useApplicationData();
 
   // --------------------------------------------------------------------------------------------------
@@ -68,14 +68,21 @@ const Form = (props) => {
 
   // --------------------------------------------------------------------------------------------------
 
-  const tasks = getTasks(state)
-  console.log('TASKS FROM CREATE FORM:', tasks)
+  // const tasks = getTasks(state)
+  // console.log('TASKS FROM CREATE FORM:', tasks)
 
-  const steps = getSteps(state)
-  console.log('STEPS FROM CREATE FORM:', steps)
+  // const steps = getSteps(state)
+  // console.log('STEPS FROM CREATE FORM:', steps)
+
+  const handleSubmit =(e) => {
+    e.preventDefault()
+
+    console.log('form submitted')
+    createTask(taskState.name)
+  }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label
         htmlFor="task">Task Name
       </label>
