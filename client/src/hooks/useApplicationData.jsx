@@ -23,7 +23,7 @@ export default function useApplicationData() {
   function createTask(id, task) { // we want this to create new task and also add steps using the new task id to the steps data
     console.log('createTask ID:', id)
     console.log('createTask TASK:', task)
-    return axios.put(`http://localhost:8080/api/tasks`)
+    return axios.put(`http://localhost:8080/api/task/${id}`)
     .then(() => axios.get(`http://localhost:8080/api/tasks`))
     .then((response) => {
       const tasks = response.data
