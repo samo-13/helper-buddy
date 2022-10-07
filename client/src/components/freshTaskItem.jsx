@@ -36,18 +36,12 @@ const FreshTaskItem = (task) => {
   };
 
   return (
-    <div className="taskbox">
-      <div className="name">
-      {task.task.name}
-      </div>
-      <Link to={`task/${task.task.id}`}>
-        {/* does the newTask initiated here get paassed anywhere? */}
-        <button type="click" class="start-task" className='button-start' onClick={handleClick}>
-          start
-        </button>
-        <button type="click" class="preview-task">
-          preview
-        </button>
+    // add onClick = {action} here
+    <div className="taskbox" >
+      <Link to={`/task/${task.id}`}>
+        <span>-- Steps</span>
+        <h3>{task.name}</h3>
+        <h4>Average time to complete:</h4>
       </Link>
       <h4>Average time to complete:</h4>
     </div>

@@ -2,10 +2,16 @@ const express = require("express");
 
 const router = express.Router();
 
+const {
+  getAllSteps,
+  getAllStepsByTaskId,
+  createStep
+} = require("../controllers/helperFunctions");
+
 router
   .route("/")
-  .get((req, res) => res.json({ message: "get all steps" }))
-  .post((req, res) => res.json({ message: "post a new step" }));
+  .get(getAllSteps)
+  .post(createStep);
 
 router
   .route("/:id")
