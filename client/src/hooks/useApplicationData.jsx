@@ -5,30 +5,42 @@ export default function useApplicationData() {
 
   const [state, setState] = useState({ // maintain the same structure
     tasks: [],
-    // steps: [],
+    steps: [],
   });
 
   useEffect(() => {
     Promise.all([
       axios.get('http://localhost:8080/api/tasks'),
-      // axios.get('http://localhost:8080/api/steps')
+      axios.get('http://localhost:8080/api/steps')
     ]).then((all) => {
-      // setState(prev => ({...prev, tasks: all[0].data, steps: all[1].data }));
-      setState(prev => ({...prev, tasks: all[0].data}));
+      setState(prev => ({ ...prev, tasks: all[0].data, steps: all[1].data }));
+      // setState(prev => ({ ...prev, tasks: all[0].data }));
     })
   }, [])
 
   // console.log('STATE:', state)
 
   // --- The createTask action makes an HTTP request and updates the local state
-  function createTask(task) { // we want this to create new task and also add steps using the new task id to the steps data
+  function createTask(task, steps) { // we want this to create new task and also add steps using the new task id to the steps data
     console.log('createTask TASK:', task)
 
-    axios.post(`http://localhost:8080/api/tasks`)
-    .then((response) => {
-      console.log(response[0])
-      // console.log('steps:', steps)
-    }).catch(err => console.log(err))
+    axios.post(`http://localhost:8080/api/tasks`, {
+      name: task[0]
+    })
+      .then((response) => {
+        return response.data.id
+        // console.log('steps:', steps)
+      })
+      .then(id => {
+        steps.forEach(step => {
+          axios.post(`http://localhost:8080/api/steps`, {
+            taskId: id,
+            name: step.name,
+            description: step.description
+          })
+        })
+      })
+      .catch(err => console.log(err))
     // .then((response) => {
     //   console.log(response)
     //   // const tasks = response.data

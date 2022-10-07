@@ -41,13 +41,13 @@ const Form = () => {
   // --------------------------------------------------------------------------------------------------
 
   const [stepState, setStepState] = useState([
-    {...blankStep}
+    { ...blankStep }
   ]);
 
   // --------------------------------------------------------------------------------------------------
 
   const addStep = () => { // sets the state with ... of the previous state’s steps array, and a new blankStep object is added on the end
-    setStepState([...stepState, {...blankStep}]);
+    setStepState([...stepState, { ...blankStep }]);
   }
 
   // --------------------------------------------------------------------------------------------------
@@ -74,11 +74,11 @@ const Form = () => {
   // const steps = getSteps(state)
   // console.log('STEPS FROM CREATE FORM:', steps)
 
-  const handleSubmit =(e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
 
     console.log('form submitted')
-    createTask(taskState.name)
+    createTask(taskState.name, stepState)
   }
 
   return (
@@ -119,8 +119,8 @@ const Form = () => {
                 className="description"
                 value={stepState[index].description}
                 onChange={handleStepChange}
-                />
-              </div>
+              />
+            </div>
           )
         })
       }

@@ -8,12 +8,16 @@ const getAllTasks = asyncHandler(async (req, res) => {
 });
 
 const createTask = asyncHandler(async (req, res) => {
-  const { name, steps } = req.body;
+  // const { name, steps } = req.body;
+  const { name} = req.body;
 
+  console.log(name)
 
   const newTask = await db.query(
-    "INSERT INTO tasks (name, steps) VALUES($1, $2) RETURNING *",
-    [name, steps]
+    // "INSERT INTO tasks (name, steps) VALUES($1, $2) RETURNING *",
+    // [name, steps]
+    "INSERT INTO tasks (name) VALUES($1) RETURNING *",
+    [name]
   );
 
   res.json(newTask.rows[0]);

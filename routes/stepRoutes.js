@@ -11,7 +11,7 @@ const {
 router
   .route("/")
   .get(getAllSteps)
-  // .post(createStep);
+  .post(createStep);
 
 router
   .route("/:id")
