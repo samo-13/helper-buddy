@@ -54,6 +54,9 @@ const Form = () => {
   const tasks = getTasks(state)
   console.log('TASKS FROM CREATE FORM:', tasks)
 
+  const steps = getSteps(state)
+  console.log('STEPS FROM CREATE FORM:', steps)
+
   return (
     <form>
       <label
