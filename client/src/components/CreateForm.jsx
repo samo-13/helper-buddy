@@ -22,7 +22,7 @@ const Form = () => {
 
   const {
     state,
-    createTask
+    createNewTask
   } = useApplicationData();
 
   const [taskState, setTaskState] = useState({
@@ -56,6 +56,8 @@ const Form = () => {
 
   const steps = getSteps(state)
   console.log('STEPS FROM CREATE FORM:', steps)
+
+  // createNewTask()
 
   return (
     <form>

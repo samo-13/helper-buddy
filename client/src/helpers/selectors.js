@@ -6,18 +6,18 @@ export function getTasks(state) {
   }
 
   const tasks = state.tasks
-  console.log('TASKS:', tasks)
+  console.log('SELECTORS TASKS:', tasks)
   return tasks;
 }
 
 
 export function getSteps(state) {
   if (state.steps.length < 1) {
-    console.log('No stepss found!')
+    console.log('No steps found!')
     return [];
   }
 
   const steps = state.steps
-  console.log('STEPS:', steps)
+  console.log('SELECTORS STEPS:', steps)
   return steps;
 }
