@@ -1,24 +1,10 @@
 import React, { useState } from 'react';
 import useApplicationData from '../hooks/useApplicationData';
-import { getTasks, getSteps } from '../helpers/selectors'
-import { createTask } from '../hooks/useApplicationData';
 
+// --------------------------------------------------------------------------------------------------
+// Stylesheets
 import './CreateForm.scss';
-
-// https://www.geeksforgeeks.org/reactjs-htmlfor-attribute/#:~:text=React%20provides%20us%20some%20in,for%20the%20given%20HTML%20elements
-
-// --------------------------------------------------------------------------------------------------
-// PSEUDO CODE
-// --------------------------------------------------------------------------------------------------
-
-// --- Use arrays for dynamic inputs
-// --- Have an array of step objects in our state.
-// --- Each object will have a name and description value.
-// --- Our Form will iterate over this list and create two new inputs for the name and description.
-// --- When we click “Add Step”, we’ll add a new object to our array.
-// --- Since this will change our state, it will trigger a re-render.
-// --- Then, our form will iterate over this new list of steps, and add another pair of inputs.
-
+import './Button.scss';
 // --------------------------------------------------------------------------------------------------
 
 const Form = () => {
