@@ -1,5 +1,7 @@
 
-export function getTasks(state) {
+// --------------------------------------------------------------------------------------------------
+
+function getTasks(state) {
   if (state.tasks.length < 1) {
     console.log('No tasks found!')
     return [];
@@ -10,8 +12,9 @@ export function getTasks(state) {
   return tasks;
 }
 
+// --------------------------------------------------------------------------------------------------
 
-export function getSteps(state) {
+function getSteps(state) {
   if (state.steps.length < 1) {
     console.log('No steps found!')
     return [];
@@ -21,3 +24,7 @@ export function getSteps(state) {
   console.log('SELECTORS STEPS:', steps)
   return steps;
 }
+
+// --------------------------------------------------------------------------------------------------
+
+export { getTasks, getSteps }

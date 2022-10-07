@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import useApplicationData from '../hooks/useApplicationData';
 import { getTasks, getSteps } from '../helpers/selectors'
+import { createTask } from '../hooks/useApplicationData';
 
 // https://www.geeksforgeeks.org/reactjs-htmlfor-attribute/#:~:text=React%20provides%20us%20some%20in,for%20the%20given%20HTML%20elements
 
@@ -18,31 +19,45 @@ import { getTasks, getSteps } from '../helpers/selectors'
 
 // --------------------------------------------------------------------------------------------------
 
-const Form = () => {
+const Form = (props) => {
+
+  // --------------------------------------------------------------------------------------------------
 
   const {
-    state,
-    createNewTask
+    state
+    // createTask
   } = useApplicationData();
+
+  // --------------------------------------------------------------------------------------------------
 
   const [taskState, setTaskState] = useState({
     name: ''
   });
 
+  // --------------------------------------------------------------------------------------------------
+
   const blankStep = { name: '', description: '' };
+
+  // --------------------------------------------------------------------------------------------------
 
   const [stepState, setStepState] = useState([
     {...blankStep}
   ]);
 
+  // --------------------------------------------------------------------------------------------------
+
   const addStep = () => { // sets the state with ... of the previous state’s steps array, and a new blankStep object is added on the end
     setStepState([...stepState, {...blankStep}]);
   }
+
+  // --------------------------------------------------------------------------------------------------
 
   const handleTaskChange = (event) => setTaskState({
     ...taskState,
     [event.target.name]: [event.target.value],
   });
+
+  // --------------------------------------------------------------------------------------------------
 
   const handleStepChange = (event) => {
     const updatedSteps = [...stepState]; // clone our stepState to keep renders pure
@@ -51,13 +66,13 @@ const Form = () => {
     setStepState(updatedSteps) // update state with the updated array of steps
   };
 
+  // --------------------------------------------------------------------------------------------------
+
   const tasks = getTasks(state)
   console.log('TASKS FROM CREATE FORM:', tasks)
 
   const steps = getSteps(state)
   console.log('STEPS FROM CREATE FORM:', steps)
-
-  // createNewTask()
 
   return (
     <form>
