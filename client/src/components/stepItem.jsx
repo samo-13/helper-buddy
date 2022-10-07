@@ -43,7 +43,7 @@ const StepItem = ({ ...step }) => {
     console.log(err)
   });
 
-  }
+  
 
 
   const closedStep = (
