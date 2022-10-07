@@ -1,0 +1,19 @@
+input {
+  background-color: #ffffff;
+  border: 1px solid black;
+  cursor: pointer;
+  width: 170px;
+}
+
+label {
+  font-weight: bolder;
+}
+
+.creatTaskButton {
+  font-weight: bolder;
+  border: 2px #000000 solid;
+  height: 3rem;
+  box-shadow: 3px 3px;
+  // margin-top: 1rem;
+}
+

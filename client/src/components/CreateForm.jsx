@@ -3,6 +3,8 @@ import useApplicationData from '../hooks/useApplicationData';
 import { getTasks, getSteps } from '../helpers/selectors'
 import { createTask } from '../hooks/useApplicationData';
 
+import './CreateForm.scss';
+
 // https://www.geeksforgeeks.org/reactjs-htmlfor-attribute/#:~:text=React%20provides%20us%20some%20in,for%20the%20given%20HTML%20elements
 
 // --------------------------------------------------------------------------------------------------
@@ -100,7 +102,7 @@ const Form = () => {
           const descriptionId = `description-${index}`;
           return (
             <div key={`step-${index}`}>
-              <label htmlFor={stepNameId}>{`Step #${index + 1}`}</label>
+              <label htmlFor={stepNameId}>{`${index + 1}. Step Name`}</label>
               <input
                 type="text"
                 name={stepNameId}
@@ -124,14 +126,17 @@ const Form = () => {
           )
         })
       }
+      <br></br>
       <input
         type="button" // type button on input element doesn't submit the form so we don't need a prevent default
         value="Add Step"
+        className="creatTaskButton"
         onClick={addStep}
       />
       <input
         type="submit"
         value="Submit"
+        className="creatTaskButton"
       />
     </form>
   );
