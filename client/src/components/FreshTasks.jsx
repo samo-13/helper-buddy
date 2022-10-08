@@ -4,7 +4,7 @@ const FreshTasks = ({ tasks }) => {
   return (
     <div>
       {tasks.map(task => (
-        <FreshTaskItem key={task.id} {...task} />
+        <FreshTaskItem key={task.task.id} {...task} />
       ))}
     </div>
   );
