@@ -1,22 +1,10 @@
 import React, { useState } from 'react';
 import useApplicationData from '../hooks/useApplicationData';
-import { getTasks, getSteps } from '../helpers/selectors'
-import { createTask } from '../hooks/useApplicationData';
-
-// https://www.geeksforgeeks.org/reactjs-htmlfor-attribute/#:~:text=React%20provides%20us%20some%20in,for%20the%20given%20HTML%20elements
 
 // --------------------------------------------------------------------------------------------------
-// PSEUDO CODE
-// --------------------------------------------------------------------------------------------------
-
-// --- Use arrays for dynamic inputs
-// --- Have an array of step objects in our state.
-// --- Each object will have a name and description value.
-// --- Our Form will iterate over this list and create two new inputs for the name and description.
-// --- When we click “Add Step”, we’ll add a new object to our array.
-// --- Since this will change our state, it will trigger a re-render.
-// --- Then, our form will iterate over this new list of steps, and add another pair of inputs.
-
+// Stylesheets
+import './CreateForm.scss';
+import './Button.scss';
 // --------------------------------------------------------------------------------------------------
 
 const Form = () => {
@@ -61,21 +49,15 @@ const Form = () => {
 
   const handleStepChange = (event) => {
     const updatedSteps = [...stepState]; // clone our stepState to keep renders pure
-    // with the exact step and property we can set the value with event.target.value
-    updatedSteps[event.target.dataset.index][event.target.className] = event.target.value // use the index data attribute to locate the index of the particular set of step inputs -- then use className to see if it's the name or description that was changed
+    // with the step + property, set the value with event.target.value
+    updatedSteps[event.target.dataset.index][event.target.className] = event.target.value // use the index data attribute to locate the index of the set of step inputs -- then use className to see if it's the name or description that was changed
     setStepState(updatedSteps) // update state with the updated array of steps
   };
 
   // --------------------------------------------------------------------------------------------------
 
-  // const tasks = getTasks(state)
-  // console.log('TASKS FROM CREATE FORM:', tasks)
-
-  // const steps = getSteps(state)
-  // console.log('STEPS FROM CREATE FORM:', steps)
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = (event) => {
+    event.preventDefault()
 
     console.log('form submitted')
     createTask(taskState.name, stepState)
@@ -100,7 +82,7 @@ const Form = () => {
           const descriptionId = `description-${index}`;
           return (
             <div key={`step-${index}`}>
-              <label htmlFor={stepNameId}>{`Step #${index + 1}`}</label>
+              <label htmlFor={stepNameId}>{`${index + 1}. Step Name`}</label>
               <input
                 type="text"
                 name={stepNameId}
@@ -124,14 +106,17 @@ const Form = () => {
           )
         })
       }
+      <br></br>
       <input
         type="button" // type button on input element doesn't submit the form so we don't need a prevent default
         value="Add Step"
+        className="creatTaskButton"
         onClick={addStep}
       />
       <input
         type="submit"
         value="Submit"
+        className="creatTaskButton"
       />
     </form>
   );
