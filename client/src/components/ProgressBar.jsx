@@ -1,8 +1,3 @@
-// Create progress bar with dummy data to start
-
-// --------------------------------------------------------------------------------------------------
-// Stylesheets
-import './ProgressBar.scss';
 // --------------------------------------------------------------------------------------------------
 
 // PSEUDO CODE
@@ -16,7 +11,7 @@ import './ProgressBar.scss';
 // --- span to show completed %
 
 // --------------------------------------------------------------------------------------------------
-
+// uses react inline styles, no associated scss file
 const ProgressBar = ({ backgroundcolor, progress }) => {
 
   const fullTaskLength = { // parent div
@@ -37,7 +32,7 @@ const ProgressBar = ({ backgroundcolor, progress }) => {
       border: '2px solid #006450'
     }
 
-    const taskPercentageLeft = { // child div percent completed
+    const taskPercentageLeft = { // child div % completed (progress)
       color: 'grey'
     }
 
