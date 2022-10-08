@@ -49,21 +49,15 @@ const Form = () => {
 
   const handleStepChange = (event) => {
     const updatedSteps = [...stepState]; // clone our stepState to keep renders pure
-    // with the exact step and property we can set the value with event.target.value
-    updatedSteps[event.target.dataset.index][event.target.className] = event.target.value // use the index data attribute to locate the index of the particular set of step inputs -- then use className to see if it's the name or description that was changed
+    // with the step + property, set the value with event.target.value
+    updatedSteps[event.target.dataset.index][event.target.className] = event.target.value // use the index data attribute to locate the index of the set of step inputs -- then use className to see if it's the name or description that was changed
     setStepState(updatedSteps) // update state with the updated array of steps
   };
 
   // --------------------------------------------------------------------------------------------------
 
-  // const tasks = getTasks(state)
-  // console.log('TASKS FROM CREATE FORM:', tasks)
-
-  // const steps = getSteps(state)
-  // console.log('STEPS FROM CREATE FORM:', steps)
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = (event) => {
+    event.preventDefault()
 
     console.log('form submitted')
     createTask(taskState.name, stepState)
