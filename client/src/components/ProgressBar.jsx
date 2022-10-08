@@ -17,10 +17,10 @@ import './ProgressBar.scss';
 
 // --------------------------------------------------------------------------------------------------
 
-const ProgressBar = ({ backgroundcolor, progress, height }) => {
+const ProgressBar = ({ backgroundcolor, progress }) => {
 
   const fullTaskLength = { // parent div
-      height: height,
+      height: 20,
       width: '100%',
       backgroundColor: 'white',
       marginTop: 50,
