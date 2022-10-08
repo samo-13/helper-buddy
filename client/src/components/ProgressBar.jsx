@@ -16,8 +16,33 @@ import './ProgressBar.scss';
 
 // --------------------------------------------------------------------------------------------------
 
-const ProgressBar = (props) => {
-  console.log('I AM A PROGRESS BAR!')
+const ProgressBar = ({ backgroundcolor, progress, height }) => {
+
+  const fullTaskLength = { // parent div
+      height: height,
+      width: '100%',
+      backgroundColor: 'white',
+      marginTop: 50
+    }
+
+    const taskProgressLength = { // child div
+      height: '100%',
+      width: `${progress}%`,
+      backgroundColor: backgroundcolor,
+      textAlign: 'center'
+    }
+
+    const taskPercentageLeft = {
+      color: 'black',
+    }
+
+  return (
+  <div style={fullTaskLength}>
+    <div style={taskProgressLength}>
+      <span style={taskPercentageLeft}>{`${progress}%`}</span>
+    </div>
+  </div>
+  )
 }
 
 // --------------------------------------------------------------------------------------------------
