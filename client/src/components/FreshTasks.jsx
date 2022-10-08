@@ -11,5 +11,3 @@ const FreshTasks = ({ tasks }) => {
 };
 
 export default FreshTasks;
-
-// remove this comment
