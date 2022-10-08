@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Task from './pages/Task';
 import Create from './pages/Create';
 import Archive from './pages/Archive';
-import Bar from './pages/TEMPProgressBar';
+import Bar from './pages/TempProgressBar';
 
 function App() {
   return (

@@ -24,8 +24,8 @@ const ProgressBar = ({ backgroundcolor, progress, height }) => {
       width: '100%',
       backgroundColor: 'white',
       marginTop: 50,
-      borderRadius: 10,
-      border: '1px solid grey'
+      borderRadius: 7,
+      // border: '2px solid grey'
     }
 
     const taskProgressLength = { // child div
@@ -33,12 +33,12 @@ const ProgressBar = ({ backgroundcolor, progress, height }) => {
       width: `${progress}%`,
       backgroundColor: backgroundcolor,
       textAlign: 'center',
-      borderRadius: 10,
-      border: '2px solid black'
+      borderRadius: 7,
+      border: '2px solid #006450'
     }
 
     const taskPercentageLeft = {
-      color: 'black',
+      color: 'grey'
     }
 
   return (
