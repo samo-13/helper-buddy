@@ -37,7 +37,7 @@ const ProgressBar = ({ backgroundcolor, progress }) => {
       border: '2px solid #006450'
     }
 
-    const taskPercentageLeft = {
+    const taskPercentageLeft = { // child div percent completed
       color: 'grey'
     }
 
