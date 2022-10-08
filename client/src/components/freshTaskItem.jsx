@@ -25,7 +25,7 @@ const FreshTaskItem = (task) => {
     // let newTask = task.task;
     // let steps = task.steps;
     const id = await startTask(newTask, newTask.steps)
-    axios.get(`http://localhost:8080/tasks/${id}`)
+    axios.get(`http://localhost:8080/api/tasks/${id}`)
     .then (res => console.log("res", res))
     .catch(err => console.log(err))
     console.log("new task id!", id)
