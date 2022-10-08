@@ -17,26 +17,42 @@ clickData.forEach((step) => {
 const StepItem = ({ ...step }) => {
   const {
     state,
-    createTask
+    createTask,
+    startTask
   } = useApplicationData();
   const [open, setOpen] = useState(false);
   const [err, setErr] = useState("");
 
   
 
-  ////this needs to go in the click handler
+ 
+
+  //this needs to go in the click handler
   // useEffect(() => {
-  //   const time = Date.now();
-  //   //how does this get routed? also need to figure out how to write query that takes step id as index
-  //   axios.put(`/api/task/${id}`, {
-  
+    
+    //how does this get routed? also need to figure out how to write query that takes step id as index
+  //   axios.put(`/api/task/${task.id}`, {
   //         completed_at: JSON.stringify(time)
   //       })
-       
   //     .catch((err) => {
   //       console.log(err)
   //     });
   // });
+
+  // const handleClick = async () => {
+  //   const time = Date.now();
+  //   axios.put(`/api/task/${task.id}`, {
+  
+  //     completed_at: JSON.stringify(time)
+  //   })
+   
+  // .catch((err) => {
+  //   console.log(err)
+  // });
+
+  
+
+
 
 
   const closedStep = (

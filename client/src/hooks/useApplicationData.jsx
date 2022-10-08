@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+// import { response } from 'express';
 
 export default function useApplicationData() {
 
@@ -48,8 +49,41 @@ export default function useApplicationData() {
     // })
   }
 
+  function startTask(task, steps) {
+    console.log('startTask TASK:', task)
+    console.log('STEPS:', steps)
+    const currentTask = task.task;
+    const currentSteps = task.steps;
+    return axios.post(`http://localhost:8080/api/tasks`, {
+      name: currentTask.name,
+
+    })
+    .then((response) => {
+      currentSteps.forEach(step => {
+        axios.post(`http://localhost:8080/api/steps`, {
+          taskId: response.data.id,
+          name: step.name,
+          description: step.description
+        })
+      })
+      console.log("response.data.id", response.data.id)
+      return response.data.id
+      // console.log('steps:', steps)
+    })
+   
+/////want to get id from here into FreshTaskItem for handleClick
+    // .then(id => {
+    //   axios.get(`http://localhost:8080/tasks/${id}`)
+    // .then (res => console.log("res", res))
+    // .catch(err => console.log(err))
+    // })
+  }
+
   return {
     state,
-    createTask
+    createTask,
+    startTask
   }
 }
+
+

@@ -15,30 +15,22 @@ newTaskFromClick.forEach((task) => {
 });
 
 const FreshTaskItem = (task) => {
-  const [newTask, setNewTask] = useState("");
+  const [newTask, setNewTask] = useState(task);
   const [err, setErr] = useState("");
-  const {state, createTask} = useApplicationData();
-  // console.log("itemtask", task.steps)
+  const {state, startTask} = useApplicationData();
+  console.log("itemtask", task.steps)
   
-
-  const handleClick = async () => {
-    try {
-      console.log("task steps", task.steps)
-      const {newTask} = createTask(JSON.stringify(task), JSON.stringify(task.steps))
-      console.log("newid", newTask.id)
-      // const { newTask } = await axios.post(`/api/tasks/new`, {
-      //   name: JSON.stringify(task.task.name),
-      //   steps: JSON.stringify(task.steps)
-      // });
-      // console.log("newTaskName", newTask.name)
-      console.log("newTaskid",(newTask));
-      setNewTask(newTask)
-      //put then here to redirect instead of using link
-
-    } catch (err) {
-      setErr(err.message);
-    }
-  };
+////////click handler should GET template and then PUT new post
+  async function handleClick() {
+    // let newTask = task.task;
+    // let steps = task.steps;
+    const id = await startTask(newTask, newTask.steps)
+    axios.get(`http://localhost:8080/tasks/${id}`)
+    .then (res => console.log("res", res))
+    .catch(err => console.log(err))
+    console.log("new task id!", id)
+    return newTask;
+  }
 
   return (
     <div className="taskbox">
@@ -47,7 +39,7 @@ const FreshTaskItem = (task) => {
       </div>
       <Link to={`task/${task.task.id}`}>
         {/* does the newTask initiated here get paassed anywhere? */}
-        <button type="click" class="start-task" className='button-start' onClick={handleClick}>
+        <button type="submit" class="start-task" className='button-start' onClick={handleClick}>
           start
         </button>
         <button type="click" class="preview-task">
