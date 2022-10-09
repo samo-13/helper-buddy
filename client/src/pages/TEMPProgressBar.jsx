@@ -259,19 +259,19 @@ const {
 
     // save all of the task specific steps to taskSteps variable
     taskSteps = dummyState[taskIndex].steps;
-    console.log('taskSteps:', taskSteps)
+    // console.log('taskSteps:', taskSteps)
     // save the total number of task specific steps to stepsTotalCount variable
     stepsTotalCount = taskSteps.length;
     console.log('stepsTotalCount:', stepsTotalCount)
 
     for (let step of taskSteps) {
-      console.log('step:', step)
+      // console.log('step:', step)
       if (step.completed_at !== null) {
         stepsCompleted.push(step);
         stepsCompletedCount ++ // add 1
       }
     }
-    console.log('stepsCompleted:', stepsCompleted)
+    // console.log('stepsCompleted:', stepsCompleted)
     console.log('stepsCompletedCount:', stepsCompletedCount)
 
     // get % steps completed
@@ -284,7 +284,7 @@ const {
 
   return (
     <div>
-      <h1>This is where our progress bar goes!</h1>
+      <h1>This is where our progress bar lives while we build it!</h1>
         <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(dummyState, 1)} />
         <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(dummyState, 2)} />
     </div>
