@@ -258,8 +258,7 @@ const {
     // console.log('Test 1:', dummyState)
     // console.log('Test 2:', dummyState[0])
     // console.log('Test 3:', dummyState[0].steps)
-    // console.log('Test 4:', dummyState[1].steps)
-    // console.log('Test 5:', dummyState[index].steps)
+    // console.log('Test 5:', dummyState[taskIndex].steps)
     // --------------------------------------------------------------------------------------
 
     // save all of the task specific steps to taskSteps variable
