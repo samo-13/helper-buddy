@@ -1,27 +1,25 @@
-// const accountSid = process.env.TWILIO_ACCOUNT_SID;
-// const authToken = process.env.TWILIO_AUTH_TOKEN;
-// const client = require('twilio')(accountSid, authToken, {
-//   lazyLoading: true,
-// });
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken, {
+  lazyLoading: true,
+});
 
 const cron = require('node-cron');
-// const dayjs = require('dayjs')
-// const utc = require('dayjs/plugin/utc')
-// dayjs.extend(utc)
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+dayjs.extend(utc);
 
-// const now = dayjs(new Date()).format()
-const sendNotification = () => {
-  const scheduledText = cron.schedule('*/2 * * * * *', () => {
-    // client.messages
-    // .create({
-    //    body: `Scheduled Task sent @ ${now}`,
-    //    from: '+16402033247',
-    //    to: '+818044031209'
-    //  })
-    // .then(message => console.log('text sent @', now));
+const now = dayjs(new Date()).format();
 
-    console.log('all good');
-  });
+const sendNotification = (user_phone, message) => {
+  client.messages
+    .create({
+      body: message,
+      from: '+16402033247',
+      to: user_phone,
+    })
+    .then(() => console.log('text sent @', now))
+    .catch(err => console.error(err));
 };
 
 module.exports = sendNotification;

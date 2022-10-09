@@ -31,6 +31,7 @@ app.use('/api/notifications', notificationRoutes);
 // db
 const db = require('./config/dbConfig');
 const sendNotification = require('./bin/sendNotification');
+const checkNotification = require('./bin/checkNotification');
 
 // ------------------------------------------------
 // added to test react/server connection (SM)
@@ -44,12 +45,12 @@ db.connect()
   .then(() => {
     console.log('connected to database');
 
+    // notifications is checked daily
+    checkNotification();
+
     // server will only start listening if db is connected
     app.listen(PORT, () => {
       console.log(`listening on port ${PORT}`);
-
-      // send notifications to users
-      sendNotification();
     });
   })
   .catch(err => {
