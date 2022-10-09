@@ -1,12 +1,118 @@
 import React from "react";
 import ProgressBar from "../components/ProgressBar";
+import useApplicationData from '../hooks/useApplicationData.jsx';
 
 function Bar() {
 
 // --------------------------------------------------------------------------------------
 // DUMMY DATA
+// https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-timestamp/
+// task 1 --- should show 15 steps and 5/15 completed 33%
+// task 2 --- should show 7 steps and 2/7 completed 28%
 // --------------------------------------------------------------------------------------
-const state = [{
+
+const dummyState = [{
+    "task": {
+        "id": 1,
+        "user_id": null,
+        "name": "Clean the bathroom",
+        "started_at": null,
+        "completed_at": null
+    },
+    "steps": [
+        {
+            "task_id": 1,
+            "name": "Let's get everything we need:",
+            "description": "Glass cleaner? Toilet cleaner? Toilet brush? Rubber gloves? Cloths or paper towel? Broom? Garbage bags?",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Let's see that beautiful face!",
+            "description": "Spray and wipe the mirror.",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Clean the counter and the sink.",
+            "description": "Try putting everything from the countertop into the sink, so you can spray and wipe the countertops. Then put everything back, and spray and wipe the sink.",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Don't forget the faucet!",
+            "description": "Spray and wipe the faucet and handles.",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Let's scrub the toilet.",
+            "description": "Add some toilet bowl cleaner to the bowl, if you like, and let it sit while we clean the rest of the toilet.",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Let's scrub the toilet.",
+            "description": "Spray and wipe the toilet, working from top to bottom. Dont forget to get under the seat!",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Let's scrub the toilet.",
+            "description": "Now you can use the toilet brush to scrub the the cleaner we put inside of the bowl.",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Wipe down that shower or bath.",
+            "description": "Spray and wipe the shower faucet and handles.",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Wipe down that shower or bath.",
+            "description": "Use your preferred cleaner to wipe down the walls, and tub if you have one.",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Wipe down that shower or bath.",
+            "description": "If you have a detachable shower head, use it to rinse the walls and tub.",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Empty the garbage.",
+            "description": "Don't forget to replace the bag",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Sweep the floors",
+            "description": "Pick up any clutter, and sweep the bathroom floor.",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Tidy your shelves and surfaces",
+            "description": "Put everything in its place.",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "Test that squeaky clean mirror.",
+            "description": "Check out your beautiful smile in the mirror. So fresh and so clean, clean!",
+            "completed_at": null
+        },
+        {
+            "task_id": 1,
+            "name": "All done!",
+            "description": "You did it! This task is DONE! Amazing job!",
+            "completed_at": null
+        }
+    ]
+  },
+  {
   "task": {
       "id": 2,
       "user_id": null,
@@ -19,13 +125,13 @@ const state = [{
           "task_id": 2,
           "name": "Let's get everything we need!",
           "description": "Detergent? Fabric softener? Coins? Laundry basket? Clothespins?",
-          "completed_at": null
+          "completed_at": '2022-10-08 19:10:25-07'
       },
       {
           "task_id": 2,
           "name": "Now's the time to sort your laundry, if you're into that sort of thing.",
           "description": "Lights/darks? Delicates?",
-          "completed_at": null
+          "completed_at": '2022-10-08 19:12:25-07'
       },
       {
           "task_id": 2,
@@ -58,110 +164,7 @@ const state = [{
           "completed_at": null
       }
   ]
-}
-,
-{
-  "task": {
-      "id": 1,
-      "user_id": null,
-      "name": "Clean the bathroom",
-      "started_at": null,
-      "completed_at": null
-  },
-  "steps": [
-      {
-          "task_id": 1,
-          "name": "Let's get everything we need:",
-          "description": "Glass cleaner? Toilet cleaner? Toilet brush? Rubber gloves? Cloths or paper towel? Broom? Garbage bags?",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Let's see that beautiful face!",
-          "description": "Spray and wipe the mirror.",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Clean the counter and the sink.",
-          "description": "Try putting everything from the countertop into the sink, so you can spray and wipe the countertops. Then put everything back, and spray and wipe the sink.",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Don't forget the faucet!",
-          "description": "Spray and wipe the faucet and handles.",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Let's scrub the toilet.",
-          "description": "Add some toilet bowl cleaner to the bowl, if you like, and let it sit while we clean the rest of the toilet.",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Let's scrub the toilet.",
-          "description": "Spray and wipe the toilet, working from top to bottom. Dont forget to get under the seat!",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Let's scrub the toilet.",
-          "description": "Now you can use the toilet brush to scrub the the cleaner we put inside of the bowl.",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Wipe down that shower or bath.",
-          "description": "Spray and wipe the shower faucet and handles.",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Wipe down that shower or bath.",
-          "description": "Use your preferred cleaner to wipe down the walls, and tub if you have one.",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Wipe down that shower or bath.",
-          "description": "If you have a detachable shower head, use it to rinse the walls and tub.",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Empty the garbage.",
-          "description": "Don't forget to replace the bag",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Sweep the floors",
-          "description": "Pick up any clutter, and sweep the bathroom floor.",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Tidy your shelves and surfaces",
-          "description": "Put everything in its place.",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "Test that squeaky clean mirror.",
-          "description": "Check out your beautiful smile in the mirror. So fresh and so clean, clean!",
-          "completed_at": null
-      },
-      {
-          "task_id": 1,
-          "name": "All done!",
-          "description": "You did it! This task is DONE! Amazing job!",
-          "completed_at": null
-      }
-  ]
-}
-,
+},
 {
   "task": {
       "id": 3,
@@ -222,6 +225,10 @@ const state = [{
   ]
 }]
 
+const {
+  state
+} = useApplicationData();
+
 // --------------------------------------------------------------------------------------
 // PSEUDO CODE
 // --------------------------------------------------------------------------------------
@@ -232,25 +239,31 @@ const state = [{
 // --- then loop through the specific steps to see how many are marked as true and save to a variable stepsCompleted
 // --- divide the stepsCompleted by the stepsTotal and multiply by 100 to get the progress
 
-  function getProgress(state) { // pass in state and ?taskId?
-    let taskId = 2; // dummyData for now
+  function getProgress(dummyState, taskId) { // pass in dummyState and ?taskId?
+
+    // to hold steps
     const stepsTotal = [];
     const stepsCompleted = [];
+
+    // --------------------------------------------------------------------------------------
+    // to see data delete when complete
     console.log(taskId)
-    console.log('Test 1:', state)
-    console.log('Test 2:', state[0])
+    console.log('Test 1:', dummyState)
+    console.log('Test 2:', dummyState[0])
+    console.log('Test 3:', dummyState[0].steps)
+    // --------------------------------------------------------------------------------------
+
+
+    // loop through steps in dummyState and find all of the steps for the taskId
+      // save the steps in an array and return the length of stepsTotal
+      // find the number of completed steps and save them to a different array and return the length of stepsCompleted
+      // if (step["completed_at"] !== null) {
+
+      // }
+      // progress = (stepsCompleted / stepsTotal) * 100 --- make sure we round number
     return
-
-  // loop through steps in state and find all of the steps for the taskId
-    // save the steps in an array and return the length of stepsTotal
-    // find the number of completed steps and save them to a different array and return the length of stepsCompleted
-    // if (step["completed_at"] !== null) {
-
-    // }
-    // progress = (stepsCompleted / stepsTotal) * 100
 }
 
-getProgress(state)
 
 // -------------------------------------------------------------------------------------------------------
 
@@ -262,6 +275,8 @@ getProgress(state)
         <ProgressBar backgroundcolor="#e1ff32" progress='25' />
         <ProgressBar backgroundcolor="#e1ff32" progress='100' />
         <ProgressBar backgroundcolor="#e1ff32" progress='80' />
+        <ProgressBar backgroundcolor="#00c08b" progress={getProgress(dummyState, 1)} />
+        <ProgressBar backgroundcolor="#00c08b" progress={getProgress(dummyState, 2)} />
     </div>
   );
 }
