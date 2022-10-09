@@ -244,21 +244,27 @@ const {
     // to hold steps
     const stepsTotal = [];
     const stepsCompleted = [];
-
+    const index = dummyState.map(object => object.task.id).indexOf(taskId)
+    console.log('Index Test 1:', index)
+    const indexTwo = dummyState.findIndex(object => {
+      return object.task.id === taskId
+    })
+    console.log('Index Test 2:', indexTwo)
     // --------------------------------------------------------------------------------------
     // to see data delete when complete
     console.log(taskId)
     console.log('Test 1:', dummyState)
     console.log('Test 2:', dummyState[0])
     console.log('Test 3:', dummyState[0].steps)
+    console.log('Test 4:', dummyState[1].steps)
     // --------------------------------------------------------------------------------------
 
 
     // loop through steps in dummyState and find all of the steps for the taskId
+
       // save the steps in an array and return the length of stepsTotal
       // find the number of completed steps and save them to a different array and return the length of stepsCompleted
       // if (step["completed_at"] !== null) {
-
       // }
       // progress = (stepsCompleted / stepsTotal) * 100 --- make sure we round number
     return
