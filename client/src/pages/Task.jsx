@@ -1,21 +1,27 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import StepList from '../components/StepList';
+import axios from "axios";
+import { motion, useCycle, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import StepList from "../components/StepList";
+import useApplicationData from "../hooks/useApplicationData";
+
 
 const Task = () => {
   const { id } = useParams();
   const [task, setTask] = useState(null);
 
   useEffect(() => {
+    console.log("task", task)//nothing here because of null
     axios
-      .get(`/api/tasks/templates/${id}`)
-      .then(res => {
-        const task = res.data[0];
-        const id = res.data[0];
+    ////this should GET the new task that was just created,
+    
+      .get(`/api/tasks/${id}`) //need to get all steps
+      .then((res) => {
+        console.log("res",res.data.steps)
+        const task = res.data;
+        // const id = res.data.task.id;
+        const steps = (res.data.steps);
         setTask(task);
-        const steps = task.steps;
-        // createTask(steps);
+        console.log("steps here", task.steps)
       })
       .catch(err => {
         console.log(err);
