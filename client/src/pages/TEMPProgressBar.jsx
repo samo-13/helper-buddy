@@ -4,15 +4,6 @@ import ProgressBar from "../components/ProgressBar";
 function Bar() {
 
 // --------------------------------------------------------------------------------------
-// PSEUDO CODE
-// --------------------------------------------------------------------------------------
-// --- the progress value is based on the number of steps completed divided by the total number of steps
-// --- when the use completes a step and clicks done, trigger the progress bar to update with the new progress calculation
-// --- with the task ID, get the total number of steps that have that specific task id
-// --- save the total number of steps to a variable stepsTotal
-// --- then loop through the specific steps to see how many are marked as true and save to a variable stepsCompleted
-// --- divide the stepsCompleted by the stepsTotal and multiply by 100 to get the progress
-// --------------------------------------------------------------------------------------
 // DUMMY DATA
 // --------------------------------------------------------------------------------------
 const state = [{
@@ -231,7 +222,30 @@ const state = [{
   ]
 }]
 
+console.log('STATE STEPS:', state.steps)
 
+// --------------------------------------------------------------------------------------
+// PSEUDO CODE
+// --------------------------------------------------------------------------------------
+// --- the progress value is based on the number of steps completed divided by the total number of steps
+// --- when the use completes a step and clicks done, trigger the progress bar to update with the new progress calculation
+// --- with the task ID, get the total number of steps that have that specific task id
+// --- save the total number of steps to a variable stepsTotal
+// --- then loop through the specific steps to see how many are marked as true and save to a variable stepsCompleted
+// --- divide the stepsCompleted by the stepsTotal and multiply by 100 to get the progress
+
+  function getProgress(state) { // pass in state and ?taskId?
+  let taskId = 2
+  console.log(taskId)
+
+  // loop through steps in state and find all of the steps for the taskId
+    // save the steps in an array and return the length of stepsTotal
+    // find the number of completed steps and save them to a different array and return the length of stepsCompleted
+    // progress = (stepsCompleted / stepsTotal) * 100
+
+}
+
+getProgress()
 
 // -------------------------------------------------------------------------------------------------------
 
