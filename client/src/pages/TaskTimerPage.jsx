@@ -1,9 +1,9 @@
 import React from "react";
-import ProgressBar from "../components/ProgressBar";
+import TaskTimer from "../components/TaskTimer";
 import useApplicationData from '../hooks/useApplicationData.jsx';
-// go here to view: http://localhost:3000/bar
+// go here to view: http://localhost:3000/timer
 
-function Bar() {
+function Timer() {
 
 // --------------------------------------------------------------------------------------
 // DUMMY DATA
@@ -226,71 +226,19 @@ const dummyState = [{
   ]
 }]
 
-const {
-  state
-} = useApplicationData();
+// const {
+//   state
+// } = useApplicationData();
 
-// --------------------------------------------------------------------------------------
-// PSEUDO CODE
-// --------------------------------------------------------------------------------------
-// --- the progress value is based on the number of steps completed divided by the total number of steps
-// --- when the use completes a step and clicks done, trigger the progress bar to update with the new progress calculation
-// --- with the task ID, get the total number of steps that have that specific task id
-// --- save the total number of steps to a variable stepsTotal
-// --- then loop through the specific steps to see how many are marked as true and save to a variable stepsCompleted
-// --- divide the stepsCompleted by the stepsTotal and multiply by 100 to get the progress
-
-  function getProgress(dummyState, taskId) { // pass in dummyState and ?taskId?
-
-    // to hold steps
-    let taskSteps = [];
-    let stepsTotalCount;
-    let stepsCompleted = [];
-    let stepsCompletedCount = 0;
-
-    // const taskIndex = dummyState.map(object => object.task.id).indexOf(taskId)
-    const taskIndex = dummyState.findIndex(object => { // findIndex doesn't work on internet explorer
-      return object.task.id === taskId
-    })
-    console.log('taskIndex:', taskIndex)
-    // --------------------------------------------------------------------------------------
-    // to see data delete when complete
-    console.log('taskId:', taskId)
-    // --------------------------------------------------------------------------------------
-
-    // save all of the task specific steps to taskSteps variable
-    taskSteps = dummyState[taskIndex].steps;
-    // console.log('taskSteps:', taskSteps)
-    // save the total number of task specific steps to stepsTotalCount variable
-    stepsTotalCount = taskSteps.length;
-    console.log('stepsTotalCount:', stepsTotalCount)
-
-    for (let step of taskSteps) {
-      // console.log('step:', step)
-      if (step.completed_at !== null) {
-        stepsCompleted.push(step);
-        stepsCompletedCount ++ // add 1
-      }
-    }
-    // console.log('stepsCompleted:', stepsCompleted)
-    console.log('stepsCompletedCount:', stepsCompletedCount)
-
-    // get % steps completed
-    let progress = (stepsCompletedCount / stepsTotalCount) * 100
-    // round to whole number
-    return Math.round(progress)
-}
 
 // -------------------------------------------------------------------------------------------------------
 
   return (
     <div>
-      <h1>This is where our progress bar lives while we build it!</h1>
-        <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(dummyState, 1)} />
-        <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(dummyState, 2)} />
-        <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(dummyState, 3)} />
+      <h1>This is where our task timer lives while we build it!</h1>
+      <TaskTimer />
     </div>
   );
 }
 
-export default Bar;
+export default Timer;
