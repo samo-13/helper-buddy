@@ -5,9 +5,10 @@ import useApplicationData from "../hooks/useApplicationData";
 
 const StepList = ({steps}) => {
   
-  console.log("steps!!!", steps)
+  console.log("steps!!!", {steps})
   return (
     <div >
+      {/* this has to be map */}
       {steps.map(step => (
         <div>
        <StepItem {...step}/>

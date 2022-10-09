@@ -79,6 +79,14 @@ export default function useApplicationData() {
     // })
   }
 
+
+  // function updateStep(id, date) {
+  //   axios.put(`http://localhost:8080/api/steps/${id}`, {
+  //     .then((res) => console.log("newww res", res)),
+  //   }
+  //   )
+  // }
+
   return {
     state,
     createTask,

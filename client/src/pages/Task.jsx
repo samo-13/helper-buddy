@@ -10,16 +10,18 @@ const Task = () => {
   const [task, setTask] = useState(null);
 
   useEffect(() => {
-
+    console.log("task", task)//nothing here because of null
     axios
-    ////this should GET the new task that was just created, actually
-      .get(`/api/tasks/templates/${id}`)
+    ////this should GET the new task that was just created,
+    
+      .get(`/api/tasks/${id}`) //need to get all steps
       .then((res) => {
-        const task = res.data[0];
-        const id = res.data[0];
+        console.log("res",res.data.steps)
+        const task = res.data;
+        // const id = res.data.task.id;
+        const steps = (res.data.steps);
         setTask(task);
-        const steps = task.steps;
-        console.log("steps here", steps)
+        console.log("steps here", task.steps)
       })
       .catch((err) => {
         console.log(err);
