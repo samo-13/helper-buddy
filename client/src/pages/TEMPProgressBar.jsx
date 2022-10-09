@@ -243,7 +243,7 @@ const {
 
     // to hold steps
     let taskSteps = [];
-    let stepsCount;
+    let stepsTotalCount;
     let stepsCompleted = [];
     let stepsCompletedCount = 0;
     // const index = dummyState.map(object => object.task.id).indexOf(taskId)
@@ -264,9 +264,9 @@ const {
     // save all of the task specific steps to taskSteps variable
     taskSteps = dummyState[taskIndex].steps;
     console.log('taskSteps:', taskSteps)
-    // save the total number of task specific steps to stepsCount variable
-    stepsCount = taskSteps.length;
-    console.log('stepsCount:', stepsCount)
+    // save the total number of task specific steps to stepsTotalCount variable
+    stepsTotalCount = taskSteps.length;
+    console.log('stepsTotalCount:', stepsTotalCount)
 
     for (let step of taskSteps) {
       console.log('step:', step)
@@ -278,8 +278,10 @@ const {
     console.log('stepsCompleted:', stepsCompleted)
     console.log('stepsCompletedCount:', stepsCompletedCount)
 
-      // progress = (stepsCompleted / stepsTotal) * 100 --- make sure we round number
-    return
+    // get % complete
+    let progress = (stepsCompletedCount / stepsTotalCount) * 100
+    // round to whole number
+    return Math.round(progress)
 }
 
 
