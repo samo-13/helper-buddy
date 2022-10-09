@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Task from './pages/Task';
 import Create from './pages/Create';
 import Archive from './pages/Archive';
+import Bar from './pages/TempProgressBar';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path='task/:id' element={<Task />}></Route>
             <Route path='create' element={<Create />}></Route>
             <Route path='archive' element={<Archive />}></Route>
+            <Route path='bar' element={<Bar />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
