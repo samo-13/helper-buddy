@@ -30,8 +30,9 @@ app.use('/api/notifications', notificationRoutes);
 
 // db
 const db = require('./config/dbConfig');
-const sendNotification = require('./bin/sendNotification');
+const cron = require('node-cron');
 const checkNotification = require('./bin/checkNotification');
+const sendNotification = require('./bin/sendNotification');
 
 // ------------------------------------------------
 // added to test react/server connection (SM)
@@ -46,7 +47,15 @@ db.connect()
     console.log('connected to database');
 
     // notifications is checked daily
-    checkNotification();
+    cron.schedule('*/30 * * * * *', async () => {
+      console.log('runs every 30 sec');
+      const notifications = await checkNotification();
+
+      if (notifications.length > 0) {
+        // run only if length > 0
+        sendNotification(notifications);
+      }
+    });
 
     // server will only start listening if db is connected
     app.listen(PORT, () => {
