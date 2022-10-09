@@ -13,6 +13,7 @@ const checkNotification = () => {
     notificationList.forEach(notification => {
       const user_phone = notification.user_phone;
       const message = notification.message;
+      // other properties such as date and repeated function will be needed fro the cron express in sendNotification
 
       sendNotification(user_phone, message);
     });

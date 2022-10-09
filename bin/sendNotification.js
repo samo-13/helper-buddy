@@ -12,6 +12,7 @@ dayjs.extend(utc);
 const now = dayjs(new Date()).format();
 
 const sendNotification = (user_phone, message) => {
+  // every will be wrap with cron.schedule to send scheduled text
   client.messages
     .create({
       body: message,
