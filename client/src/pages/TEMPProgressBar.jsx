@@ -222,8 +222,6 @@ const state = [{
   ]
 }]
 
-console.log('STATE STEPS:', state.steps)
-
 // --------------------------------------------------------------------------------------
 // PSEUDO CODE
 // --------------------------------------------------------------------------------------
@@ -235,17 +233,24 @@ console.log('STATE STEPS:', state.steps)
 // --- divide the stepsCompleted by the stepsTotal and multiply by 100 to get the progress
 
   function getProgress(state) { // pass in state and ?taskId?
-  let taskId = 2
-  console.log(taskId)
+    let taskId = 2; // dummyData for now
+    const stepsTotal = [];
+    const stepsCompleted = [];
+    console.log(taskId)
+    console.log('Test 1:', state)
+    console.log('Test 2:', state[0])
+    return
 
   // loop through steps in state and find all of the steps for the taskId
     // save the steps in an array and return the length of stepsTotal
     // find the number of completed steps and save them to a different array and return the length of stepsCompleted
-    // progress = (stepsCompleted / stepsTotal) * 100
+    // if (step["completed_at"] !== null) {
 
+    // }
+    // progress = (stepsCompleted / stepsTotal) * 100
 }
 
-getProgress()
+getProgress(state)
 
 // -------------------------------------------------------------------------------------------------------
 
