@@ -24,31 +24,31 @@ const dummyState = [{
             "task_id": 1,
             "name": "Let's get everything we need:",
             "description": "Glass cleaner? Toilet cleaner? Toilet brush? Rubber gloves? Cloths or paper towel? Broom? Garbage bags?",
-            "completed_at": null
+            "completed_at": '2022-10-08 19:10:25-07'
         },
         {
             "task_id": 1,
             "name": "Let's see that beautiful face!",
             "description": "Spray and wipe the mirror.",
-            "completed_at": null
+            "completed_at": '2022-10-08 19:11:25-07'
         },
         {
             "task_id": 1,
             "name": "Clean the counter and the sink.",
             "description": "Try putting everything from the countertop into the sink, so you can spray and wipe the countertops. Then put everything back, and spray and wipe the sink.",
-            "completed_at": null
+            "completed_at": '2022-10-08 19:12:25-07'
         },
         {
             "task_id": 1,
             "name": "Don't forget the faucet!",
             "description": "Spray and wipe the faucet and handles.",
-            "completed_at": null
+            "completed_at": '2022-10-08 19:13:25-07'
         },
         {
             "task_id": 1,
             "name": "Let's scrub the toilet.",
             "description": "Add some toilet bowl cleaner to the bowl, if you like, and let it sit while we clean the rest of the toilet.",
-            "completed_at": null
+            "completed_at": '2022-10-08 19:14:25-07'
         },
         {
             "task_id": 1,
@@ -245,7 +245,7 @@ const {
     let taskSteps = [];
     let stepsCount;
     let stepsCompleted = [];
-    let stepsCompletedCount;
+    let stepsCompletedCount = 0;
     // const index = dummyState.map(object => object.task.id).indexOf(taskId)
     // console.log('Index Test 1:', index)
     const taskIndex = dummyState.findIndex(object => {
@@ -268,11 +268,16 @@ const {
     stepsCount = taskSteps.length;
     console.log('stepsCount:', stepsCount)
 
+    for (let step of taskSteps) {
+      console.log('step:', step)
+      if (step.completed_at !== null) {
+        stepsCompleted.push(step);
+        stepsCompletedCount ++
+      }
+    }
+    console.log('stepsCompleted:', stepsCompleted)
+    console.log('stepsCompletedCount:', stepsCompletedCount)
 
-      // save the steps in an array and return the length of stepsTotal
-      // find the number of completed steps and save them to a different array and return the length of stepsCompleted
-      // if (step["completed_at"] !== null) {
-      // }
       // progress = (stepsCompleted / stepsTotal) * 100 --- make sure we round number
     return
 }
