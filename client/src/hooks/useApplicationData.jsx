@@ -35,9 +35,11 @@ export default function useApplicationData() {
       .then(id => {
         steps.forEach(step => {
           axios.post(`http://localhost:8080/api/steps`, {
-            taskId: id,
+            id: step.id,  
+          taskId: id,
             name: step.name,
-            description: step.description
+            description: step.description,
+            
           })
         })
       })
@@ -56,6 +58,7 @@ export default function useApplicationData() {
     const currentSteps = task.steps;
     return axios.post(`http://localhost:8080/api/tasks`, {
       name: currentTask.name,
+      started_at: Date.now()
 
     })
     .then((response) => {

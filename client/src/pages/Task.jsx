@@ -23,7 +23,7 @@ const Task = () => {
         setTask(task);
         console.log("steps here", task.steps)
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }, [id]);

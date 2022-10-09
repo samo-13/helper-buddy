@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import useApplicationData from "../hooks/useApplicationData";
+// import updateStep from controllers/stepController.js;
 
 const clickData = document.querySelectorAll('button[type="submit"]');
 console.log("clickdaata", clickData)
@@ -18,15 +19,34 @@ clickData.forEach((step) => {
 const StepItem = ({ ...step }) => {
   const {
     state,
-    updateStep
   } = useApplicationData();
   const [thisStep, setThisStep] = useState(step)
   const [open, setOpen] = useState(false);
   const [err, setErr] = useState("");
 
-  const handleClick = function () {
-    console.log("thisstep",thisStep)
+  async function handleClick() {
+    console.log("state.steps",state.steps)
+    console.log("thisStep", thisStep)
+    console.log()
+    // const stepId = "";
+    const retrievedStep = state.steps.filter(step => step.task_id === thisStep.task_id && step.description === thisStep.description 
+    )
+    const stepId = retrievedStep[0].id
+    console.log("step id", stepId)
+
+    axios({
+      method: 'put',
+      url: `/api/steps/${stepId}`,
+      data: {
+      completed_at: Date.now()
+    } 
+      
     
+    })
+    // .then((res) => console.log("result", res))
+    // .catch(err => console.log(err))
+    // return {...updatedStep}
+    // console.log("updatedstep",updatedStep)
   }
   
 

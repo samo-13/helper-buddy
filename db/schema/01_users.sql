@@ -29,8 +29,8 @@ CREATE TABLE steps (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
   description VARCHAR(255),
-  started_at TIMESTAMP,
-  completed_at TIMESTAMP
+  started_at VARCHAR(255),
+  completed_at VARCHAR(255)
 );
 
 CREATE TABLE notifications (
