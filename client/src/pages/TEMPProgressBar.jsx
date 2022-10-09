@@ -24,31 +24,31 @@ const dummyState = [{
             "task_id": 1,
             "name": "Let's get everything we need:",
             "description": "Glass cleaner? Toilet cleaner? Toilet brush? Rubber gloves? Cloths or paper towel? Broom? Garbage bags?",
-            "completed_at": null
+            "completed_at": '2022-10-08 19:10:25-07'
         },
         {
             "task_id": 1,
             "name": "Let's see that beautiful face!",
             "description": "Spray and wipe the mirror.",
-            "completed_at": null
+            "completed_at": '2022-10-08 19:11:25-07'
         },
         {
             "task_id": 1,
             "name": "Clean the counter and the sink.",
             "description": "Try putting everything from the countertop into the sink, so you can spray and wipe the countertops. Then put everything back, and spray and wipe the sink.",
-            "completed_at": null
+            "completed_at": '2022-10-08 19:12:25-07'
         },
         {
             "task_id": 1,
             "name": "Don't forget the faucet!",
             "description": "Spray and wipe the faucet and handles.",
-            "completed_at": null
+            "completed_at": '2022-10-08 19:13:25-07'
         },
         {
             "task_id": 1,
             "name": "Let's scrub the toilet.",
             "description": "Add some toilet bowl cleaner to the bowl, if you like, and let it sit while we clean the rest of the toilet.",
-            "completed_at": null
+            "completed_at": '2022-10-08 19:14:25-07'
         },
         {
             "task_id": 1,
@@ -243,9 +243,9 @@ const {
 
     // to hold steps
     let taskSteps = [];
-    let stepsCount;
+    let stepsTotalCount;
     let stepsCompleted = [];
-    let stepsCompletedCount;
+    let stepsCompletedCount = 0;
     // const index = dummyState.map(object => object.task.id).indexOf(taskId)
     // console.log('Index Test 1:', index)
     const taskIndex = dummyState.findIndex(object => {
@@ -255,42 +255,38 @@ const {
     // --------------------------------------------------------------------------------------
     // to see data delete when complete
     console.log('taskId:', taskId)
-    // console.log('Test 1:', dummyState)
-    // console.log('Test 2:', dummyState[0])
-    // console.log('Test 3:', dummyState[0].steps)
-    // console.log('Test 4:', dummyState[1].steps)
-    // console.log('Test 5:', dummyState[index].steps)
     // --------------------------------------------------------------------------------------
 
     // save all of the task specific steps to taskSteps variable
     taskSteps = dummyState[taskIndex].steps;
-    console.log('taskSteps:', taskSteps)
-    // save the total number of task specific steps to stepsCount variable
-    stepsCount = taskSteps.length;
-    console.log('stepsCount:', stepsCount)
+    // console.log('taskSteps:', taskSteps)
+    // save the total number of task specific steps to stepsTotalCount variable
+    stepsTotalCount = taskSteps.length;
+    console.log('stepsTotalCount:', stepsTotalCount)
 
+    for (let step of taskSteps) {
+      // console.log('step:', step)
+      if (step.completed_at !== null) {
+        stepsCompleted.push(step);
+        stepsCompletedCount ++ // add 1
+      }
+    }
+    // console.log('stepsCompleted:', stepsCompleted)
+    console.log('stepsCompletedCount:', stepsCompletedCount)
 
-      // save the steps in an array and return the length of stepsTotal
-      // find the number of completed steps and save them to a different array and return the length of stepsCompleted
-      // if (step["completed_at"] !== null) {
-      // }
-      // progress = (stepsCompleted / stepsTotal) * 100 --- make sure we round number
-    return
+    // get % steps completed
+    let progress = (stepsCompletedCount / stepsTotalCount) * 100
+    // round to whole number
+    return Math.round(progress)
 }
-
 
 // -------------------------------------------------------------------------------------------------------
 
   return (
     <div>
-      <h1>This is where our progress bar goes!</h1>
-        <ProgressBar backgroundcolor="#e1ff32" progress='10' />
-        <ProgressBar backgroundcolor="#e1ff32" progress='40' />
-        <ProgressBar backgroundcolor="#e1ff32" progress='25' />
-        <ProgressBar backgroundcolor="#e1ff32" progress='100' />
-        <ProgressBar backgroundcolor="#e1ff32" progress='80' />
-        <ProgressBar backgroundcolor="#00c08b" progress={getProgress(dummyState, 1)} />
-        <ProgressBar backgroundcolor="#00c08b" progress={getProgress(dummyState, 2)} />
+      <h1>This is where our progress bar lives while we build it!</h1>
+        <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(dummyState, 1)} />
+        <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(dummyState, 2)} />
     </div>
   );
 }
