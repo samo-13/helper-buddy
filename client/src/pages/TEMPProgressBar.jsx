@@ -242,25 +242,33 @@ const {
   function getProgress(dummyState, taskId) { // pass in dummyState and ?taskId?
 
     // to hold steps
-    const stepsTotal = [];
-    const stepsCompleted = [];
-    const index = dummyState.map(object => object.task.id).indexOf(taskId)
-    console.log('Index Test 1:', index)
-    const indexTwo = dummyState.findIndex(object => {
+    let taskSteps = [];
+    let stepsCount;
+    let stepsCompleted = [];
+    let stepsCompletedCount;
+    // const index = dummyState.map(object => object.task.id).indexOf(taskId)
+    // console.log('Index Test 1:', index)
+    const taskIndex = dummyState.findIndex(object => {
       return object.task.id === taskId
     })
-    console.log('Index Test 2:', indexTwo)
+    console.log('taskIndex:', taskIndex)
     // --------------------------------------------------------------------------------------
     // to see data delete when complete
-    console.log(taskId)
-    console.log('Test 1:', dummyState)
-    console.log('Test 2:', dummyState[0])
-    console.log('Test 3:', dummyState[0].steps)
-    console.log('Test 4:', dummyState[1].steps)
+    console.log('taskId:', taskId)
+    // console.log('Test 1:', dummyState)
+    // console.log('Test 2:', dummyState[0])
+    // console.log('Test 3:', dummyState[0].steps)
+    // console.log('Test 4:', dummyState[1].steps)
+    // console.log('Test 5:', dummyState[index].steps)
     // --------------------------------------------------------------------------------------
 
+    // save all of the task specific steps to taskSteps variable
+    taskSteps = dummyState[taskIndex].steps;
+    console.log('taskSteps:', taskSteps)
+    // save the total number of task specific steps to stepsCount variable
+    stepsCount = taskSteps.length;
+    console.log('stepsCount:', stepsCount)
 
-    // loop through steps in dummyState and find all of the steps for the taskId
 
       // save the steps in an array and return the length of stepsTotal
       // find the number of completed steps and save them to a different array and return the length of stepsCompleted
