@@ -255,10 +255,6 @@ const {
     // --------------------------------------------------------------------------------------
     // to see data delete when complete
     console.log('taskId:', taskId)
-    // console.log('Test 1:', dummyState)
-    // console.log('Test 2:', dummyState[0])
-    // console.log('Test 3:', dummyState[0].steps)
-    // console.log('Test 5:', dummyState[taskIndex].steps)
     // --------------------------------------------------------------------------------------
 
     // save all of the task specific steps to taskSteps variable
@@ -272,31 +268,25 @@ const {
       console.log('step:', step)
       if (step.completed_at !== null) {
         stepsCompleted.push(step);
-        stepsCompletedCount ++
+        stepsCompletedCount ++ // add 1
       }
     }
     console.log('stepsCompleted:', stepsCompleted)
     console.log('stepsCompletedCount:', stepsCompletedCount)
 
-    // get % complete
+    // get % steps completed
     let progress = (stepsCompletedCount / stepsTotalCount) * 100
     // round to whole number
     return Math.round(progress)
 }
-
 
 // -------------------------------------------------------------------------------------------------------
 
   return (
     <div>
       <h1>This is where our progress bar goes!</h1>
-        <ProgressBar backgroundcolor="#e1ff32" progress='10' />
-        <ProgressBar backgroundcolor="#e1ff32" progress='40' />
-        <ProgressBar backgroundcolor="#e1ff32" progress='25' />
-        <ProgressBar backgroundcolor="#e1ff32" progress='100' />
-        <ProgressBar backgroundcolor="#e1ff32" progress='80' />
-        <ProgressBar backgroundcolor="#00c08b" progress={getProgress(dummyState, 1)} />
-        <ProgressBar backgroundcolor="#00c08b" progress={getProgress(dummyState, 2)} />
+        <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(dummyState, 1)} />
+        <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(dummyState, 2)} />
     </div>
   );
 }
