@@ -2,8 +2,6 @@ import axios from "axios";
 import { motion, useCycle, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import StepList from "../components/StepList";
-import TaskTimer from "../components/TaskTimer"
-import ProgressBar from "../components/ProgressBar";
 import useApplicationData from "../hooks/useApplicationData";
 
 
@@ -24,20 +22,13 @@ const Task = () => {
         const steps = (res.data.steps);
         setTask(task);
         console.log("steps here", task.steps)
-        console.log('TASK:', task.task.name)
       })
       .catch(err => {
         console.log(err);
       });
   }, [id]);
 
-  return (
-    <div>
-
-    <h1>{task.task.name}</h1>
-    {task && <StepList key={task.id}{...task} />}
-    </div>
-  )
+  return <div>{task && <StepList {...task} />}</div>;
 };
 
 export default Task;

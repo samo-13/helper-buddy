@@ -226,6 +226,7 @@ const dummyState = [{
   ]
 }]
 
+
 const {
   state
 } = useApplicationData();
@@ -280,6 +281,8 @@ const {
     // round to whole number
     return Math.round(progress)
 }
+
+
 
 // -------------------------------------------------------------------------------------------------------
 
