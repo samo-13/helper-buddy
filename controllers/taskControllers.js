@@ -11,7 +11,8 @@ const createTask = asyncHandler(async (req, res) => {
   // const { name, steps } = req.body;
   const { name} = req.body;
 
-  console.log(name)
+  console.log("createTask req body", req.body
+  )
 
   const newTask = await db.query(
     // "INSERT INTO tasks (name, steps) VALUES($1, $2) RETURNING *",

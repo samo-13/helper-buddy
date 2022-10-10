@@ -7,6 +7,7 @@ const {
   getAllStepsByTaskId,
   createStep
 } = require("../controllers/helperFunctions");
+const {updateStep} = require("../controllers/stepController.js")
 
 router
   .route("/")
@@ -16,7 +17,9 @@ router
 router
   .route("/:id")
   .get((req, res) => res.json({ message: "get a step" }))
-  .put((req, res) => res.json({ message: "update a step" }))
+  .put(updateStep)
   .delete((req, res) => res.json({ message: "delete a step" }));
 
 module.exports = router;
+
+
