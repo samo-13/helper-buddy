@@ -1,33 +1,85 @@
-form {
-  // background-color: white;
-}
-
-input {
-  background-color: #ffffff;
-  border: 1px solid black;
-  cursor: pointer;
-  width: 170px;
-}
-
-input:focus {
-  background-color: lightcyan;
-}
-
-label {
-  font-weight: bolder;
-}
-
-.creatTaskButton {
-  font-weight: bolder;
-  background-color: #FEE0C5;
-  border: 2px #000000 solid;
-  height: 3rem;
-  box-shadow: 3px 3px;
-  font-size: 18px;
-  // margin-top: 1rem;
-}
-
-// .createTaskButton :hover {
-//   border: 3px #5456e1 solid;
-//   box-shadow: 3px 3px #5456e1;
+// form {
+//   position: relative;
+//   border: 2px #000000 solid;
+//   margin-bottom: 1rem;
+//   padding-left: 2rem;
+//   padding-top: 2rem;
+//   padding-bottom: 2rem;
+//   box-shadow: 3px 3px;
 // }
+
+// input {
+//   background-color: #ffffff;
+//   border: 1px solid black;
+//   cursor: pointer;
+//   width: 170px;
+// }
+
+// input:focus {
+//   background-color: lightcyan;
+// }
+
+// label {
+//   font-weight: bolder;
+// }
+
+// .create-form-buttons {
+//   cursor: pointer;
+//   height: 35px;
+//   width: 170px;
+//   display: inline;
+// }
+
+// .createTaskButton {
+//   font-weight: bolder;
+//   background-color: #FEE0C5;
+//   border: 2px #000000 solid;
+//   height: 3rem;
+//   box-shadow: 3px 3px;
+//   font-size: 18px;
+//   // margin-top: 1rem;
+// }
+
+// #submit-button {
+//   background-color: #C1EFAE;
+// }
+
+// input {
+//   position: relative;
+//   box-sizing: border-box;
+//   height: 2rem;
+//   margin-top: .25rem;
+//   margin-bottom: 1rem;
+// }
+
+// .task {
+//   margin-bottom: 2rem;
+// }
+
+// label {
+//   margin-top: 5rem;
+//   // margin-bottom: 2rem;
+// }
+
+// .step-button {
+//   width: 6rem;
+//   height: 2rem;
+//   margin-bottom: 2rem;
+// }
+
+// .wrapper {
+//   padding: 5px 20px;
+//   // background-color: pink;
+// }
+
+// .wrapper fieldset {
+//   position: relative;
+//   border: none;
+//   padding-bottom: 2rem;
+// }
+
+
+// // .createTaskButton :hover {
+// //   border: 3px #5456e1 solid;
+// //   box-shadow: 3px 3px #5456e1;
+// // }

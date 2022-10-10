@@ -1,45 +1,73 @@
 form {
-  position: relative;
   border: 2px #000000 solid;
   margin-bottom: 1rem;
-  padding-left: 2rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   box-shadow: 3px 3px;
-  justify-items: normal;
+  // background-color: aquamarine;
 }
 
 input {
-  position: relative;
-  box-sizing: border-box;
-  width: 90%;
+  background-color: #ffffff;
+  border: 1px solid black;
+  cursor: pointer;
   height: 2rem;
   margin-top: .25rem;
   margin-bottom: 1rem;
+}
+
+input:focus {
+  // background-color: lightcyan;
+}
+
+label {
+  font-weight: bolder;
+  margin-top: 5px;
+}
+
+.wrapper {
+  padding: 5px 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  // background-color: pink;
+}
+
+.create-form-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 35px;
+}
+
+.createTaskButton {
+  font-weight: bolder;
+  border: 2px #000000 solid;
+  height: 3rem;
+  width: 150px;
+  box-shadow: 3px 3px;
+  font-size: 18px;
+  // margin-top: 1rem;
+}
+
+#submit-button {
+  background-color: #C1EFAE;
 }
 
 .task {
   margin-bottom: 2rem;
 }
 
-label {
-  margin-top: 5rem;
-  // margin-bottom: 2rem;
-}
-
 .step-button {
-  width: 6rem;
   height: 2rem;
   margin-bottom: 2rem;
 }
 
-.wrapper {
-  padding: 5px 20px;
-  // background-color: pink;
-}
-
-.wrapper fieldset {
-  position: relative;
-  border: none;
-  padding-bottom: 2rem;
+.top-create-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
