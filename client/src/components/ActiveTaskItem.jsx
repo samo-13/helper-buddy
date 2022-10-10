@@ -33,14 +33,16 @@ const ActiveTaskItem = (task) => {
       <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(state, task.id)}/>
       <br></br>
       <h4>Time spent:</h4>
-      <button
-        type="submit"
-        class="start-task"
-        className="button-start"
-        onClick={handleClick}
-      >
-        resume
-      </button>
+      <div className="task-box-buttons">
+        <button
+          type="submit"
+          class="start-task"
+          className="button-resume"
+          onClick={handleClick}
+        >
+          resume
+        </button>
+      </div>
     </div>
   );
 };
