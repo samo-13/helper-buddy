@@ -63,7 +63,7 @@ const StepItem = ({ ...step }) => {
     <div className="stepbox" onClick={() => setOpen(false)}>
       <h3>{step.name}</h3>
       <h4 className="expanded_step">{step.description}</h4>
-      {/* onClick={{handleClick} */}
+  
       <button type="submit" className='button' onClick={handleClick}>Done!</button>
     </div>
   );
