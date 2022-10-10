@@ -60,9 +60,10 @@ class TaskTimer extends Component {
       <div className="timer">
         <div className="timer-header">Task Timer</div>
         <div className="timer-display">
+          <div className="timer-block">
+            {hours} : {minutes} : {seconds} : {centiseconds}
+          </div>
 
-          {hours} : {minutes} : {seconds} : {centiseconds}
-          <br></br>
           {this.state.timerOn === false && this.state.timerTotalTime === 0 && (
             <button className="timerbuttons" onClick={this.startTimer}>Start</button>
           )}

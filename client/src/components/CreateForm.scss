@@ -1,8 +1,16 @@
+form {
+  // background-color: white;
+}
+
 input {
   background-color: #ffffff;
   border: 1px solid black;
   cursor: pointer;
   width: 170px;
+}
+
+input:focus {
+  background-color: lightcyan;
 }
 
 label {
@@ -11,9 +19,11 @@ label {
 
 .creatTaskButton {
   font-weight: bolder;
+  background-color: #FEE0C5;
   border: 2px #000000 solid;
   height: 3rem;
   box-shadow: 3px 3px;
+  font-size: 18px;
   // margin-top: 1rem;
 }
 
