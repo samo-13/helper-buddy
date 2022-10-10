@@ -1,5 +1,6 @@
-// --------------------------------------------------------------------------------------------------
 
+import './ProgressBar.scss';
+// --------------------------------------------------------------------------------------------------
 // PSEUDO CODE
 // --- Shows the user a visual representation of their progress using a colored bar based on their task step completion status
 // --- Also shows the user the % of completion
@@ -37,7 +38,7 @@ const ProgressBar = ({ backgroundcolor, progress }) => {
     }
 
   return (
-  <div style={fullTaskLength}>
+  <div className="progress-bar" style={fullTaskLength}>
     <div style={taskProgressLength}></div>
     <span style={taskPercentageLeft}>{`${progress}%`}</span>
   </div>

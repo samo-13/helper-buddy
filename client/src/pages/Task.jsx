@@ -37,6 +37,7 @@ const Task = () => {
         <TaskTimer/>
         <ProgressBar />
       </div>
+      <br></br>
       <h2>Steps to complete:</h2>
       <div>{task && <StepList {...task} />}</div>;
     </div>
