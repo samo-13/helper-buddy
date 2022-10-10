@@ -31,7 +31,7 @@ const ActiveTaskItem = (task) => {
 
   return (
     <div className="taskbox">
-      <div className="name">{task.task.name}</div>
+      <div className="name">{task.name}</div>
       <button
         type="submit"
         class="start-task"

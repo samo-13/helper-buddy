@@ -13,11 +13,9 @@ const ActiveTasks = () => {
 
   return (
   <div>
-    Hi!
-    {/* {activeTasks.map(task => (
+    {activeTasks.map(task => (
       <ActiveTaskItem {...task} />
-      <ActiveTaskItem/>
-    ))} */}
+    ))}
   </div>
 )}
 
