@@ -7,7 +7,7 @@ import Task from './pages/Task';
 import Create from './pages/Create';
 import Archive from './pages/Archive';
 import Bar from './pages/TEMPProgressBar';
-import Timer from './pages/TaskTimerPage';
+import TimerPage from './pages/TimerPage';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             <Route path='create' element={<Create />}></Route>
             <Route path='archive' element={<Archive />}></Route>
             <Route path='bar' element={<Bar />}></Route>
-            <Route path='timer' element={<Timer />}></Route>
+            <Route path='timer' element={<TimerPage />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

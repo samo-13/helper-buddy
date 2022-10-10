@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
+import "./TaskTimer.scss";
+import "./Button.scss";
+
 
 // useState:
 // --- allows us to store state in a function based component
@@ -7,36 +10,61 @@ import React, { useState, useEffect } from "react";
 // useEffect:
 // --- checks if the timer is running and if it is, updates the time
 
-const TaskTimer = () => {
-  const [time, setTime] = useState(0);
-  const [running, setRunning] = useState(false);
+// PSEUDO CODE
+// --- the TaskTimer startS at 0
+// --- the TaskTimer can stop and reset
+// --- the TaskTimer component will display the time
 
-  useEffect(() => {
-    let interval;
-    if (running) {
-      interval = setInterval(() => {
-        setTime((prevTime) => prevTime + 10);
-      }, 10);
-    } else if (!running) {
-      clearInterval(interval);
-    }
-    return () => clearInterval(interval);
-  }, [running]);
+class TaskTimer extends Component {
+  state = {
+    timerOn: false, // boolean if timer is on or off
+    timerStart: 0, // the Unix Epoch (ms after 1970) time when the timer was started (or the past projected start time if the timer is resumed)
+    timerTotalTime: 0 // total time (ms) that the timer has been running
+  };
 
-  return (
-    <div className="timer">
-      <div className="numbers">
-        <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-        <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+  startTimer = () => {
+    this.setState({
+      timerOn: true,
+      timerTotalTime: this.state.timerTotalTime,
+      timerStart: Date.now() - this.state.timerTotalTime
+    });
 
+    this.timer = setInterval(() => {
+      this.setState({
+        timerTotalTime: Date.now() - this.state.timerStart
+      });
+    }, 10);
+  };
+
+  stopTimer = () => {
+    this.setState({ timerOn: false });
+    clearInterval(this.timer);
+  };
+
+  resetTimer = () => { // returns the timerStart and timerTotalTime back to 0
+    this.setState({
+      timerStart: 0,
+      timerTotalTime: 0
+    });
+  };
+
+  render() {
+    const { timerTotalTime } = this.state;
+    // format times to display as 2 digits by concatenating a “0” on the front then slicing off the end if its more than 2 digits long
+    let centiseconds = ("0" + (Math.floor(timerTotalTime / 10) % 100)).slice(-2);
+    let seconds = ("0" + (Math.floor(timerTotalTime / 1000) % 60)).slice(-2);
+    let minutes = ("0" + (Math.floor(timerTotalTime / 60000) % 60)).slice(-2);
+    let hours = ("0" + Math.floor(timerTotalTime / 3600000)).slice(-2);
+
+    return (
+      <div className="timer">
+        <div className="timer-header">Task Timer</div>
+        <div className="timer-display">
+          {hours} : {minutes} : {seconds} : {centiseconds}
+        </div>
       </div>
-      <div className="buttons">
-        <button onClick={() => setRunning(true)}>Start</button>
-        <button onClick={() => setRunning(false)}>Pause</button>
-        <button onClick={() => setTime(0)}>Reset</button>
-      </div>
-    </div>
-  )
+    );
+  }
 }
 
 // --------------------------------------------------------------------------------------------------
