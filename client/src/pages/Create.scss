@@ -18,9 +18,9 @@ input {
   margin-bottom: 1rem;
 }
 
-input:focus {
-  // background-color: lightcyan;
-}
+// input:focus {
+//   // background-color: lightcyan;
+// }
 
 label {
   font-weight: bolder;
@@ -50,11 +50,9 @@ label {
   width: 150px;
   box-shadow: 3px 3px;
   font-size: 18px;
+  margin-left: 6px;
+  margin-right: 6px;
   // margin-top: 1rem;
-}
-
-#submit-button {
-  background-color: #C1EFAE;
 }
 
 .task {
@@ -70,4 +68,8 @@ label {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+#submit-button {
+  background-color: #C1EFAE;
 }

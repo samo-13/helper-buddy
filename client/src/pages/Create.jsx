@@ -28,7 +28,6 @@ const Create = (props) => {
   return (
     <div className="wrapper">
       <h2>Create your own custom task!</h2>
-      <br></br>
       <Form />
     </div>
   )

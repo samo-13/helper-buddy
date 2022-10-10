@@ -94,7 +94,7 @@ const Form = () => {
               value={stepState[index].name}
               onChange={handleStepChange}
             />
-            <label htmlFor={descriptionId}>Description</label>
+            <label htmlFor={descriptionId}>Step Description</label>
             <input
               type='text'
               name={descriptionId}
