@@ -3,7 +3,6 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import useApplicationData from "../hooks/useApplicationData";
-import updatedStep from ".../controllers/stepController.js";
 
 const clickData = document.querySelectorAll('button[type="submit"]');
 console.log("clickdaata", clickData)
@@ -41,15 +40,11 @@ const StepItem = ({ ...step }) => {
       completed_at: Date.now()
     }
     })
-    .then((res) => console.log("result", res))
-    .catch(err => console.log(err))
-    return {...updatedStep}
-    // console.log("updatedstep", updatedStep)
+    // .then((res) => console.log("result", res))
+    // .catch(err => console.log(err))
+    // return {...updatedStep}
+    // // console.log("updatedstep", updatedStep)
   }
-
-
-
-
 
   const closedStep = (
     <div className="stepbox" onClick={() => setOpen(true)}>

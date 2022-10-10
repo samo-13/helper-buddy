@@ -4,7 +4,7 @@ import useApplicationData from "../hooks/useApplicationData";
 
 
 const StepList = ({steps}) => {
-  
+
   console.log("steps!!!", {steps})
   console.log("")
   return (

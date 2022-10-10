@@ -33,7 +33,9 @@ const Task = () => {
 
   return (
     <div>
-    {task && <StepList {...task} />}
+
+    <h1>{task.task.name}</h1>
+    {task && <StepList key={task.id}{...task} />}
     </div>
   )
 };
