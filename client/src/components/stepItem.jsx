@@ -24,11 +24,6 @@ const StepItem = ({ ...step }) => {
   const [open, setOpen] = useState(false);
   const [err, setErr] = useState("");
 
-<<<<<<< HEAD
-  const handleClick = function () {
-    console.log("thisstep",thisStep)
-    //how to get id from here?
-=======
   async function handleClick() {
     console.log("state.steps",state.steps)
     console.log("thisStep", thisStep)
@@ -52,7 +47,6 @@ const StepItem = ({ ...step }) => {
     // .catch(err => console.log(err))
     // return {...updatedStep}
     // console.log("updatedstep",updatedStep)
->>>>>>> megan/more-task
   }
   
 
