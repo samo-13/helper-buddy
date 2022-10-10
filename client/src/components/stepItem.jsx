@@ -24,17 +24,12 @@ const StepItem = ({ ...step }) => {
   const [open, setOpen] = useState(false);
   const [err, setErr] = useState("");
 
-<<<<<<< HEAD
-  const handleClick = function () {
-    console.log("thisstep",thisStep)
-    //how to get id from here?
-=======
   async function handleClick() {
     console.log("state.steps",state.steps)
     console.log("thisStep", thisStep)
-    console.log()
+
     // const stepId = "";
-    const retrievedStep = state.steps.filter(step => step.task_id === thisStep.task_id && step.description === thisStep.description 
+    const retrievedStep = state.steps.filter(step => step.task_id === thisStep.task_id && step.description === thisStep.description
     )
     const stepId = retrievedStep[0].id
     console.log("step id", stepId)
@@ -44,17 +39,16 @@ const StepItem = ({ ...step }) => {
       url: `/api/steps/${stepId}`,
       data: {
       completed_at: Date.now()
-    } 
-      
-    
+    }
+
+
     })
     // .then((res) => console.log("result", res))
     // .catch(err => console.log(err))
     // return {...updatedStep}
     // console.log("updatedstep",updatedStep)
->>>>>>> megan/more-task
   }
-  
+
 
 
 
@@ -69,7 +63,7 @@ const StepItem = ({ ...step }) => {
     <div className="stepbox" onClick={() => setOpen(false)}>
       <h3>{step.name}</h3>
       <h4 className="expanded_step">{step.description}</h4>
-  
+
       <button type="submit" className='button' onClick={handleClick}>Done!</button>
     </div>
   );
