@@ -5,7 +5,6 @@ import { getProgress } from "../helpers/selectors";
 import useApplicationData from "../hooks/useApplicationData";
 import ProgressBar from "./ProgressBar";
 
-
 // ----------------------------------------------------------------
 // stylesheets
 // ----------------------------------------------------------------
@@ -19,20 +18,21 @@ const ActiveTaskItem = (task) => {
   } = useApplicationData();
 
   console.log('state from ActiveTaskItem:', state)
-  const navigate = useNavigate();
 
-  // click handler should GET that task page
+  let duration = task.duration
+  console.log('DURATION FROM ActiveTaskItem:', duration)
+
   async function handleClick() {
-    axios.get(`localhost:3000/task/${task.id}`)
+    // LINK TO TAKE USER TO TASK/:ID PAGE
   }
 
   return (
     <div className="active-taskbox">
-      <div className="active-task-name">Task Name: {task.name}</div>
+      <h3 className="active-task-name">{task.name}</h3>
       <div className="active-task-id">Task ID: {task.id}</div>
-      <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(state, task.id)}/>
+      <h4>Time spent: {duration}</h4>
+        <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(state, task.id)}/>
       <br></br>
-      <h4>Time spent:</h4>
       <div className="task-box-buttons">
         <button
           type="submit"

@@ -22,7 +22,7 @@ const FreshTaskItem = (task) => {
   console.log("itemtask", state.tasks)
 
   const steps = task.steps.length
-  ////////click handler should GET template and then PUT new post
+  //////// click handler should GET template and then PUT new post
   async function handleClick() {
     // let newTask = task.task;
     // let steps = task.steps;
