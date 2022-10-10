@@ -19,7 +19,9 @@ const Home = () => {
     Promise.all([axios.get('/api/tasks/templates/')])
       .then(response => {
         const tasks = response[0].data;
+        ///here's where tasks are getting loaded from templates -- steps are in order here
         console.log("hometasks", tasks)
+        //tasks.forEach((task) => console.log(task.steps)))
         setTasks(tasks);
       })
       .catch(err => {
