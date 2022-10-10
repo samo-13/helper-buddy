@@ -20,7 +20,7 @@ const FreshTaskItem = (task) => {
   const {state, startTask} = useApplicationData();
   const navigate = useNavigate();
   console.log("itemtask", task.steps)
-  
+
 ////////click handler should GET template and then PUT new post
   async function handleClick() {
     // let newTask = task.task;
@@ -29,31 +29,31 @@ const FreshTaskItem = (task) => {
     axios.get(`http://localhost:8080/api/tasks/${id}`)
     .then ((res) => navigate(`task/${res.data.task.id}`)) //here's the id
     .catch(err => console.log(err))
-    
+
     console.log("id!", id)
     console.log("new task", newTask)
   return {...newTask};
-  
-  }
-  
 
-  
+  }
+
+
+
 
   return (
     <div className="taskbox">
       <div className="name">
       {task.task.name}
       </div>
-     
-        
+
+      <h4>Average time to complete:</h4>
+      <div className="task-box-buttons">
         <button type="submit" class="start-task" className='button-start' onClick={handleClick}>
           start
         </button>
         <button type="click" class="preview-task">
           preview
         </button>
-   
-      <h4>Average time to complete:</h4>
+      </div>
     </div>
   );
 };

@@ -28,8 +28,6 @@ const Create = (props) => {
   return (
     <div className="wrapper">
       <h2>Create your own custom task!</h2>
-      <h4>Note: This is a one time use task and is not re-useable.</h4>
-      <br></br>
       <Form />
     </div>
   )

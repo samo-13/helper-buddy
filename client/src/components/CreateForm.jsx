@@ -5,6 +5,7 @@ import useApplicationData from '../hooks/useApplicationData';
 // Stylesheets
 import './CreateForm.scss';
 import './Button.scss';
+// import '../pages/Create.scss';
 // --------------------------------------------------------------------------------------------------
 
 const Form = () => {
@@ -67,6 +68,7 @@ const Form = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div className="top-create-form">
       <label htmlFor='task'>Task Name</label>
       <input
         type='text'
@@ -80,7 +82,8 @@ const Form = () => {
         const stepNameId = `name-${index}`;
         const descriptionId = `description-${index}`;
         return (
-          <div key={`step-${index}`}>
+
+          <div className="top-create-form" key={`step-${index}`}>
             <label htmlFor={stepNameId}>{`${index + 1}. Step Name`}</label>
             <input
               type='text'
@@ -91,7 +94,7 @@ const Form = () => {
               value={stepState[index].name}
               onChange={handleStepChange}
             />
-            <label htmlFor={descriptionId}>Description</label>
+            <label htmlFor={descriptionId}>Step Description</label>
             <input
               type='text'
               name={descriptionId}
@@ -104,14 +107,17 @@ const Form = () => {
           </div>
         );
       })}
+      </div>
       <br></br>
-      <input
-        type='button' // type button on input element doesn't submit the form so we don't need a prevent default
-        value='Add Step'
-        className='creatTaskButton'
-        onClick={addStep}
-      />
-      <input type='submit' value='Submit' className='creatTaskButton' />
+      <div className="create-form-buttons">
+        <input
+          type='button' // type button on input element doesn't submit the form so we don't need a prevent default
+          value='Add Step'
+          className='createTaskButton'
+          onClick={addStep}
+        />
+        <input type='submit' value='Submit' className='createTaskButton' id="submit-button"/>
+      </div>
     </form>
   );
 };

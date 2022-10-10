@@ -1,6 +1,7 @@
 import React from "react";
 import ProgressBar from "../components/ProgressBar";
 import useApplicationData from '../hooks/useApplicationData.jsx';
+// go here to view: http://localhost:3000/bar
 
 function Bar() {
 
@@ -246,9 +247,9 @@ const {
     let stepsTotalCount;
     let stepsCompleted = [];
     let stepsCompletedCount = 0;
-    // const index = dummyState.map(object => object.task.id).indexOf(taskId)
-    // console.log('Index Test 1:', index)
-    const taskIndex = dummyState.findIndex(object => {
+
+    // const taskIndex = dummyState.map(object => object.task.id).indexOf(taskId)
+    const taskIndex = dummyState.findIndex(object => { // findIndex doesn't work on internet explorer
       return object.task.id === taskId
     })
     console.log('taskIndex:', taskIndex)
@@ -287,6 +288,7 @@ const {
       <h1>This is where our progress bar lives while we build it!</h1>
         <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(dummyState, 1)} />
         <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(dummyState, 2)} />
+        <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(dummyState, 3)} />
     </div>
   );
 }
