@@ -1,7 +1,6 @@
 const db = require("../config/dbConfig");
 const asyncHandler = require("express-async-handler");
 
-
 const getAllStepsByTaskId = asyncHandler(async (req, res) => {
   const { id } = (req.params);
   console.log("id", id);

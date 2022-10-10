@@ -27,6 +27,17 @@ function getSteps(state) {
 
 // --------------------------------------------------------------------------------------------------
 
+// function getActiveTasks(state) {
+
+//   if (state.tasks.length < 1) {
+//     return []; // If there are no tasks in progress our data will be empty -- return an empty array.
+//   };
+
+//   // const findDayIndex = daysArray.map(daysObject => daysObject.name).indexOf(day)
+//   const activeTasks = state.tasks
+//   console.log('tasksArray:', tasksArray)
+//   return activeTasks
+// };
 
 // --------------------------------------------------------------------------------------------------
 

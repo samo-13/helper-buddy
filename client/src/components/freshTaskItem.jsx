@@ -58,12 +58,7 @@ const FreshTaskItem = (task) => {
       >
         start
       </button>
-      {/* <Link to={`/api/tasks/templates/${task.id}`}> */}
-      {/* onClick={handlePreview} */}
-      <button type="click" class="preview-task">
-        preview
-      </button>
-      {/* </Link> */}
+
       <h4>Average time to complete:</h4>
     </div>
   );

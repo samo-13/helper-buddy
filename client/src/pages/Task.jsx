@@ -33,7 +33,7 @@ const Task = () => {
   return (
     <div>
       <div className="task-page-top">
-        <h1>{task.task.name}</h1>
+        {/* <h1>{task.task.name}</h1> */}
         <TaskTimer/>
         <ProgressBar />
       </div>
@@ -41,9 +41,7 @@ const Task = () => {
       <h2>Steps to complete:</h2>
       <div>{task && <StepList {...task} />}</div>;
     </div>
-)
-
-
+  )
 };
 
 export default Task;
