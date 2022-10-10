@@ -19,43 +19,6 @@ const FreshTaskItem = (task) => {
   const [err, setErr] = useState("");
   const { state, startTask } = useApplicationData();
   const navigate = useNavigate();
-<<<<<<< HEAD
-  console.log("itemtask", task.steps)
-
-////////click handler should GET template and then PUT new post
-  async function handleClick() {
-    // let newTask = task.task;
-    // let steps = task.steps;
-    const id = await startTask(newTask, newTask.steps)
-    axios.get(`http://localhost:8080/api/tasks/${id}`)
-    .then ((res) => navigate(`task/${res.data.task.id}`)) //here's the id
-    .catch(err => console.log(err))
-
-    console.log("id!", id)
-    console.log("new task", newTask)
-  return {...newTask};
-
-  }
-
-
-
-
-  return (
-    <div className="taskbox">
-      <div className="name">
-      {task.task.name}
-      </div>
-
-      <h4>Average time to complete:</h4>
-      <div className="task-box-buttons">
-        <button type="submit" class="start-task" className='button-start' onClick={handleClick}>
-          start
-        </button>
-        <button type="click" class="preview-task">
-          preview
-        </button>
-      </div>
-=======
   console.log("itemtask", state.tasks)
 
   ////////click handler should GET template and then PUT new post
@@ -102,7 +65,6 @@ const FreshTaskItem = (task) => {
       </button>
       {/* </Link> */}
       <h4>Average time to complete:</h4>
->>>>>>> megan/more-task
     </div>
   );
 };
