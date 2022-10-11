@@ -36,7 +36,10 @@ const FreshTaskItem = ({...task}) => {
     console.log("new task", state);
     return { ...newTask };
   }
-
+  
+  async function allDone() {
+    console.log("alert",task.steps)
+  }
   // const handlePreview = () => {
   //   console.log("in here!", task.task.id)
   //   const id = task.task.id;

@@ -3,13 +3,16 @@ import { motion, useCycle, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import StepList from "../components/StepList";
 import useApplicationData from "../hooks/useApplicationData";
-
+import Alert from 'react-bootstrap/Alert'
 
 const Task = () => {
   const { id } = useParams();
   const [task, setTask, steps, setSteps] = useState(null);
 
   useEffect(() => {
+
+   
+    
     console.log("task", task)//nothing here because of null
     axios
     ////this should GET the new task that was just created,
@@ -29,9 +32,21 @@ const Task = () => {
       .catch(err => {
         console.log(err);
       });
+
+      
   }, [id]);
 
-  return <div>{task && <StepList {...task} />}</div>;
+function allDone() {
+    return (
+      <Alert key='success' variant='success'>You did it!</Alert>
+    )
+  }
+  return (
+  <div>{task && <StepList {...task} />}
+  <button type="click" onClick={allDone}>all done?</button>
+  </div>
+  )
+  ;
 };
 
 export default Task;
