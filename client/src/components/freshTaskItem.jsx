@@ -10,7 +10,7 @@ newTaskFromClick.forEach((task) => {
   task.addEventListener("submit", (e) => {
     e.preventDefault();
     const taskData = new taskData(e.target);
-    console.log("taskData", taskData);
+    // console.log("taskData", taskData);
   });
 });
 
@@ -19,7 +19,6 @@ const FreshTaskItem = (task) => {
   const [err, setErr] = useState("");
   const { state, startTask } = useApplicationData();
   const navigate = useNavigate();
-  console.log("itemtask", state.tasks)
 
   const steps = task.steps.length
   //////// click handler should GET template and then PUT new post
@@ -32,29 +31,15 @@ const FreshTaskItem = (task) => {
       .then((res) => navigate(`task/${res.data.task.id}`)) //here's the id
       .catch((err) => console.log(err));
 
-    console.log("id!", id);
-    console.log("new task", newTask);
+    // console.log("id!", id);
+    // console.log("new task", newTask);
     return { ...newTask };
   }
-
-
-
-  // const handlePreview = () => {
-  //   console.log("in here!", task.task.id)
-  //   const id = task.task.id;
-  //   // axios.get(`api/templates/${task.task.id}`)
-  //   // .then ((res) =>
-  //   navigate(`/api/tasks/templates/${task.task.id}`)
-  //   // )
-  //   // .catch(err => console.log(err))
-  // }
 
   return (
     <div className="taskbox">
       <h3 className="name">{task.task.name}</h3>
       <div className="number-steps">Steps to complete: {steps}</div>
-
-
     <div className="task-box-buttons">
       <button
         type="submit"

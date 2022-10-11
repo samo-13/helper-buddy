@@ -48,31 +48,28 @@ function getSteps(state) {
 // --- when the use completes a step and clicks done, trigger the progress bar to update with the new progress calculation
 // --- with the task ID, get the total number of steps that have that specific task id
 // --- save the total number of steps to a variable stepsTotal
-// --- then loop through the specific steps to see how many are marked as true and save to a variable stepsCompleted
-// --- divide the stepsCompleted by the stepsTotal and multiply by 100 to get the progress
+// --- then loop through the specific steps to see how many are marked as true and save to a variable completedSteps
+// --- divide the completedSteps by the stepsTotal and multiply by 100 to get the progress
 
 function getProgress(state, taskId) {
 
   // to hold steps
+  let allSteps = state.steps;
   let taskSteps = [];
-  let stepsTotalCount;
-  let stepsCompleted = [];
-  let stepsCompletedCount = 0;
+  // let stepsTotalCount;
+  let completedSteps = [];
+  // let completedStepsCount = 0;
 
   // // const taskIndex = state.map(object => object.task.id).indexOf(taskId)
   // const taskIndex = state.findIndex(task => { // findIndex doesn't work on internet explorer
   //   return task.id === taskId
   // })
 
-  // console.log('taskIndex:', taskIndex)
-  // // --------------------------------------------------------------------------------------
-  // // to see data delete when complete
-  // console.log('taskId:', taskId)
-  // // --------------------------------------------------------------------------------------
-
   console.log('STATE FROM getProgress:', state)
   console.log('TASK ID FROM getProgress:', taskId)
   console.log('STEPS FROM getProgress:', state.steps)
+
+  const
   // save all of the task specific steps to taskSteps variable
   // taskSteps = state.taskId.steps;
   // console.log('taskSteps:', taskSteps)
@@ -80,20 +77,27 @@ function getProgress(state, taskId) {
   stepsTotalCount = taskSteps.length;
   console.log('stepsTotalCount:', stepsTotalCount)
 
-  for (let step of taskSteps) {
-    // console.log('step:', step)
-    if (step.completed_at !== null) {
-      stepsCompleted.push(step);
-      stepsCompletedCount ++ // add 1
+  for (let step of allSteps) {
+    if (step.task_id === taskId) {
+      taskSteps.push(step);
     }
+
+    if (step.completed_at !== null && step.task_id) {
+      completedSteps.push(step)
+    }
+
+    console.log('TASK STEPS:', taskSteps)
+    console.log('TASK COMPLETED STEPS:', completedSteps)
   }
-  // console.log('stepsCompleted:', stepsCompleted)
-  console.log('stepsCompletedCount:', stepsCompletedCount)
 
   // get % steps completed
-  let progress = (stepsCompletedCount / stepsTotalCount) * 100
+  let progress = (completedSteps.length / taskSteps.length) * 100
   // round to whole number
   return Math.round(progress)
 }
+
+// function getStepsRemaining(state, taskId) {
+
+// }
 
 export { getTasks, getSteps, getProgress }
