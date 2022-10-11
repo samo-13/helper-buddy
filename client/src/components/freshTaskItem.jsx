@@ -47,7 +47,7 @@ const FreshTaskItem = (task) => {
         className="button-start"
         onClick={handleClick}
       >
-        start
+        Start
       </button>
     </div>
     </div>

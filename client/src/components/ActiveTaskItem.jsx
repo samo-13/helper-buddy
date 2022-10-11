@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import { getProgress } from "../helpers/selectors";
+import { getProgress, getStepsRemaining } from "../helpers/selectors";
 
 import useApplicationData from "../hooks/useApplicationData";
 import ProgressBar from "./ProgressBar";
@@ -28,8 +28,11 @@ const ActiveTaskItem = (task) => {
 
   return (
     <div className="active-taskbox">
-      <h3 className="active-task-name">{task.name}</h3>
-      <div className="active-task-id">Task ID: {task.id}</div>
+      <div className="top-active-task-box">
+        <h3 className="active-task-name">{task.name}</h3>
+        <span className="steps-remaining">{getStepsRemaining(state, task.id)} steps completed!</span>
+      </div>
+      <div className="active-task-id">Task ID (FOR TESTING): {task.id}</div>
       <h4>Time spent: {duration}</h4>
         <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(state, task.id)}/>
       <br></br>
@@ -40,7 +43,7 @@ const ActiveTaskItem = (task) => {
           className="button-resume"
           onClick={handleClick}
         >
-          resume
+          Resume
         </button>
       </div>
     </div>
