@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { getProgress, getStepsRemaining } from "../helpers/selectors";
-
 import useApplicationData from "../hooks/useApplicationData";
 import ProgressBar from "./ProgressBar";
 
@@ -29,8 +28,10 @@ const ActiveTaskItem = (task) => {
     return <h4>Timer: 00:00:00</h4>;
   }
 
-  async function handleClick() {
-    // LINK TO TAKE USER TO TASK/:ID PAGE
+  const navigate = useNavigate();
+
+  function HandleClick() {
+    navigate(`/task/${task.id}`)
   }
 
   return (
@@ -48,7 +49,7 @@ const ActiveTaskItem = (task) => {
           type="submit"
           class="start-task"
           className="button-resume"
-          onClick={handleClick}
+          onClick={HandleClick}
         >
           Resume
         </button>

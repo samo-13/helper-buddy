@@ -20,7 +20,6 @@ CREATE TABLE tasks (
   started_at TIMESTAMP,
   completed_at TIMESTAMP,
   duration TIME
-
 );
 
 

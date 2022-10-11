@@ -17,7 +17,7 @@ router.route("/templates/:id").get((req, res) => res.json(taskTemplate));
 // router.route("/templates/new").get((req, res) => res.json(taskTemplate).post(createTask));
 router.route("/:id").get(getTask).delete(deleteTask);
 router.route("/new").post(createTask);
-
+router.route("/:id").get(getTask).put(updateTask);
 
 // router.route("/:id/steps").get(getAllStepsByTaskId).post(createTask);
 
