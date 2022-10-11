@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./TaskTimer.scss";
 import "./Button.scss";
 
-
 // useState:
 // --- allows us to store state in a function based component
 // --- used to store the timers time + whether the stopwatch is running or not
