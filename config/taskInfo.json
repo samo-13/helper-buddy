@@ -8,18 +8,21 @@
   },
   "steps": [
       {
+        "step_key": 1,
           "task_id": 2,
           "name": "Let's get everything we need!",
           "description": "Detergent? Fabric softener? Coins? Laundry basket? Clothespins?",
           "completed_at": null
       },
       {
+        "step_key": 2,
           "task_id": 2,
           "name": "Now's the time to sort your laundry, if you're into that sort of thing.",
           "description": "Lights/darks? Delicates?",
           "completed_at": null
       },
       {
+        "step_key": 3,
           "task_id": 2,
           "name": "Time to visit the washing machine!",
           "description": "Add your detergent, plus anything else you like in there.",

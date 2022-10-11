@@ -1,6 +1,10 @@
 import FreshTaskItem from './FreshTaskItem';
+import React, { useState } from 'react';
 
 const FreshTasks = ({ tasks }) => {
+  const [state, useState] = tasks;
+  console.log("destructured task", state)
+  // console.log("state", state)
   const steps = tasks[0].steps;
   return (
     <div>

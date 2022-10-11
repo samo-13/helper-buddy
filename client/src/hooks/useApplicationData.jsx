@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 // import { response } from 'express';
 
 export default function useApplicationData() {
 
+  const navigate = useNavigate();
   const [state, setState] = useState({ // maintain the same structure
     tasks: [],
     steps: [],
@@ -25,7 +27,7 @@ export default function useApplicationData() {
   function createTask(task, steps) { // we want this to create new task and also add steps using the new task id to the steps data
     console.log('createTask TASK:', task)
 
-    axios.post(`http://localhost:8080/api/tasks`, {
+    const createdTask = axios.post(`http://localhost:8080/api/tasks`, {
       name: task[0]
     })
       .then((response) => {
@@ -42,17 +44,33 @@ export default function useApplicationData() {
             
           })
         })
-      })
-      .catch(err => console.log(err))
+      return id;
+      
+    })
+    
+    .catch(err => console.log(err))
+
+    // .then(id => {
+      // console.log("iddd",createdTask.id),
+      // axios
+      // .get(`http://localhost:8080/api/tasks/${id}`)
+      // .then((res) => navigate(`task/${res.data.task.id}`))
+    //  }) //here's the id
+  
+      
     // .then((response) => {
     //   console.log(response)
     //   // const tasks = response.data
     //   // setState({...state, tasks})
     // })
+    // console.log("idd", task.id)
+    // axios.get(`http://localhost:8080/api/tasks/${id}`)
+    // .then((res) => console.log("resy",res))
   }
+  
 
-  function startTask(task, steps) {
-    console.log('startTask TASK:', task)
+  function startTask(task, [steps]) {
+    console.log('startTask TASK:', task.task)
     console.log('STEPS:', steps)
     const currentTask = task.task;
     const currentSteps = task.steps;
@@ -63,7 +81,9 @@ export default function useApplicationData() {
     })
     .then((response) => {
       currentSteps.forEach(step => {
+        console.log("step", step)
         axios.post(`http://localhost:8080/api/steps`, {
+          id: step.id,
           taskId: response.data.id,
           name: step.name,
           description: step.description

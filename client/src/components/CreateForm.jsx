@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import useApplicationData from '../hooks/useApplicationData';
 import { getTasks, getSteps } from '../helpers/selectors'
-import { createTask } from '../hooks/useApplicationData';
+import { createTask, startTask } from '../hooks/useApplicationData';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 // https://www.geeksforgeeks.org/reactjs-htmlfor-attribute/#:~:text=React%20provides%20us%20some%20in,for%20the%20given%20HTML%20elements
 
@@ -20,6 +22,9 @@ import { createTask } from '../hooks/useApplicationData';
 // --------------------------------------------------------------------------------------------------
 
 const Form = () => {
+  //--------------------------------------------
+
+  const navigate = useNavigate;
 
   // --------------------------------------------------------------------------------------------------
 
@@ -74,11 +79,12 @@ const Form = () => {
   // const steps = getSteps(state)
   // console.log('STEPS FROM CREATE FORM:', steps)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     console.log('form submitted')
     createTask(taskState.name, stepState)
+    console.log("taskState", taskState)
   }
 
   return (

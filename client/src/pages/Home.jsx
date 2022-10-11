@@ -23,13 +23,12 @@ const Home = () => {
         console.log("hometasks", tasks)
         //tasks.forEach((task) => console.log(task.steps)))
         setTasks(tasks);
+
       })
       .catch(err => {
         console.log(err);
       });
   }, []);
-
-
 
   return (
     <div className='home'>

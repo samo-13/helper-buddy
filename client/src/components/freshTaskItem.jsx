@@ -14,12 +14,13 @@ newTaskFromClick.forEach((task) => {
   });
 });
 
-const FreshTaskItem = (task) => {
+const FreshTaskItem = ({...task}) => {
   const [newTask, setNewTask] = useState(task);
   const [err, setErr] = useState("");
   const { state, startTask } = useApplicationData();
   const navigate = useNavigate();
-  console.log("itemtask", state.tasks)
+  console.log("itemtask", task)
+
 
   ////////click handler should GET template and then PUT new post
   async function handleClick() {
@@ -32,7 +33,7 @@ const FreshTaskItem = (task) => {
       .catch((err) => console.log(err));
 
     console.log("id!", id);
-    console.log("new task", newTask);
+    console.log("new task", state);
     return { ...newTask };
   }
 
