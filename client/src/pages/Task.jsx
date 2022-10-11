@@ -7,7 +7,7 @@ import useApplicationData from "../hooks/useApplicationData";
 
 const Task = () => {
   const { id } = useParams();
-  const [task, setTask] = useState(null);
+  const [task, setTask, steps, setSteps] = useState(null);
 
   useEffect(() => {
     console.log("task", task)//nothing here because of null
@@ -19,9 +19,12 @@ const Task = () => {
         console.log("res",res.data.steps)
         const task = res.data;
         // const id = res.data.task.id;
-        const steps = (res.data.steps);
+        const steps = [] 
+        res.data.steps.map(step => steps.push(step))
+        
         setTask(task);
-        console.log("steps here", task.steps)
+        task.steps = steps;
+        console.log("steps here", steps)
       })
       .catch(err => {
         console.log(err);

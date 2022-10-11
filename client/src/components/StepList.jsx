@@ -3,18 +3,17 @@ import StepItem from "./StepItem";
 import useApplicationData from "../hooks/useApplicationData";
 
 
-const StepList = ({steps}) => {
-  console.log("steps!!!", {steps})
+const StepList = ({...task}) => {
+  console.log("steps!!!", {...task})
   console.log("")
-  const sortedSteps = steps.sort((a, b) => {
-    return a.step_key - b.step_key
-  })
-  
+  // steps.sort((a, b) => {
+  //   return a.step_key - b.step_key
+  // })
   return (
     
     <div >
       {/* this has to be map */}
-      {sortedSteps.map(step => (
+      {task.steps.map(step => (
         <div>
        <StepItem {...step} key={step.id} /> 
        {/* <button onClick={()=>console.log("button!")}>Button!</button> */}
