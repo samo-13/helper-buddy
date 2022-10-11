@@ -1,6 +1,7 @@
 import axios from "axios";
 import { motion, useCycle, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getProgress } from "../helpers/selectors";
 import ProgressBar from "../components/ProgressBar";
 import StepList from "../components/StepList";
 import TaskTimer from "../components/TaskTimer";
@@ -10,6 +11,11 @@ import useApplicationData from "../hooks/useApplicationData";
 const Task = () => {
   const { id } = useParams();
   const [task, setTask] = useState(null);
+
+  const {
+    state,
+  } = useApplicationData();
+
 
   useEffect(() => {
     console.log("task", task)//nothing here because of null
@@ -35,7 +41,7 @@ const Task = () => {
       <div className="task-page-top">
         {/* <h1>{task.task.name}</h1> */}
         <TaskTimer/>
-        <ProgressBar />
+        <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(state)}/>
       </div>
       <br></br>
       <h2>Steps to complete:</h2>
