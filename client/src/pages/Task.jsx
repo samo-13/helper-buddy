@@ -102,7 +102,7 @@ const Task = () => {
         <div className='task-step-progress'>steps remaining!</div>
       </div>
       <h2 className='task-steps-header'>Steps to complete:</h2>
-      <div>{task && <StepList {...task} />}</div>;
+      <div>{task && <StepList {...task} />}</div>
     </div>
   );
 };
