@@ -22,6 +22,13 @@ const ActiveTaskItem = (task) => {
   let duration = task.duration
   console.log('DURATION FROM ActiveTaskItem:', duration)
 
+  function getDuration(duration) {
+    if (duration) {
+      return <h4>Timer: {duration}</h4>;
+    }
+    return <h4>Timer: 00:00:00</h4>;
+  }
+
   async function handleClick() {
     // LINK TO TAKE USER TO TASK/:ID PAGE
   }
@@ -33,7 +40,7 @@ const ActiveTaskItem = (task) => {
         <span className="steps-remaining">{getStepsRemaining(state, task.id)} steps completed!</span>
       </div>
       <div className="active-task-id">Task ID (FOR TESTING): {task.id}</div>
-      <h4>Time spent: {duration}</h4>
+      <h4 className='duration-value'>{getDuration(duration)}</h4>
         <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(state, task.id)}/>
       <br></br>
       <div className="task-box-buttons">
