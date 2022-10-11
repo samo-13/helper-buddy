@@ -2,10 +2,17 @@ import axios from "axios";
 import { motion, useCycle, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProgress } from "../helpers/selectors";
+
 import ProgressBar from "../components/ProgressBar";
 import StepList from "../components/StepList";
 import TaskTimer from "../components/TaskTimer";
 import useApplicationData from "../hooks/useApplicationData";
+
+// ----------------------------------------------------------------
+// stylesheets
+// ----------------------------------------------------------------
+import "./Task.scss";
+// ----------------------------------------------------------------
 
 
 const Task = () => {
@@ -41,13 +48,17 @@ const Task = () => {
       <div className="task-page-top">
         <h1>Task Name</h1>
         <TaskTimer/>
+
+        <div id="task-progress-bar">
         <ProgressBar
+          className="task-progress-bar"
           backgroundcolor="#e1ff32"
           progress={getProgress(state, id)}
         />
+        </div>
+
       </div>
-      <br></br>
-      <h2>Steps to complete:</h2>
+      <h2 className="task-steps-header">Steps to complete:</h2>
       <div>{task && <StepList {...task} />}</div>;
     </div>
   )
