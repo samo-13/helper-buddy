@@ -41,13 +41,6 @@ class TaskTimer extends Component {
     clearInterval(this.timer);
   };
 
-  resetTimer = () => { // returns the timerStart and timerTotalTime back to 0
-    this.setState({
-      timerStart: 0,
-      timerTotalTime: 0
-    });
-  };
-
   render() {
     const { timerTotalTime } = this.state;
     // format times to display as 2 digits by concatenating a “0” on the front then slicing off the end if its more than 2 digits long
