@@ -19,7 +19,8 @@ CREATE TABLE tasks (
   name VARCHAR(255) NOT NULL,
   started_at TIMESTAMP,
   completed_at TIMESTAMP,
-  duration TIME
+  duration TIME,
+  total_time BIGINT
 );
 
 
