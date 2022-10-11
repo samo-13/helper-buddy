@@ -1,3 +1,11 @@
+button {
+  background-color: #ffffff;
+  border: 0;
+  cursor: pointer;
+  height: 35px;
+  width: 170px;
+}
+
 .button {
   background-color: #ffffff;
   border: 0;
@@ -11,12 +19,4 @@
     box-shadow: 3px 3px;
     color: black;
   }
-}
-
-button {
-  background-color: #ffffff;
-  border: 0;
-  cursor: pointer;
-  height: 35px;
-  width: 170px;
 }

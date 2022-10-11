@@ -1,5 +1,4 @@
 
-import './ProgressBar.scss';
 // --------------------------------------------------------------------------------------------------
 // PSEUDO CODE
 // --- Shows the user a visual representation of their progress using a colored bar based on their task step completion status
@@ -19,7 +18,6 @@ const ProgressBar = ({ backgroundcolor, progress }) => {
       height: 20,
       width: '100%',
       backgroundColor: 'white',
-      marginTop: 50,
       borderRadius: 7,
       // border: '2px solid grey'
     }

@@ -14,7 +14,23 @@
   color: black;
   padding-left: 10px;
   padding-right: 10px;
-  margin-right: 8px;
-  height: 30px;
-  width: 80px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  height: 40px;
+  width: 100px;
 }
+
+.steps-remaining {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.top-active-task-box {
+  display: inline-block;
+
+}
+
+// .duration-value {
+
+// }

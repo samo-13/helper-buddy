@@ -1,7 +1,7 @@
 .taskbox {
   position: relative;
   border: 1px #000000 solid;
-  height: 140px;
+  height: auto;
   line-height: 2rem;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -43,15 +43,16 @@
   }
 }
 
-.button-start, .preview-task {
+.button-start {
   border: 1px black solid;
   box-shadow: 2px 2px black;
   color: black;
   padding-left: 10px;
   padding-right: 10px;
-  margin-right: 8px;
-  height: 30px;
-  width: 80px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+  width: 100px;
 }
 
 .task-box-buttons {

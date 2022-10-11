@@ -1,5 +1,5 @@
 form {
-  border: 2px #000000 solid;
+  border: 1px #000000 solid;
   margin-bottom: 1rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -41,18 +41,21 @@ label {
   justify-content: center;
   cursor: pointer;
   height: 35px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .createTaskButton {
   font-weight: bolder;
-  border: 2px #000000 solid;
+  border: 1px #000000 solid;
   height: 3rem;
   width: 150px;
-  box-shadow: 3px 3px;
+  box-shadow: 2px 2px;
   font-size: 18px;
   margin-left: 6px;
   margin-right: 6px;
-  // margin-top: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .task {
