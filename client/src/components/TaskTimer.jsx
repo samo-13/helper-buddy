@@ -73,9 +73,6 @@ class TaskTimer extends Component {
           {this.state.timerOn === false && this.state.timerTotalTime > 0 && (
             <button className="timerbuttons" onClick={this.startTimer}>Resume</button>
           )}
-          {this.state.timerOn === false && this.state.timerTotalTime > 0 && (
-            <button className="timerbuttons" onClick={this.resetTimer}>Restart</button>
-          )}
         </div>
       </div>
     );

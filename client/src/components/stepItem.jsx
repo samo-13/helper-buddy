@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import useApplicationData from "../hooks/useApplicationData";
+import "./Button.scss"
 // import updateStep from controllers/stepController.js;
 
 const clickData = document.querySelectorAll('button[type="submit"]');
@@ -25,8 +26,8 @@ const StepItem = ({ ...step }) => {
   const [err, setErr] = useState("");
 
   async function handleClick() {
-    console.log("state.steps",state.steps)
-    console.log("thisStep", thisStep)
+    console.log("state.steps:", state.steps)
+    console.log("thisStep:", thisStep)
 
     // const stepId = "";
     const retrievedStep = state.steps.filter(step => step.task_id === thisStep.task_id && step.description === thisStep.description
@@ -40,18 +41,12 @@ const StepItem = ({ ...step }) => {
       data: {
       completed_at: Date.now()
     }
-
-
     })
     // .then((res) => console.log("result", res))
     // .catch(err => console.log(err))
     // return {...updatedStep}
     // console.log("updatedstep",updatedStep)
   }
-
-
-
-
 
   const closedStep = (
     <div className="stepbox" onClick={() => setOpen(true)}>
@@ -63,7 +58,6 @@ const StepItem = ({ ...step }) => {
     <div className="stepbox" onClick={() => setOpen(false)}>
       <h3>{step.name}</h3>
       <h4 className="expanded_step">{step.description}</h4>
-
       <button type="submit" className='button' onClick={handleClick}>Done!</button>
     </div>
   );

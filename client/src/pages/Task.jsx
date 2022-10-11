@@ -1,7 +1,7 @@
 import axios from "axios";
 import { motion, useCycle, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProgress } from "../helpers/selectors";
+import { getProgress, getStepsRemaining } from "../helpers/selectors";
 
 import ProgressBar from "../components/ProgressBar";
 import StepList from "../components/StepList";
@@ -55,6 +55,10 @@ const Task = () => {
           backgroundcolor="#e1ff32"
           progress={getProgress(state, id)}
         />
+        </div>
+
+        <div className="task-step-progress">
+          {getStepsRemaining(state, id)} steps completed!
         </div>
 
       </div>
