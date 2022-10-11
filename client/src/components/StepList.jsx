@@ -21,4 +21,3 @@ const StepList = ({steps}) => {
 };
 
 export default StepList;
-
