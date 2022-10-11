@@ -38,10 +38,11 @@ const ActiveTaskItem = (task) => {
     <div className="active-taskbox">
       <div className="top-active-task-box">
         <h3 className="active-task-name">{task.name}</h3>
-        <span className="steps-remaining">{getStepsRemaining(state, task.id)} steps completed!</span>
+        <span className="steps-remaining">{getStepsRemaining(state, task.id)} steps completed! </span>
       </div>
-      <div className="active-task-id">Task ID (FOR TESTING): {task.id}</div>
+      {/* <div className="active-task-id">Task ID (FOR TESTING): {task.id}</div> */}
       <h4 className='duration-value'>{getDuration(duration)}</h4>
+      <br></br>
         <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(state, task.id)}/>
       <br></br>
       <div className="task-box-buttons">

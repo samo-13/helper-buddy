@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import useApplicationData from "../hooks/useApplicationData";
 import './TaskTimer.scss';
 import './Button.scss';
 import axios from 'axios';
+import { Timer } from "./Timer.jsx"
+import { TimerControlButtons } from "./TimerControlButtons.jsx"
 
 // useState:
 // --- allows us to store state in a function based component
@@ -15,77 +18,53 @@ import axios from 'axios';
 // --- the TaskTimer can stop and reset
 // --- the TaskTimer component will display the time
 
-class TaskTimer extends Component {
-  state = {
-    timerOn: false, // boolean if timer is on or off
-    timerStart: 0, // the Unix Epoch (ms after 1970) time when the timer was started (or the past projected start time if the timer is resumed)
-    timerTotalTime: 0, // total time (ms) that the timer has been running
+function TaskTimer() {
+
+  const [isActive, setIsActive] = useState(false);
+  const [isPaused, setIsPaused] = useState(true);
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    let interval = null;
+
+    if (isActive && isPaused === false) {
+      interval = setInterval(() => {
+        setTime((time) => time + 10);
+      }, 10);
+    } else {
+      clearInterval(interval);
+    }
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isActive, isPaused]);
+
+  const handleStart = () => {
+    setIsActive(true);
+    setIsPaused(false);
   };
 
-  startTimer = () => {
-    this.setState({
-      timerOn: true,
-      timerTotalTime: this.state.timerTotalTime,
-      timerStart: Date.now() - this.state.timerTotalTime,
-    });
-
-    this.timer = setInterval(() => {
-      this.setState({
-        timerTotalTime: Date.now() - this.state.timerStart,
-      });
-    }, 10);
+  const handlePauseResume = () => {
+    setIsPaused(!isPaused);
   };
 
-  stopTimer = () => {
-    this.setState({ timerOn: false });
-    clearInterval(this.timer);
-
-    const task = this.props.task.task;
-    axios
-      .put(`http://localhost:8080/api/tasks/${task.id}`, {
-        ...task,
-        total_time: this.state.timerTotalTime,
-      })
-      .then(res => console.log(res));
+  const handleReset = () => {
+    setIsActive(false);
+    setTime(0);
   };
 
-  render() {
-    const { timerTotalTime } = this.state;
-    // format times to display as 2 digits by concatenating a “0” on the front then slicing off the end if its more than 2 digits long
-    let centiseconds = ('0' + (Math.floor(timerTotalTime / 10) % 100)).slice(
-      -2
-    );
-    let seconds = ('0' + (Math.floor(timerTotalTime / 1000) % 60)).slice(-2);
-    let minutes = ('0' + (Math.floor(timerTotalTime / 60000) % 60)).slice(-2);
-    let hours = ('0' + Math.floor(timerTotalTime / 3600000)).slice(-2);
-
-    return (
-      <div className='timer'>
-        <div className='timer-header'>Task Timer</div>
-        <div className='timer-display'>
-          <div className='timer-block'>
-            {hours} : {minutes} : {seconds} : {centiseconds}
-          </div>
-
-          {this.state.timerOn === false && this.state.timerTotalTime === 0 && (
-            <button className='timerbuttons' onClick={this.startTimer}>
-              Start
-            </button>
-          )}
-          {this.state.timerOn === true && (
-            <button className='timerbuttons' onClick={this.stopTimer}>
-              Stop
-            </button>
-          )}
-          {this.state.timerOn === false && this.state.timerTotalTime > 0 && (
-            <button className='timerbuttons' onClick={this.startTimer}>
-              Resume
-            </button>
-          )}
-        </div>
-      </div>
-    );
-  }
+  return (
+    <div className="stop-watch">
+      <Timer time={time} />
+      <TimerControlButtons
+        active={isActive}
+        isPaused={isPaused}
+        handleStart={handleStart}
+        handlePauseResume={handlePauseResume}
+        // handleReset={handleReset}
+      />
+    </div>
+  );
 }
 
 // --------------------------------------------------------------------------------------------------
