@@ -71,7 +71,7 @@ const Task = () => {
 
       let result = steps.length - remaining.length
       setRemaining(result);
-    
+
     }
 
   // }, [id]);
@@ -89,7 +89,10 @@ const Task = () => {
       <div className='task-page-top'>
         <h1>{taskName}</h1>
 
-        <TaskTimer task={task} />
+        <TaskTimer 
+          task={task}
+          taskId={id}
+        />
 
         <div id='task-progress-bar'>
           <ProgressBar

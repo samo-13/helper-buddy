@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useParams } from 'react';
 import useApplicationData from "../hooks/useApplicationData";
 import './TaskTimer.scss';
 import './Button.scss';
@@ -18,54 +18,66 @@ import { TimerControlButtons } from "./TimerControlButtons.jsx"
 // --- the TaskTimer can stop and reset
 // --- the TaskTimer component will display the time
 
-function TaskTimer() {
+const TaskTimer = () => {
+  const [time, setTime] = React.useState(parseInt(localStorage.getItem('duration')) || 0);
+  const [timerOn, setTimerOn] = React.useState(false);
 
-  const [isActive, setIsActive] = useState(false);
-  const [isPaused, setIsPaused] = useState(true);
-  const [time, setTime] = useState(0);
-
-  useEffect(() => {
+  React.useEffect(() => {
     let interval = null;
 
-    if (isActive && isPaused === false) {
+    if (timerOn) {
       interval = setInterval(() => {
-        setTime((time) => time + 10);
+        setTime((prevTime) => prevTime + 10);
       }, 10);
-    } else {
+    } else if (!timerOn) {
       clearInterval(interval);
     }
-    return () => {
-      clearInterval(interval);
-    };
-  }, [isActive, isPaused]);
 
-  const handleStart = () => {
-    setIsActive(true);
-    setIsPaused(false);
-  };
+    return () => clearInterval(interval);
+  }, [timerOn]);
 
-  const handlePauseResume = () => {
-    setIsPaused(!isPaused);
-  };
-
-  const handleReset = () => {
-    setIsActive(false);
-    setTime(0);
-  };
+  function saveDuration() {
+    axios({
+      method: 'put',
+      url: `/api/tasks/2`,
+      data: {
+        duration: {time}
+      },
+    });
+    console.log('SAVED DURATION!')
+  }
 
   return (
-    <div className="stop-watch">
-      <Timer time={time} />
-      <TimerControlButtons
-        active={isActive}
-        isPaused={isPaused}
-        handleStart={handleStart}
-        handlePauseResume={handlePauseResume}
-        // handleReset={handleReset}
-      />
+    <div className="timer">
+      <h4>Task Timer</h4>
+      <div id="display">
+        <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+        <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
+        <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
+      </div>
+
+      <div id="buttons">
+        {!timerOn && time === 0 && (
+          <button onClick={() => setTimerOn(true)}>Start</button>
+        )}
+        {timerOn && <button 
+          onClick={() => {
+            setTimerOn(false)
+            localStorage.setItem('duration', time)
+          }}
+          >
+            Stop
+          </button>}
+        {!timerOn && time > 0 && (
+          <button onClick={() => setTime(0)}>Reset</button>
+        )}
+        {!timerOn && time > 0 && (
+          <button onClick={() => setTimerOn(true)}>Resume</button>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 // --------------------------------------------------------------------------------------------------
 export default TaskTimer;
