@@ -2,6 +2,7 @@ import FreshTaskItem from './FreshTaskItem';
 
 const FreshTasks = ({ tasks }) => {
   const steps = tasks[0].steps;
+  console.log('STEPS FROM FreshTasks:', steps)
   return (
     <div>
       {tasks.map(task => (
@@ -10,7 +11,7 @@ const FreshTasks = ({ tasks }) => {
       ))}
     </div>
   );
-  
+
 };
 
 export default FreshTasks;

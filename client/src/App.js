@@ -8,6 +8,7 @@ import Create from './pages/Create';
 import Archive from './pages/Archive';
 import Bar from './pages/TEMPProgressBar';
 import TimerPage from './pages/TimerPage';
+import ActiveTasks from './pages/ActiveTasks'
 
 function App() {
   return (

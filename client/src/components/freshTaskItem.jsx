@@ -21,7 +21,8 @@ const FreshTaskItem = (task) => {
   const navigate = useNavigate();
   console.log("itemtask", state.tasks)
 
-  ////////click handler should GET template and then PUT new post
+  const steps = task.steps.length
+  //////// click handler should GET template and then PUT new post
   async function handleClick() {
     // let newTask = task.task;
     // let steps = task.steps;
@@ -36,6 +37,8 @@ const FreshTaskItem = (task) => {
     return { ...newTask };
   }
 
+
+
   // const handlePreview = () => {
   //   console.log("in here!", task.task.id)
   //   const id = task.task.id;
@@ -48,8 +51,11 @@ const FreshTaskItem = (task) => {
 
   return (
     <div className="taskbox">
-      <div className="name">{task.task.name}</div>
+      <h3 className="name">{task.task.name}</h3>
+      <div className="number-steps">Steps to complete: {steps}</div>
 
+
+    <div className="task-box-buttons">
       <button
         type="submit"
         class="start-task"
@@ -58,13 +64,7 @@ const FreshTaskItem = (task) => {
       >
         start
       </button>
-      {/* <Link to={`/api/tasks/templates/${task.id}`}> */}
-      {/* onClick={handlePreview} */}
-      <button type="click" class="preview-task">
-        preview
-      </button>
-      {/* </Link> */}
-      <h4>Average time to complete:</h4>
+    </div>
     </div>
   );
 };
