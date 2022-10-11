@@ -38,13 +38,14 @@ const getTask = asyncHandler(async (req, res) => {
 
 const updateTask = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const { name, total_time } = req.body;
+  // const { name } = req.body;
+  const { total_time } = req.body;
 
-  console.log(req.body);
+  console.log('REQ.BODY FROM updateTask:', req.body);
 
   const updatedTask = await db.query(
-    'UPDATE tasks SET name = $1, total_time = $2 WHERE id = $3 RETURNING *',
-    [name, total_time, id]
+    'UPDATE tasks SET total_time = $1 WHERE id = $2 RETURNING *',
+    [total_time, id]
   );
 
   res.json({ message: `Task#${updatedTask.rows[0].id} updated` });

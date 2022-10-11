@@ -18,7 +18,7 @@ const ActiveTaskItem = (task) => {
 
   // console.log('state from ActiveTaskItem:', state)
 
-  let duration = task.duration
+  let duration = task.total_time
   console.log('DURATION FROM ActiveTaskItem:', duration)
 
   function getDuration(duration) {
@@ -41,7 +41,7 @@ const ActiveTaskItem = (task) => {
         <span className="steps-remaining">{getStepsRemaining(state, task.id)} steps completed! </span>
       </div>
       {/* <div className="active-task-id">Task ID (FOR TESTING): {task.id}</div> */}
-      <h4 className='duration-value'>{(parseInt(localStorage.getItem('duration')) / 1000 / 60).toFixed(2) || 0} min</h4>
+      <h4 className='duration-value'>{getDuration(duration)} min</h4>
       <br></br>
         <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(state, task.id)}/>
       <br></br>

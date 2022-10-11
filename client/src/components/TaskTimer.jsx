@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useParams } from 'react';
-import useApplicationData from "../hooks/useApplicationData";
+import useApplicationData from '../hooks/useApplicationData';
 import './TaskTimer.scss';
 import './Button.scss';
 import axios from 'axios';
-import { Timer } from "./Timer.jsx"
-import { TimerControlButtons } from "./TimerControlButtons.jsx"
 
 // useState:
 // --- allows us to store state in a function based component
@@ -18,10 +16,16 @@ import { TimerControlButtons } from "./TimerControlButtons.jsx"
 // --- the TaskTimer can stop and reset
 // --- the TaskTimer component will display the time
 
-const TaskTimer = () => {
+const TaskTimer = (props) => {
   const [time, setTime] = React.useState(parseInt(localStorage.getItem('duration')) || 0);
   const [timerOn, setTimerOn] = React.useState(false);
+  const {state} = useApplicationData();
+  
+  console.log('STATE STATE STATE:', state)
 
+  console.log('THIS PROPS:', props)
+  console.log('THIS PROPS ID:', props.taskId)
+  const id = props.taskId
   React.useEffect(() => {
     let interval = null;
 
@@ -36,12 +40,12 @@ const TaskTimer = () => {
     return () => clearInterval(interval);
   }, [timerOn]);
 
-  function saveDuration() {
+  async function saveDuration(time) {
     axios({
       method: 'put',
-      url: `/api/tasks/2`,
+      url: `http://localhost:8080/api/tasks/${id}`,
       data: {
-        duration: {time}
+      total_time: `${time}`
       },
     });
     console.log('SAVED DURATION!')
@@ -63,7 +67,7 @@ const TaskTimer = () => {
         {timerOn && <button 
           onClick={() => {
             setTimerOn(false)
-            localStorage.setItem('duration', time)
+            saveDuration(time)
           }}
           >
             Stop
