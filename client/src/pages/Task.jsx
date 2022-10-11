@@ -16,7 +16,6 @@ const Task = () => {
     state,
   } = useApplicationData();
 
-
   useEffect(() => {
     console.log("task", task)//nothing here because of null
     axios
@@ -26,10 +25,11 @@ const Task = () => {
       .then((res) => {
         console.log("res",res.data.steps)
         const task = res.data;
-        // const id = res.data.task.id;
+        const id = res.data.task.id;
         const steps = (res.data.steps);
         setTask(task);
-        console.log("steps here", task.steps)
+        console.log('TASK FROM TASK PAGE:', task)
+        console.log('ID FROM TASK PAGE:', id)
       })
       .catch(err => {
         console.log(err);
@@ -39,9 +39,12 @@ const Task = () => {
   return (
     <div>
       <div className="task-page-top">
-        {/* <h1>{task.task.name}</h1> */}
+        <h1>Task Name</h1>
         <TaskTimer/>
-        <ProgressBar backgroundcolor="#e1ff32" progress={getProgress(state)}/>
+        <ProgressBar
+          backgroundcolor="#e1ff32"
+          progress={getProgress(state, id)}
+        />
       </div>
       <br></br>
       <h2>Steps to complete:</h2>

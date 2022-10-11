@@ -35,11 +35,11 @@ export default function useApplicationData() {
       .then(id => {
         steps.forEach(step => {
           axios.post(`http://localhost:8080/api/steps`, {
-            id: step.id,  
+            id: step.id,
           taskId: id,
             name: step.name,
             description: step.description,
-            
+
           })
         })
       })
@@ -73,14 +73,20 @@ export default function useApplicationData() {
       return response.data.id
       // console.log('steps:', steps)
     })
-   
+  }
+
 /////want to get id from here into FreshTaskItem for handleClick
     // .then(id => {
     //   axios.get(`http://localhost:8080/tasks/${id}`)
     // .then (res => console.log("res", res))
     // .catch(err => console.log(err))
     // })
-  }
+
+  // function getProgress(task, steps){
+  // }
+
+  // function saveTimer(task, steps){
+  // }
 
 
   return {
@@ -89,5 +95,4 @@ export default function useApplicationData() {
     startTask
   }
 }
-
 

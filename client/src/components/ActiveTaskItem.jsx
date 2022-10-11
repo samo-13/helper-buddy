@@ -17,7 +17,7 @@ const ActiveTaskItem = (task) => {
     state,
   } = useApplicationData();
 
-  console.log('state from ActiveTaskItem:', state)
+  // console.log('state from ActiveTaskItem:', state)
 
   let duration = task.duration
   console.log('DURATION FROM ActiveTaskItem:', duration)
