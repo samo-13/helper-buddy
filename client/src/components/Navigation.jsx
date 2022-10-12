@@ -14,7 +14,7 @@ function Navbar() {
         <NavLink to='/create'>Create Task</NavLink>
         {/* <NavLink to='/archive'>Archived Tasks</NavLink> */}
       </section>
-      <Button className='nav__button'>Log out</Button>
+      <Button id="logout-button" className='nav__button'>Log out</Button>
     </nav>
   );
 }

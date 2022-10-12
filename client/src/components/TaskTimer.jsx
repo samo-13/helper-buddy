@@ -49,7 +49,7 @@ const TaskTimer = (props) => {
   }
   return (
     <div className="timer">
-      <h4>Task Timer</h4>
+      <p>Task Timer</p>
       <div id="display">
         <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
         <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
