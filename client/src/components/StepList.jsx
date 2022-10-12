@@ -4,17 +4,26 @@ import useApplicationData from "../hooks/useApplicationData";
 
 
 const StepList = ({steps}) => {
-  
-  console.log("steps!!!", {steps})
+  console.log("unsorted steps", steps)
+  const sortedSteps = steps.sort((a, b) => (a.order_by - b.order_by))
+  console.log("steps!!!", {sortedSteps})
   console.log("")
   return (
     <div >
+     
       {/* this has to be map */}
-      {steps.map(step => (
-        <div>
-       <StepItem {...step} />
+      
+      {sortedSteps.map(step => (
+        console.log("step order", step["order_by"]),
+        <ul>
+       <StepItem 
+       key={step.order_by} 
+       task_id={step.task_id}
+       name={step.name}
+       description={step.description} 
+       />
        {/* <button onClick={()=>console.log("button!")}>Button!</button> */}
-       </div>
+       </ul>
       ))}
     </div>
   );

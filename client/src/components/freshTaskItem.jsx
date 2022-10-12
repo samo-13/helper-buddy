@@ -20,7 +20,7 @@ const FreshTaskItem = (task) => {
   const { state, startTask } = useApplicationData();
   const navigate = useNavigate();
 
-  const steps = task.steps.length
+  const steps = task.steps
   //////// click handler should GET template and then PUT new post
   async function handleClick() {
     // let newTask = task.task;
