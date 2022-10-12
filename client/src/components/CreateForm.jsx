@@ -1,49 +1,38 @@
 import React, { useState } from 'react';
 import useApplicationData from '../hooks/useApplicationData';
-
+import { useNavigate, Link } from "react-router-dom";
 // --------------------------------------------------------------------------------------------------
 // Stylesheets
-import './CreateForm.scss';
 import './Button.scss';
-// import '../pages/Create.scss';
+import '../pages/Create.scss';
 // --------------------------------------------------------------------------------------------------
 
 const Form = () => {
   // --------------------------------------------------------------------------------------------------
-
-  const { state, createTask } = useApplicationData();
-
+  // Help link the form submit button to the in-progress tasks view OR the task itself
+  const navigate = useNavigate();
   // --------------------------------------------------------------------------------------------------
-
+  const { state, createTask } = useApplicationData();
+  // --------------------------------------------------------------------------------------------------
   const [taskState, setTaskState] = useState({
     name: '',
   });
-
   // --------------------------------------------------------------------------------------------------
-
   const blankStep = { name: '', description: '' };
-
   // --------------------------------------------------------------------------------------------------
-
   const [stepState, setStepState] = useState([{ ...blankStep }]);
-
   // --------------------------------------------------------------------------------------------------
-
   const addStep = () => {
     // sets the state with ... of the previous state’s steps array, and a new blankStep object is added on the end
     setStepState([...stepState, { ...blankStep }]);
   };
-
   // --------------------------------------------------------------------------------------------------
-
   const handleTaskChange = event =>
     setTaskState({
       ...taskState,
       [event.target.name]: [event.target.value],
     });
-
   // --------------------------------------------------------------------------------------------------
-
   const handleStepChange = event => {
     const updatedSteps = [...stepState]; // clone our stepState to keep renders pure
     // with the step + property, set the value with event.target.value
@@ -51,9 +40,7 @@ const Form = () => {
       event.target.value; // use the index data attribute to locate the index of the set of step inputs -- then use className to see if it's the name or description that was changed
     setStepState(updatedSteps); // update state with the updated array of steps
   };
-
   // --------------------------------------------------------------------------------------------------
-
   const handleSubmit = event => {
     event.preventDefault();
 
@@ -64,12 +51,13 @@ const Form = () => {
     setStepState([{ ...blankStep }]);
 
     createTask(taskState.name, stepState);
+    navigate(`/`) // navigates us back to the home view to see our task has been created
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="top-create-form">
-      <label htmlFor='task'>Task Name</label>
+      <label htmlFor='task'>Task name</label>
       <input
         type='text'
         name='name'
@@ -84,7 +72,7 @@ const Form = () => {
         return (
 
           <div className="top-create-form" key={`step-${index}`}>
-            <label htmlFor={stepNameId}>{`${index + 1}. Step Name`}</label>
+            <label htmlFor={stepNameId}>{`${index + 1}. Step name`}</label>
             <input
               type='text'
               name={stepNameId}
@@ -94,7 +82,7 @@ const Form = () => {
               value={stepState[index].name}
               onChange={handleStepChange}
             />
-            <label htmlFor={descriptionId}>Step Description</label>
+            <label htmlFor={descriptionId}>Step description</label>
             <input
               type='text'
               name={descriptionId}
