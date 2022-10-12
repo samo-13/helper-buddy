@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useParams } from 'react';
-import useApplicationData from '../hooks/useApplicationData';
-import './TaskTimer.scss';
-import './Button.scss';
-import axios from 'axios';
+// import React, { useState, useEffect, useParams, useRef } from 'react';
+// import useApplicationData from '../hooks/useApplicationData';
+// import './TaskTimer.scss';
+// import './Button.scss';
+// import useTimer from '../hooks/useTimer.jsx';
+// import axios from 'axios';
 
 // useState:
 // --- allows us to store state in a function based component
@@ -16,122 +17,55 @@ import axios from 'axios';
 // --- the TaskTimer can stop and reset
 // --- the TaskTimer component will display the time
 
-const TaskTimer = (props) => {
-  const [time, setTime] = React.useState(props.realTime || 0);
-  const [timerOn, setTimerOn] = React.useState(false);
-  const {state} = useApplicationData();
-  const id = props.taskId;
-  const task = props.task;
-  let realTime = props.realTime;
-  // setTime(props.realTime);
+// const TaskTimer = (props) => {
+//   const { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset, formatTime } = useTimer(0)
 
-  // console.log('STATE STATE:', state);
-  // console.log('HELLLLLLLLLO:', task)
-  
-// function getTime() {
-//   if (props.task.total_time === null)  {
-//     time = 0
-//     return time;
-//   } else {
-//     time = props.task.total_time
-//     return time;
-//   }
+//   return (
+//     <div className="app">
+//       <h3>Timer</h3>
+//       <div className='stopwatch-card'>
+//         <p>{formatTime(timer)}</p>
+//         <div className='buttons'>
+//           {
+//             !isActive && !isPaused ?
+//               <button onClick={handleStart}>Start</button>
+//               : (
+//                 isPaused ? <button onClick={handlePause}>Pause</button> :
+//                   <button onClick={handleResume}>Resume</button>
+//               )
+//           }
+//           <button onClick={handleReset} disabled={!isActive}>Reset</button>
+//         </div>
+//       </div>
+//     </div>
+//   ); 
 // }
 
-// console.log('TIME:', time);
-// getTime()
-  
-  // console.log('STATE STATE STATE:', state)
-  // console.log('THIS PROPS:', props)
-  // console.log('THIS PROPS ID:', props.taskId)
+//   export default TaskTimer;
 
-// --------------------------------------------------------------------------------------------------
+import useTimer from '../hooks/useTimer';
+import { formatTime } from '../utils/index.js';
 
-  React.useEffect(() => {
-    let interval = null;
-
-    // const totalTime = task.total_time;
-    // setTime(props.realTime)
-    // setTime(savedTime)
-    console.log('TIME TIME TIME:', time)
-
-
-    if (timerOn) {
-      interval = setInterval(() => {
-        // console.log('INTERVAL:', interval)
-        setTime((realTime) => realTime + 10);
-      }, 10);
-
-    // } else if (!timerOn) {
-    //   clearInterval(interval);
-    // }
-
-    return () => clearInterval(interval);
-  }, [timerOn]);
-
-// --------------------------------------------------------------------------------------------------
-
-  async function saveDuration(time) {
-    axios({
-      method: 'put',
-      url: `http://localhost:8080/api/tasks/${id}`,
-      data: {
-      total_time: `${time}`
-      },
-    });
-    console.log('SAVED DURATION!')
-  }
- 
-  // --------------------------------------------------------------------------------------------------
-  let milliseconds = ("0" + ((realTime / 10) % 100)).slice(-2)
-  let seconds = ('0' + (Math.floor(realTime / 1000) % 60)).slice(-2);
-  let minutes = ('0' + (Math.floor(realTime / 60000) % 60)).slice(-2);
-  let hours = ('0' + Math.floor(realTime / 3600000)).slice(-2);
-  // --------------------------------------------------------------------------------------------------
-  
+const Timer = () => {
+  const { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset } = useTimer(0)
 
   return (
-    <div className="timer">
-      <h4>Task Timer</h4>
-      <div id="display">
-        <span>{minutes}:</span>
-        <span>{seconds}:</span>
-        <span>{milliseconds}</span>
+    <div className="app">
+      <h3>React Stopwatch</h3>
+        <p>{formatTime(timer)}</p>
+        <div className='buttons'>
+          {
+            !isActive && !isPaused ?
+              <button onClick={handleStart}>Start</button>
+              : (
+                isPaused ? <button onClick={handlePause}>Pause</button> :
+                  <button onClick={handleResume}>Resume</button>
+              )
+          }
+          <button onClick={handleReset} disabled={!isActive}>Reset</button>
+        </div>
       </div>
-
-      <div id="buttons">
-
-        {!timerOn && time === 0 && (
-          <button 
-            onClick={() => setTimerOn(true)}
-          >
-            Start
-          </button>
-        )}
-
-        {timerOn && 
-          <button 
-            onClick={() => {
-              setTimerOn(false)
-              saveDuration(time)
-            }}
-            >
-              Stop
-          </button>
-        }
-
-        {!timerOn && time > 0 && (
-          <button onClick={() => setTime(0)}>Reset</button>
-        )}
-
-        {!timerOn && time > 0 && (
-          <button onClick={() => setTimerOn(true)}>Resume</button>
-        )}
-
-      </div>
-    </div>
   );
-};
+}
 
-// --------------------------------------------------------------------------------------------------
-export default TaskTimer;
+export default Timer;
