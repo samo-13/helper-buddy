@@ -38,12 +38,6 @@ const StepList = ({steps}) => {
     <div>
          <span className="motivating-message">{message}</span>
 
-
-  console.log("steps!!!", {steps})
-  console.log("")
-  return (
-    <div>
-
       {/* this has to be map */}
       {(steps.sort((a, b) => (a.order_by - b.order_by)))
       .map(step => (
