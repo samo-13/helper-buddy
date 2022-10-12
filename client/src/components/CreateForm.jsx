@@ -71,7 +71,7 @@ const Form = () => {
         const descriptionId = `description-${index}`;
         return (
 
-          <div className="top-create-form" key={`step-${index}`}>
+          <div id="create-form-step-section" className="top-create-form" key={`step-${index}`}>
             <label htmlFor={stepNameId}>{`${index + 1}. Step name`}</label>
             <input
               type='text'
