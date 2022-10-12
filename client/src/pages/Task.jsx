@@ -75,7 +75,6 @@ const Task = () => {
 
       let result = steps.length - remaining.length
       setRemaining(result);
-
     }
 
   // ----------------------------------------------------------------

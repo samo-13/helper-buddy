@@ -15,7 +15,6 @@ clickData.forEach(step => {
     // console.log('stepdata');
   });
 });
-/////////////////////////////////
 
 const StepItem = ({ ...step }) => {
   const { state } = useApplicationData();
@@ -24,17 +23,13 @@ const StepItem = ({ ...step }) => {
   const [err, setErr] = useState('');
 
   async function handleClick() {
-    // console.log('state.steps:', state.steps);
-    // console.log('thisStep:', thisStep);
 
-    // const stepId = "";
-    const retrievedStep = state.steps.filter(
-      step =>
-        step.task_id === thisStep.task_id &&
-        step.description === thisStep.description
+    const retrievedStep = state.steps.filter(step =>
+      step.task_id === thisStep.task_id &&
+      step.description === thisStep.description
     );
+
     const stepId = retrievedStep[0].id;
-    // console.log('step id', stepId);
 
     axios({
       method: 'put',
@@ -43,15 +38,17 @@ const StepItem = ({ ...step }) => {
         completed_at: Date.now(),
       },
     });
-    // .then((res) => console.log("result", res))
-    // .catch(err => console.log(err))
-    // return {...updatedStep}
-    // console.log("updatedstep",updatedStep)
   }
+
+  const markStepCompleted = event => { 
+    event.currentTarget.classList.toggle('complete-step') 
+    console.log('STEP MARKED COMPLETE')
+  };
 
   const closedStep = (
     <div className='stepbox' onClick={() => setOpen(true)}>
       <h3>{step.name}</h3>
+      <h3 className="step-status-todo">Completed: {step.completed_at}</h3>
     </div>
   );
 
@@ -59,7 +56,9 @@ const StepItem = ({ ...step }) => {
     <div className='stepbox' onClick={() => setOpen(false)}>
       <h3>{step.name}</h3>
       <h4 className='expanded_step'>{step.description}</h4>
-      <button type='submit' className='button' onClick={handleClick}>
+      <button type='submit' className='button' onClick={() => {
+                  handleClick();
+                }}>
         Done!
       </button>
     </div>
