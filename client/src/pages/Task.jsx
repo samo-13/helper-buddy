@@ -78,14 +78,6 @@ const Task = () => {
 
     }
 
-  // }, [id]);
-
-  // let taskName = task.task.name
-  // let steps = task.steps
-
-  // console.log('HI TASK:', taskName);
-  // console.log('HI STEPS:', steps);
-
   // ----------------------------------------------------------------
 
   return (
@@ -108,18 +100,19 @@ const Task = () => {
               realTime={time}
             />
           </div>
-
-            <div id='task-progress-bar'>
-              <ProgressBar
-                className='task-progress-bar'
-                backgroundcolor='#e1ff32'
-                progress={completed}
-              />
-            </div>
         </div>
+      
+
+      <div id='task-progress-bar'>
+        <ProgressBar
+          className='task-progress-bar'
+          backgroundcolor='#e1ff32'
+          progress={completed}
+        />
+      </div>
       </div>
 
-      <h2 className='task-steps-header'>Steps to complete:</h2>
+      {/* <h2 className='task-steps-header'>Let's do this:</h2> */}
       <div>{task && <StepList {...task} />}</div>
 
     </div>
