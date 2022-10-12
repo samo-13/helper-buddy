@@ -30,9 +30,6 @@ const FreshTaskItem = (task) => {
       .get(`http://localhost:8080/api/tasks/${id}`)
       .then((res) => navigate(`task/${res.data.task.id}`)) //here's the id
       .catch((err) => console.log(err));
-
-    // console.log("id!", id);
-    // console.log("new task", newTask);
     return { ...newTask };
   }
 

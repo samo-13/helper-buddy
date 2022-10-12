@@ -1,9 +1,9 @@
 // import React, { useState, useEffect, useParams, useRef } from 'react';
 // import useApplicationData from '../hooks/useApplicationData';
-// import './TaskTimer.scss';
-// import './Button.scss';
+import './TaskTimer.scss';
+import './Button.scss';
 // import useTimer from '../hooks/useTimer.jsx';
-// import axios from 'axios';
+import axios from 'axios';
 
 // useState:
 // --- allows us to store state in a function based component
@@ -46,8 +46,23 @@
 import useTimer from '../hooks/useTimer';
 import { formatTime } from '../utils/index.js';
 
-const Timer = () => {
+const TaskTimer = (props) => {
   const { timer, isActive, isPaused, handleStart, handlePause, handleResume, handleReset } = useTimer(0)
+
+  const id = props.taskId
+  console.log('TASK ID TESSSSSSSSST:', id)
+
+
+  async function saveDuration(time) {
+    axios({
+      method: 'put',
+      url: `http://localhost:8080/api/tasks/${id}`,
+      data: {
+      total_time: `${time}`
+      },
+    });
+
+    console.log('SAVED DURATION!')
 
   return (
     <div className="app">
@@ -56,9 +71,14 @@ const Timer = () => {
         <div className='buttons'>
           {
             !isActive && !isPaused ?
-              <button onClick={handleStart}>Start</button>
+              <button 
+              onClick={handleStart}>
+                Start
+              </button>
               : (
-                isPaused ? <button onClick={handlePause}>Pause</button> :
+                isPaused ? <button onClick={() => {
+                  handlePause(id) 
+                  }}>Pause</button> :
                   <button onClick={handleResume}>Resume</button>
               )
           }
@@ -67,5 +87,6 @@ const Timer = () => {
       </div>
   );
 }
+}
 
-export default Timer;
+export default TaskTimer;
