@@ -35,7 +35,7 @@ const Home = () => {
     <div className='home'>
       <Header />
       <section className='home__welcome-message'>
-        <h2>Welcome message!</h2>
+        <h2>Progress not perfection!</h2>
       </section>
       <section className='home__button-group'>
         <Button onChange={setList} value={list} selected={list === FRESH}>

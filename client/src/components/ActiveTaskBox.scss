@@ -8,6 +8,19 @@
   box-shadow: 3px 3px;
 }
 
+.button-delete {
+  border: 1px black solid;
+  box-shadow: 2px 2px black;
+  background-color: lightcoral;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  height: 40px;
+  width: 100px;
+}
+
 .button-resume {
   border: 1px black solid;
   box-shadow: 2px 2px black;
@@ -28,9 +41,9 @@
 
 .top-active-task-box {
   display: inline-block;
-
 }
 
-// .duration-value {
-
-// }
+.styled-text {
+  transform: rotate(5deg) scaleX(1);
+  text-shadow: lightgrey 2px 2px;
+}
