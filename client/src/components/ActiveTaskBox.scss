@@ -11,6 +11,7 @@
 .button-delete {
   border: 1px black solid;
   box-shadow: 2px 2px black;
+  background-color: lightcoral;
   color: black;
   padding-left: 10px;
   padding-right: 10px;
@@ -42,6 +43,8 @@
   display: inline-block;
 }
 
-// .duration-value {
-
-// }
+.styled-text {
+  transform: rotate(5deg) scaleX(1);
+  text-shadow: lightgrey 3px 3px;
+  text-size-adjust: 60px;
+}

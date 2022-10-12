@@ -38,7 +38,7 @@ const ActiveTaskItem = (task) => {
     <div className="active-taskbox">
       <div className="top-active-task-box">
         <h3 className="active-task-name">{task.name}</h3>
-        <span className="steps-remaining">{getStepsRemaining(state, task.id)} steps completed! </span>
+        <span className="steps-remaining"><strong className="styled-text">{getStepsRemaining(state, task.id)}</strong>&nbsp; steps completed! </span>
       </div>
       {/* <div className="active-task-id">Task ID (FOR TESTING): {task.id}</div> */}
       <h4 className='duration-value'>Time:&nbsp;
