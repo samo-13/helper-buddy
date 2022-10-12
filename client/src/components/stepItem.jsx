@@ -1,67 +1,21 @@
-import './Stepbox.scss';
-import axios from 'axios';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import useApplicationData from '../hooks/useApplicationData';
-import './Button.scss';
-// import updateStep from controllers/stepController.js;
+import "./Stepbox.scss";
 
-const clickData = document.querySelectorAll('button[type="submit"]');
-console.log('clickdaata', clickData);
-clickData.forEach(step => {
-  step.addEventListener('submit', e => {
-    e.preventDefault();
-    const stepData = new stepData(e.target);
-    console.log('stepdata');
-  });
-});
-/////////////////////////////////
+import { useState } from "react";
 
-const StepItem = ({ ...step }) => {
-  const { state } = useApplicationData();
-  const [thisStep, setThisStep] = useState(step);
+const StepItem = ({ name, description }) => {
   const [open, setOpen] = useState(false);
-  const [err, setErr] = useState('');
-
-  async function handleClick() {
-    console.log('state.steps:', state.steps);
-    console.log('thisStep:', thisStep);
-
-    // const stepId = "";
-    const retrievedStep = state.steps.filter(
-      step =>
-        step.task_id === thisStep.task_id &&
-        step.description === thisStep.description
-    );
-    const stepId = retrievedStep[0].id;
-    console.log('step id', stepId);
-
-    axios({
-      method: 'put',
-      url: `/api/steps/${stepId}`,
-      data: {
-        completed_at: Date.now(),
-      },
-    });
-    // .then((res) => console.log("result", res))
-    // .catch(err => console.log(err))
-    // return {...updatedStep}
-    // console.log("updatedstep",updatedStep)
-  }
 
   const closedStep = (
-    <div className='stepbox' onClick={() => setOpen(true)}>
-      <h3>{step.name}</h3>
+    <div className="stepbox" onClick={() => setOpen(true)}>
+      <h3>{name}</h3>
     </div>
   );
 
   const openStep = (
-    <div className='stepbox' onClick={() => setOpen(false)}>
-      <h3>{step.name}</h3>
-      <h4 className='expanded_step'>{step.description}</h4>
-      <button type='submit' className='button' onClick={handleClick}>
-        Done!
-      </button>
+    <div className="stepbox" onClick={() => setOpen(false)}>
+      <h3>{name}</h3>
+      <h4 className="expanded_step">{description}</h4>
+      <button className='button' onClick={() => console.log("done")}>Done!</button>
     </div>
   );
 
@@ -71,5 +25,33 @@ const StepItem = ({ ...step }) => {
     return openStep;
   }
 };
+
+// return (
+//     <Card style={{ width: '18rem' }}>
+//       {open ?
+
+//       <Card.Body
+//       onClick={()=>setOpen(true)}
+//       className="normal-card"
+//       layoutId="expandable-card"
+//       >
+//     <h1 layoutId="expandable-card-h">{name}</h1>
+//     </Card.Body>
+//       :
+//       <Card.Body
+//        onClick={()=>setOpen(false)}
+//       className='expanded-card'
+//       layoutId="expandable-card">
+//         <Card.Text
+//         className='expanded-card-h'
+//         layoutId="expandable-card-h">
+//           {description}
+//         </Card.Text>
+//         {/* <p>{description}</p> */}
+//       </Card.Body>
+// }
+// </Card>
+//   )
+// };
 
 export default StepItem;
