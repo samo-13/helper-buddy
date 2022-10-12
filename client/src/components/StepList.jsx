@@ -1,15 +1,17 @@
-import {React, useState, useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import StepItem from "./StepItem";
 import useApplicationData from "../hooks/useApplicationData";
-import AllDoneButton from "./AllDoneButton";
 import Confetti from "react-confetti";
 
+// ----------------------------------------------------------------
+// stylesheets
+// styles can be found in pages/Task.scss
+// ----------------------------------------------------------------
 
 const StepList = ({steps}) => {
   const [message, setMessage] = useState("You can do it!")
   const [windowDimension, setDimension] = useState({width: window.innerWidth, height:window.innerHeight})
   const [Btn, setBtn] = useState(false);
-  // console.log("steps!!!", {steps})
   console.log(Btn)
 
   const detectSize = () => {
@@ -30,7 +32,7 @@ const StepList = ({steps}) => {
   return (
  
     <div>
-         <span>{message}</span>
+         <span className="motivating-message">{message}</span>
       {/* this has to be map */}
       {(steps.sort((a, b) => (a.order_by - b.order_by)))
       .map(step => (
@@ -41,15 +43,14 @@ const StepList = ({steps}) => {
        </div>
       ))}
       <div className='done-button'>
-      <button onClick={()=>clickHandler()}>all done?</button>
-      {Btn && <Confetti 
-      width={windowDimension.width}
-      height={windowDimension.height}
-      tweenDuration={500}/>}
+      <button className="done-button-style" onClick={()=>clickHandler()}>All done?</button>
+        {Btn && <Confetti 
+        width={windowDimension.width}
+        height={windowDimension.height}
+        tweenDuration={500}/>}
       </div>
-      
     </div>
-  );
+  )
 };
 
 export default StepList;
