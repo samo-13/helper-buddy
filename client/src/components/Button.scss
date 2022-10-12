@@ -1,7 +1,6 @@
 button {
   background-color: #ffffff;
-  border: 1px solid black;
-  color: black;
+  border: 0;
   cursor: pointer;
   height: 35px;
   width: 170px;
@@ -9,17 +8,15 @@ button {
 
 .button {
   background-color: #ffffff;
-  border: 1px black solid;
+  border: 0;
   cursor: pointer;
   height: 35px;
   width: 170px;
 
 
   &--selected {
-    // border: 3px black solid;
-    box-shadow: black 4px 4px;
-    // background-color: black;
-    // color: white;
-    font-weight: bold;
+    border: 2px #000000 solid;
+    box-shadow: 3px 3px;
+    color: black;
   }
 }

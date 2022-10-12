@@ -1,35 +1,23 @@
 .timer {
-  // background-color: orchid;
-  margin-top: 30px;
-  padding: 2rem;
   font-size: 25px;
-  font-style: bold;
   align-items: center;
   text-align: center;
-  border: 1px solid black;
-  box-shadow: 3px 3px black;
 }
 
 .numbers {
-  font-size: 35px;
+  font-size: 30px;
 }
 
-.timerbuttons {
-  background-color: #ffffff;
-  border: 1px solid black;
-  cursor: pointer;
-  height: 20px;
-  width: 80px;
-  box-shadow: 3px 3px black;
-}
+// .timerbuttons {
+//   background-color: #ffffff;
+//   border: 1px solid black;
+//   cursor: pointer;
+//   height: 20px;
+//   width: 80px;
+//   box-shadow: 3px 3px black;
+// }
 
-
-.timer-block {
-  width: auto;
-  // background-color: lightgreen;
-}
-
-button {
+.start-timer-button, .pause-timer-button, .resume-timer-button, .reset-timer-button {
   background-color: #ffffff;
   border: 1px solid black;
   cursor: pointer;
@@ -41,4 +29,12 @@ button {
   margin-right: 6px;
   margin-top: 10px;
   box-shadow: 3px 3px black;
+}
+
+.reset-timer-button {
+  background-color: lightcoral;
+}
+
+.resume-timer-button, .start-timer-button {
+  background-color: lightgreen;
 }

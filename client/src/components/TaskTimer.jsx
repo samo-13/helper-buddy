@@ -57,21 +57,21 @@ const TaskTimer = (props) => {
       </div>
       <div id="buttons">
         {!timerOn && time === 0 && (
-          <button onClick={() => setTimerOn(true)}>Start</button>
+          <button className="start-timer-button" onClick={() => setTimerOn(true)}>Start</button>
         )}
-        {timerOn && <button 
+        {timerOn && <button className="pause-timer-button"
           onClick={() => {
             setTimerOn(false)
             saveDuration(time)
           }}
           >
-            Stop
+            Pause
           </button>}
         {!timerOn && time > 0 && (
-          <button onClick={() => setTime(0)}>Reset</button>
+          <button className="reset-timer-button" onClick={() => setTime(0)}>Reset</button>
         )}
         {!timerOn && time > 0 && (
-          <button onClick={() => setTimerOn(true)}>Resume</button>
+          <button className="resume-timer-button" onClick={() => setTimerOn(true)}>Resume</button>
         )}
       </div>
     </div>
