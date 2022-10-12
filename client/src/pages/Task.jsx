@@ -12,6 +12,8 @@ import useApplicationData from '../hooks/useApplicationData';
 // stylesheets
 // ----------------------------------------------------------------
 import './Task.scss';
+import '../styles/index.scss'
+import '../styles/App.scss'
 // ----------------------------------------------------------------
 
 const Task = () => {
