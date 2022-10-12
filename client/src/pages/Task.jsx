@@ -21,6 +21,7 @@ const Task = () => {
   const [steps, setSteps] = useState([]);
   const [completed, setCompleted] = useState(0);
   const [remaining, setRemaining] = useState(0);
+  const [time, setTime] = useState(0);
 
   const { state } = useApplicationData();
 
@@ -37,11 +38,14 @@ const Task = () => {
         const task = res.data;
         const id = res.data.task.id;
         const steps = res.data.steps;
+        const realTime = res.data.task.total_time
+        console.log('REAL TIME:', realTime)
         setTask(task);
         setTaskName(task.task.name);
         setSteps(task.steps);
         getCompleteTaskSteps(steps);
         getStepsRemaining(steps);
+        setTime(time)
         // console.log('TASK FROM TASK PAGE:', task);
         // console.log('ID FROM TASK PAGE:', id);
       })
@@ -92,6 +96,7 @@ const Task = () => {
         <TaskTimer 
           task={task}
           taskId={id}
+          realTime={time}
         />
 
         <div id='task-progress-bar'>

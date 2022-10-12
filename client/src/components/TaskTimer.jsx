@@ -17,28 +17,59 @@ import axios from 'axios';
 // --- the TaskTimer component will display the time
 
 const TaskTimer = (props) => {
-  const [time, setTime] = React.useState(parseInt(localStorage.getItem('duration')) || 0);
+  const [time, setTime] = React.useState(props.realTime || 0);
   const [timerOn, setTimerOn] = React.useState(false);
   const {state} = useApplicationData();
-  
-  console.log('STATE STATE STATE:', state)
+  const id = props.taskId;
+  const task = props.task;
+  let realTime = props.realTime;
+  // setTime(props.realTime);
 
-  console.log('THIS PROPS:', props)
-  console.log('THIS PROPS ID:', props.taskId)
-  const id = props.taskId
+  // console.log('STATE STATE:', state);
+  // console.log('HELLLLLLLLLO:', task)
+  
+// function getTime() {
+//   if (props.task.total_time === null)  {
+//     time = 0
+//     return time;
+//   } else {
+//     time = props.task.total_time
+//     return time;
+//   }
+// }
+
+// console.log('TIME:', time);
+// getTime()
+  
+  // console.log('STATE STATE STATE:', state)
+  // console.log('THIS PROPS:', props)
+  // console.log('THIS PROPS ID:', props.taskId)
+
+// --------------------------------------------------------------------------------------------------
+
   React.useEffect(() => {
     let interval = null;
 
+    // const totalTime = task.total_time;
+    // setTime(props.realTime)
+    // setTime(savedTime)
+    console.log('TIME TIME TIME:', time)
+
+
     if (timerOn) {
       interval = setInterval(() => {
-        setTime((prevTime) => prevTime + 10);
+        // console.log('INTERVAL:', interval)
+        setTime((realTime) => realTime + 10);
       }, 10);
-    } else if (!timerOn) {
-      clearInterval(interval);
-    }
+
+    // } else if (!timerOn) {
+    //   clearInterval(interval);
+    // }
 
     return () => clearInterval(interval);
   }, [timerOn]);
+
+// --------------------------------------------------------------------------------------------------
 
   async function saveDuration(time) {
     axios({
@@ -50,34 +81,53 @@ const TaskTimer = (props) => {
     });
     console.log('SAVED DURATION!')
   }
+ 
+  // --------------------------------------------------------------------------------------------------
+  let milliseconds = ("0" + ((realTime / 10) % 100)).slice(-2)
+  let seconds = ('0' + (Math.floor(realTime / 1000) % 60)).slice(-2);
+  let minutes = ('0' + (Math.floor(realTime / 60000) % 60)).slice(-2);
+  let hours = ('0' + Math.floor(realTime / 3600000)).slice(-2);
+  // --------------------------------------------------------------------------------------------------
+  
 
   return (
     <div className="timer">
       <h4>Task Timer</h4>
       <div id="display">
-        <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-        <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
-        <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
+        <span>{minutes}:</span>
+        <span>{seconds}:</span>
+        <span>{milliseconds}</span>
       </div>
 
       <div id="buttons">
+
         {!timerOn && time === 0 && (
-          <button onClick={() => setTimerOn(true)}>Start</button>
-        )}
-        {timerOn && <button 
-          onClick={() => {
-            setTimerOn(false)
-            saveDuration(time)
-          }}
+          <button 
+            onClick={() => setTimerOn(true)}
           >
-            Stop
-          </button>}
+            Start
+          </button>
+        )}
+
+        {timerOn && 
+          <button 
+            onClick={() => {
+              setTimerOn(false)
+              saveDuration(time)
+            }}
+            >
+              Stop
+          </button>
+        }
+
         {!timerOn && time > 0 && (
           <button onClick={() => setTime(0)}>Reset</button>
         )}
+
         {!timerOn && time > 0 && (
           <button onClick={() => setTimerOn(true)}>Resume</button>
         )}
+
       </div>
     </div>
   );
