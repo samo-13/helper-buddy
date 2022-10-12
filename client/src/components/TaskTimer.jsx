@@ -51,7 +51,7 @@ const Timer = () => {
 
   return (
     <div className="app">
-      <h3>React Stopwatch</h3>
+      <h3>Task Timer</h3>
         <p>{formatTime(timer)}</p>
         <div className='buttons'>
           {

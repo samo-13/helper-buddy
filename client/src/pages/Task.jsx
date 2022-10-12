@@ -91,26 +91,37 @@ const Task = () => {
   return (
     <div>
       <div className='task-page-top'>
-        <h1>{taskName}</h1>
+        <h1 className="task-title">
+          {taskName}
+        </h1>
 
-        <TaskTimer 
-          task={task}
-          taskId={id}
-          realTime={time}
-        />
+        <span className='task-step-progress'>
+            You're amazing, Bob. Only <strong>{remaining}</strong> steps left to tackle!
+        </span>
 
-        <div id='task-progress-bar'>
-          <ProgressBar
-            className='task-progress-bar'
-            backgroundcolor='#e1ff32'
-            progress={completed}
-          />
+        <div className="progress-stats">
+          <div id='task-timer'>
+            <TaskTimer
+              className="task-timer"
+              task={task}
+              taskId={id}
+              realTime={time}
+            />
+          </div>
+
+            <div id='task-progress-bar'>
+              <ProgressBar
+                className='task-progress-bar'
+                backgroundcolor='#e1ff32'
+                progress={completed}
+              />
+            </div>
         </div>
-
-        <h3 className='task-step-progress'>{remaining} steps remaining!</h3>
       </div>
+
       <h2 className='task-steps-header'>Steps to complete:</h2>
       <div>{task && <StepList {...task} />}</div>
+
     </div>
   );
 };

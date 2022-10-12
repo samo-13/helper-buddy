@@ -53,6 +53,14 @@ const ActiveTaskItem = (task) => {
         <button
           type="submit"
           class="start-task"
+          className="button-delete"
+          // onClick={HandleClick}
+        >
+          Delete
+        </button>
+        <button
+          type="submit"
+          class="start-task"
           className="button-resume"
           onClick={HandleClick}
         >
