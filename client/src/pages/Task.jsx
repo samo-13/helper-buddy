@@ -22,28 +22,34 @@ const Task = () => {
   const [taskName, setTaskName] = useState(null);
   const [steps, setSteps] = useState([]);
   const [completed, setCompleted] = useState(0);
+  const [remaining, setRemaining] = useState(0);
+  const [time, setTime] = useState(0);
 
   const { state } = useApplicationData();
 
   console.log('STATE:', state);
 
-  useEffect(() => {
+  // useEffect(() => {
     // nothing here because of null
     axios
-
       // this should GET the new task that was just created,
 
       .get(`/api/tasks/${id}`) // need to get all steps
       .then(res => {
-        console.log('res', res.data.steps);
+        // console.log('res', res.data.steps);
         const task = res.data;
         const id = res.data.task.id;
         const steps = res.data.steps;
+        const realTime = res.data.task.total_time
+        console.log('REAL TIME:', realTime)
         setTask(task);
         setTaskName(task.task.name);
         setSteps(task.steps);
-        console.log('TASK FROM TASK PAGE:', task);
-        console.log('ID FROM TASK PAGE:', id);
+        getCompleteTaskSteps(steps);
+        getStepsRemaining(steps);
+        setTime(time)
+        // console.log('TASK FROM TASK PAGE:', task);
+        // console.log('ID FROM TASK PAGE:', id);
       })
       .catch(err => {
         console.log(err);
@@ -61,50 +67,57 @@ const Task = () => {
       setCompleted(Math.floor(result));
     }
 
-    getCompleteTaskSteps(steps);
-  }, [id]);
+    function getStepsRemaining(steps) {
+      let remaining = [];
+      for (let step of steps) {
+        if (step.completed_at !== null) {
+          remaining.push(step);
+        }
+      }
 
-  // let taskName = task.task.name
-  // let steps = task.steps
+      let result = steps.length - remaining.length
+      setRemaining(result);
 
-  console.log('HI TASK:', taskName);
-  console.log('HI STEPS:', steps);
-
-  // ----------------------------------------------------------------
-
-  // function getCompleteTaskSteps(steps) {
-  //   let complete = []
-  //   for (let step of steps) {
-  //     if (step.completed_at !== null) {
-  //       complete.push(step)
-  //     }
-  //   }
-  //   let result = (complete.length / steps.length) * 100
-  //   return Math.floor(result)
-  // };
+    }
 
   // ----------------------------------------------------------------
 
   return (
     <div>
       <div className='task-page-top'>
-        <h1>{taskName}</h1>
+        <h1 className="task-title">
+          {taskName}
+        </h1>
 
-        <TaskTimer task={task} />
+        <span className='task-step-progress'>
+            You're amazing, Bob. Only <strong>{remaining}</strong> steps left to tackle!
+        </span>
 
-        <div id='task-progress-bar'>
-          <ProgressBar
-            className='task-progress-bar'
-            backgroundcolor='#e1ff32'
-            // progress={getCompleteTaskSteps(steps)}
-            progress={completed}
-          />
+        <div className="progress-stats">
+          <div id='task-timer'>
+            <TaskTimer
+              className="task-timer"
+              task={task}
+              taskId={id}
+              realTime={time}
+            />
+          </div>
         </div>
+      
 
-        <div className='task-step-progress'>steps remaining!</div>
+      <div id='task-progress-bar'>
+        <ProgressBar
+          className='task-progress-bar'
+          backgroundcolor='#e1ff32'
+          progress={completed}
+        />
       </div>
-      <h2 className='task-steps-header'>Steps to complete:</h2>
+
+      </div>
+
+      {/* <h2 className='task-steps-header'>Let's do this:</h2> */}
       <div>{task && <StepList {...task} />}</div>
+
     </div>
   );
 };

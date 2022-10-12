@@ -6,8 +6,6 @@ import Home from './pages/Home';
 import Task from './pages/Task';
 import Create from './pages/Create';
 import Archive from './pages/Archive';
-import Bar from './pages/TEMPProgressBar';
-import TimerPage from './pages/TimerPage';
 import ActiveTasks from './pages/ActiveTasks'
 
 function App() {
@@ -20,8 +18,6 @@ function App() {
             <Route path='task/:id' element={<Task />}></Route>
             <Route path='create' element={<Create />}></Route>
             <Route path='archive' element={<Archive />}></Route>
-            <Route path='bar' element={<Bar />}></Route>
-            <Route path='timer' element={<TimerPage />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

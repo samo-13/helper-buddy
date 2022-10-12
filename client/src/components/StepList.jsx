@@ -11,6 +11,7 @@ import "../styles/App.scss"
 // ----------------------------------------------------------------
 
 const StepList = ({steps}) => {
+
   const [message, setMessage] = useState("You can do it!")
   const [windowDimension, setDimension] = useState({width: window.innerWidth, height:window.innerHeight})
   const [Btn, setBtn] = useState(false);
@@ -36,6 +37,12 @@ const StepList = ({steps}) => {
  
     <div>
          <span className="motivating-message">{message}</span>
+
+
+  console.log("steps!!!", {steps})
+  console.log("")
+  return (
+    <div>
 
       {/* this has to be map */}
       {(steps.sort((a, b) => (a.order_by - b.order_by)))

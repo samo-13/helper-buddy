@@ -1,18 +1,18 @@
 import './Stepbox.scss';
 import axios from 'axios';
 import { useState } from 'react';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import useApplicationData from '../hooks/useApplicationData';
 import './Button.scss';
 // import updateStep from controllers/stepController.js;
 
 const clickData = document.querySelectorAll('button[type="submit"]');
-console.log('clickdaata', clickData);
+// console.log('clickdaata', clickData);
 clickData.forEach(step => {
   step.addEventListener('submit', e => {
     e.preventDefault();
     const stepData = new stepData(e.target);
-    console.log('stepdata');
+    // console.log('stepdata');
   });
 });
 /////////////////////////////////
@@ -24,8 +24,8 @@ const StepItem = ({ ...step }) => {
   const [err, setErr] = useState('');
 
   async function handleClick() {
-    console.log('state.steps:', state.steps);
-    console.log('thisStep:', thisStep);
+    // console.log('state.steps:', state.steps);
+    // console.log('thisStep:', thisStep);
 
     // const stepId = "";
     const retrievedStep = state.steps.filter(
@@ -34,7 +34,7 @@ const StepItem = ({ ...step }) => {
         step.description === thisStep.description
     );
     const stepId = retrievedStep[0].id;
-    console.log('step id', stepId);
+    // console.log('step id', stepId);
 
     axios({
       method: 'put',
