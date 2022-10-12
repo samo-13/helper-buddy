@@ -64,7 +64,7 @@ const ActiveTaskItem = (task) => {
           className="button-resume"
           onClick={HandleClick}
         >
-          Resume
+          Start
         </button>
       </div>
     </div>
