@@ -56,17 +56,14 @@ export default function useApplicationData() {
     console.log('startTask TASK:', task);
     console.log('STEPS:', steps);
     const currentTask = task.task;
-    
-    const currentSteps = task.steps
+    const currentSteps = task.steps;
     return axios
       .post(`http://localhost:8080/api/tasks`, {
         name: currentTask.name,
         started_at: new Date().toDateString(),
       })
       .then(response => {
-        const sortedSteps = currentSteps.sort((a, b) => a.order_by-b.order_by)
-        sortedSteps.forEach(step => {
-          console.log("individual step", step)
+        currentSteps.forEach(step => {
           axios.post(`http://localhost:8080/api/steps`, {
             taskId: response.data.id,
             name: step.name,
