@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap');
+
 .task-title {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -27,6 +29,27 @@
   padding-bottom: 40px;
 }
 
+.motivating-message {
+  color: black;
+}
+
+.done-button {
+  align-items: center;
+  text-align: center;
+}
+
+#done-button{
+  border: 1px solid black;
+  box-shadow: 3px 3px black;
+  width: 300px;
+  height: 60px;
+  font-family: Poppins;
+  font-size: 20px;
+  margin-top: 40px;
+  align-items: center;
+  text-align: center;
+}
+
 // .task-step-progress {
 //   padding-top: 20px;
 //   padding-bottom: 20px;
@@ -34,3 +57,4 @@
 //   align-items: center;
 //   text-align: center;
 // }
+

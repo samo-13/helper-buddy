@@ -12,6 +12,8 @@ import useApplicationData from '../hooks/useApplicationData';
 // stylesheets
 // ----------------------------------------------------------------
 import './Task.scss';
+import '../styles/index.scss'
+import '../styles/App.scss'
 // ----------------------------------------------------------------
 
 const Task = () => {
@@ -110,6 +112,7 @@ const Task = () => {
           progress={completed}
         />
       </div>
+
       </div>
 
       {/* <h2 className='task-steps-header'>Let's do this:</h2> */}
