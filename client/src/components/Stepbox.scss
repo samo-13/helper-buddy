@@ -15,15 +15,17 @@
   text-align: center;
 
   .button {
-    background-color:#526e8d;
+    margin-top: 20px;
+    // background-color:#526e8d;
     border-style:inset;
-    font-size: 1.5em;
-    color: #ffffff;
+    // font-size: 1.5em;
+    // color: #ffffff;
     // box-shadow:#526e8d50 -3px -3px;
-    border-radius: 30px;
+    // border-radius: 30px;
     width: auto;
-    height: fit-content;
-    padding: .5rem;
+    // height: 30px;
+    // height: fit-content;
+    // padding: .5rem;
   }
 
   .button:hover {background-color: #3e8e41}

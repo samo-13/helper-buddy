@@ -24,12 +24,11 @@ const Task = () => {
   const [completed, setCompleted] = useState(0);
   const [remaining, setRemaining] = useState(0);
   const [time, setTime] = useState(0);
-
   const { state } = useApplicationData();
 
   console.log('STATE:', state);
 
-  // useEffect(() => {
+  useEffect(() => {
     // nothing here because of null
     axios
       // this should GET the new task that was just created,
@@ -48,12 +47,11 @@ const Task = () => {
         getCompleteTaskSteps(steps);
         getStepsRemaining(steps);
         setTime(time)
-        // console.log('TASK FROM TASK PAGE:', task);
-        // console.log('ID FROM TASK PAGE:', id);
       })
       .catch(err => {
         console.log(err);
       });
+  })
 
     function getCompleteTaskSteps(steps) {
       let complete = [];

@@ -46,7 +46,7 @@ const StepList = ({steps}) => {
        </div>
       ))}
       <div className='done-button'>
-      <button className="done-button" id="done-button" onClick={()=>clickHandler()}>Complete task</button>
+      <button className="done-button" id="done-button" onClick={()=>clickHandler()}>Complete</button>
         {Btn && <Confetti 
         width={windowDimension.width}
         height={windowDimension.height}
