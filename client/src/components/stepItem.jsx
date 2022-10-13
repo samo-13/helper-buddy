@@ -1,21 +1,23 @@
-import './Stepbox.scss';
 import axios from 'axios';
 import { useState } from 'react';
-// import { useEffect } from 'react';
 import useApplicationData from '../hooks/useApplicationData';
+
+// ----------------------------------------------------------------
+// stylesheets
+// styles can be found in pages/Task.scss
+import './Stepbox.scss';
 import './Button.scss';
+// ----------------------------------------------------------------
+
 // import updateStep from controllers/stepController.js;
 
 const clickData = document.querySelectorAll('button[type="submit"]');
-// console.log('clickdaata', clickData);
 clickData.forEach(step => {
   step.addEventListener('submit', e => {
     e.preventDefault();
     const stepData = new stepData(e.target);
-    // console.log('stepdata');
   });
 });
-/////////////////////////////////
 
 const StepItem = ({ ...step }) => {
   const { state } = useApplicationData();
@@ -24,10 +26,6 @@ const StepItem = ({ ...step }) => {
   const [err, setErr] = useState('');
 
   async function handleClick() {
-    // console.log('state.steps:', state.steps);
-    // console.log('thisStep:', thisStep);
-
-    // const stepId = "";
     const retrievedStep = state.steps.filter(
       step =>
         step.task_id === thisStep.task_id &&
@@ -43,10 +41,6 @@ const StepItem = ({ ...step }) => {
         completed_at: Date.now(),
       },
     });
-    // .then((res) => console.log("result", res))
-    // .catch(err => console.log(err))
-    // return {...updatedStep}
-    // console.log("updatedstep",updatedStep)
   }
 
   const closedStep = (
@@ -59,8 +53,8 @@ const StepItem = ({ ...step }) => {
     <div className='stepbox' onClick={() => setOpen(false)}>
       <h3>{step.name}</h3>
       <h4 className='expanded_step'>{step.description}</h4>
-      <button type='submit' className='button' onClick={handleClick}>
-        Done!
+      <button id="step-button" type='submit' className='button' onClick={handleClick}>
+        Done
       </button>
     </div>
   );

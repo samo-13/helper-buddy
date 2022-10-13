@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useApplicationData from '../hooks/useApplicationData';
-import { useNavigate, Link } from "react-router-dom";
+// import { useNavigate, Link } from "react-router-dom";
 // --------------------------------------------------------------------------------------------------
 // Stylesheets
 import './Button.scss';
@@ -10,7 +10,7 @@ import '../pages/Create.scss';
 const Form = () => {
   // --------------------------------------------------------------------------------------------------
   // Help link the form submit button to the in-progress tasks view OR the task itself
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // --------------------------------------------------------------------------------------------------
   const { state, createTask } = useApplicationData();
   // --------------------------------------------------------------------------------------------------
@@ -51,7 +51,6 @@ const Form = () => {
     setStepState([{ ...blankStep }]);
 
     createTask(taskState.name, stepState);
-    navigate(`/`) // navigates us back to the home view to see our task has been created
   };
 
   return (

@@ -24,7 +24,6 @@ const Task = () => {
   const [completed, setCompleted] = useState(0);
   const [remaining, setRemaining] = useState(0);
   const [time, setTime] = useState(0);
-
   const { state } = useApplicationData();
 
   console.log('STATE:', state);
@@ -48,12 +47,11 @@ const Task = () => {
         getCompleteTaskSteps(steps);
         getStepsRemaining(steps);
         setTime(time)
-        // console.log('TASK FROM TASK PAGE:', task);
-        // console.log('ID FROM TASK PAGE:', id);
       })
       .catch(err => {
         console.log(err);
       });
+  // })
 
     function getCompleteTaskSteps(steps) {
       let complete = [];
@@ -77,7 +75,6 @@ const Task = () => {
 
       let result = steps.length - remaining.length
       setRemaining(result);
-
     }
 
   // ----------------------------------------------------------------
@@ -112,7 +109,6 @@ const Task = () => {
           progress={completed}
         />
       </div>
-
       </div>
 
       {/* <h2 className='task-steps-header'>Let's do this:</h2> */}
