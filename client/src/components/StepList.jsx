@@ -31,6 +31,7 @@ const StepList = ({steps}) => {
   const clickHandler = () => {
     setBtn(!Btn)
     setMessage("You did it! Whether you finished this task all the way, or just part of the way, be proud of yourself!")
+    // saveDuration(time)
   }
 
   return (

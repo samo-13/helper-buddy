@@ -75,7 +75,6 @@ const Task = () => {
 
       let result = steps.length - remaining.length
       setRemaining(result);
-
     }
 
   // ----------------------------------------------------------------
@@ -110,7 +109,6 @@ const Task = () => {
           progress={completed}
         />
       </div>
-
       </div>
 
       {/* <h2 className='task-steps-header'>Let's do this:</h2> */}

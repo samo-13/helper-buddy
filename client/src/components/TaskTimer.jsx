@@ -19,10 +19,10 @@ const TaskTimer = (props) => {
   const [timerOn, setTimerOn] = React.useState(false);
   const {state} = useApplicationData();
 
-  console.log('STATE STATE STATE:', state)
+  // console.log('STATE STATE STATE:', state)
+  // console.log('THIS PROPS:', props)
+  // console.log('THIS PROPS ID:', props.taskId)
 
-  console.log('THIS PROPS:', props)
-  console.log('THIS PROPS ID:', props.taskId)
   const id = props.taskId
   React.useEffect(() => {
     let interval = null;
@@ -45,7 +45,7 @@ const TaskTimer = (props) => {
       total_time: `${time}`
       },
     });
-    console.log('SAVED DURATION!')
+    // console.log('SAVED DURATION!')
   }
   return (
     <div className="timer">
@@ -56,9 +56,11 @@ const TaskTimer = (props) => {
         <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
       </div>
       <div id="buttons">
+        
         {!timerOn && time === 0 && (
           <button className="start-timer-button" onClick={() => setTimerOn(true)}>Start</button>
         )}
+
         {timerOn && <button className="pause-timer-button"
           onClick={() => {
             setTimerOn(false)
