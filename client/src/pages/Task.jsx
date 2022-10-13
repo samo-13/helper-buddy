@@ -28,7 +28,7 @@ const Task = () => {
 
   console.log('STATE:', state);
 
-  useEffect(() => {
+  // useEffect(() => {
     // nothing here because of null
     axios
       // this should GET the new task that was just created,
@@ -51,7 +51,7 @@ const Task = () => {
       .catch(err => {
         console.log(err);
       });
-  })
+  // })
 
     function getCompleteTaskSteps(steps) {
       let complete = [];
