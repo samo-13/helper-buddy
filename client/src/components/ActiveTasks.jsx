@@ -8,8 +8,6 @@ const ActiveTasks = () => {
   } = useApplicationData();
 
   let activeTasks = state.tasks
-  // console.log('ActiveTasks state:', state);
-  // console.log('ActiveTasks', activeTasks);
 
   return (
   <div>

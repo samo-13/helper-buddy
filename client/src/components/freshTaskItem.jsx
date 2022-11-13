@@ -6,7 +6,7 @@ import useApplicationData from "../hooks/useApplicationData";
 
 const newTaskFromClick = document.querySelectorAll("start-task");
 
-newTaskFromClick.forEach((task) => {
+newTaskFromClick.forEach((...task) => {
   task.addEventListener("submit", (e) => {
     e.preventDefault();
     const taskData = new taskData(e.target);
@@ -19,7 +19,7 @@ const FreshTaskItem = (task) => {
   const [err, setErr] = useState("");
   const { state, startTask } = useApplicationData();
   const navigate = useNavigate();
-
+  console.log("length",task)
   const steps = task.steps.length
   //////// click handler should GET template and then PUT new post
   async function handleClick() {
@@ -30,9 +30,6 @@ const FreshTaskItem = (task) => {
       .get(`http://localhost:8080/api/tasks/${id}`)
       .then((res) => navigate(`task/${res.data.task.id}`)) //here's the id
       .catch((err) => console.log(err));
-
-    // console.log("id!", id);
-    // console.log("new task", newTask);
     return { ...newTask };
   }
 

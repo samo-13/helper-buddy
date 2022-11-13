@@ -1,24 +1,59 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import StepItem from "./StepItem";
 import useApplicationData from "../hooks/useApplicationData";
+import Confetti from "react-confetti";
 
+// ----------------------------------------------------------------
+// stylesheets
+// styles can be found in pages/Task.scss
+import "../styles/index.scss"
+import "../styles/App.scss"
+// ----------------------------------------------------------------
 
 const StepList = ({steps}) => {
-  
-  console.log("steps!!!", {steps})
-  console.log("")
+
+  const [message, setMessage] = useState("You can do it!")
+  const [windowDimension, setDimension] = useState({width: window.innerWidth, height:window.innerHeight})
+  const [Btn, setBtn] = useState(false);
+  // console.log(Btn)
+
+  const detectSize = () => {
+    setDimension({width: window.innerWidth, height:window.innerHeight})
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', detectSize);
+    return ()=>{
+      window.removeEventListener('resize', detectSize);
+    }
+  }, [windowDimension]);
+ 
+  const clickHandler = () => {
+    setBtn(!Btn)
+    setMessage("You did it! Whether you finished this task all the way, or just part of the way, be proud of yourself!")
+    // saveDuration(time)
+  }
+
   return (
-    <div >
-      {/* this has to be map */}
-      {steps.map(step => (
-        <div>
-       <StepItem {...step} />
-       {/* <button onClick={()=>console.log("button!")}>Button!</button> */}
-       </div>
-      ))}
+    <div>
+    <span className="motivating-message">{message}</span>
+      <div>
+        {/* this has to be map */}
+        {steps.map(step => (
+          <div>
+            <StepItem {...step} />
+        </div>
+        ))}
+        <div className='done-button'>
+        <button className="done-button" id="done-button" onClick={()=>clickHandler()}>Complete</button>
+          {Btn && <Confetti 
+          width={windowDimension.width}
+          height={windowDimension.height}
+          tweenDuration={500}/>}
+        </div>
+      </div>
     </div>
-  );
+  )
 };
 
 export default StepList;
-

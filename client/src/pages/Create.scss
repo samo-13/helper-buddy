@@ -23,7 +23,6 @@ input {
 // }
 
 label {
-  font-weight: bolder;
   margin-top: 5px;
 }
 
@@ -46,12 +45,11 @@ label {
 }
 
 .createTaskButton {
-  font-weight: bolder;
   border: 1px #000000 solid;
-  height: 3rem;
-  width: 150px;
+  height: 2rem;
+  width: 100px;
   box-shadow: 2px 2px;
-  font-size: 18px;
+  font-size: 15px;
   margin-left: 6px;
   margin-right: 6px;
   margin-top: 1rem;
@@ -75,4 +73,11 @@ label {
 
 #submit-button {
   background-color: #C1EFAE;
+}
+
+
+#create-form-step-section {
+  padding-left: 40px;
+  font-size: 15px;
+  font-style: italic;
 }

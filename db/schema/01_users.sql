@@ -19,13 +19,13 @@ CREATE TABLE tasks (
   name VARCHAR(255) NOT NULL,
   started_at TIMESTAMP,
   completed_at TIMESTAMP,
-  duration TIME,
-  total_time BIGINT
+  total_time INTEGER
 );
 
 
 CREATE TABLE steps (
   id SERIAL PRIMARY KEY NOT NULL,
+  order_by INTEGER,
   task_id INTEGER REFERENCES tasks(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,

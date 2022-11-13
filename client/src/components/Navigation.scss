@@ -36,5 +36,26 @@
   button {
     width: fit-content !important;
     padding: 0 15px;
+    border: 1px solid black;
+    box-shadow: 2px 2px black;
+  }
+
+  .nav__icon--home {
+    color: black;
   }
 }
+
+// #nav-button {
+//   background-color: #ffffff;
+//   border: 1px solid black;
+//   cursor: pointer;
+//   height: 20px;
+//   width: 80px;
+//   padding-left: 6px;
+//   padding-right: 6px;
+//   margin-left: 6px;
+//   margin-right: 6px;
+//   margin-top: 10px;
+//   box-shadow: 3px 3px black;
+// }
+

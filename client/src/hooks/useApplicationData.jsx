@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 // import { response } from 'express';
+import { useNavigate, Link } from "react-router-dom";
 
 export default function useApplicationData() {
+  const navigate = useNavigate();
   const [state, setState] = useState({
     // maintain the same structure
     tasks: [],
@@ -44,7 +46,9 @@ export default function useApplicationData() {
           });
         });
       })
+      .then(navigate(`/`))
       .catch(err => console.log(err));
+      
     // .then((response) => {
     //   console.log(response)
     //   // const tasks = response.data

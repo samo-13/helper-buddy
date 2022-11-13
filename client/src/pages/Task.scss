@@ -1,6 +1,17 @@
-#task-progress-bar {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap');
+
+.task-title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.progress-stats {
   margin-top: 30px;
-  padding: 2rem;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  // padding-bottom: 10px;
+  // padding-bottom: 30px;
+  background-color: lightsteelblue;
   font-style: bold;
   align-items: center;
   text-align: center;
@@ -9,12 +20,42 @@
   margin-bottom: 30px;
 }
 
-.task-step-progress {
-  padding: 2rem;
-  font-style: bold;
+#task-timer {
+  padding: 20px;
+}
+
+#task-progress-bar {
+  padding: 20px;
+  padding-bottom: 40px;
+}
+
+.motivating-message {
+  color: black;
+}
+
+.done-button {
   align-items: center;
   text-align: center;
+}
+
+#done-button{
   border: 1px solid black;
   box-shadow: 3px 3px black;
-  margin-bottom: 40px;
+  background-color: lightgreen;
+  width: 150px;
+  height: 40px;
+  font-family: Poppins;
+  font-size: 18px;
+  margin-top: 40px;
+  align-items: center;
+  text-align: center;
 }
+
+// .task-step-progress {
+//   padding-top: 20px;
+//   padding-bottom: 20px;
+//   font-style: bold;
+//   align-items: center;
+//   text-align: center;
+// }
+
